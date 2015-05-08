@@ -31,4 +31,10 @@ ActiveRecord::Schema.define(version: 20150508200615) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "book"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
