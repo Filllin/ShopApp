@@ -1,0 +1,13 @@
+<div class="col-md-3" id="leftCol">
+    <div class="well">
+     <h3>Каталог</h3>
+      <ul class="nav nav-stacked" id="sidebar">
+        <% @categories.each do |category| %>
+        <li class="active"><h4><%= link_to category.title, view_category_path(slug: category.slug) %></h4></li>
+            <% category.sub_categories.each  do |sub_category| %>
+                <li><h4><%= link_to sub_category, view_sub_category_path(slug: sub_category.slug) %></h4></li>
+            <% end %>
+        <% end %>
+      </ul>
+    </div>
+</div>
