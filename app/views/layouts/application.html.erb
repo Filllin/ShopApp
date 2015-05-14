@@ -10,18 +10,18 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-
 <%= render 'layouts/header' %>
-<div class="container" id="main-container">
-  <div class="row">
-    <div class="col-xs-12">
-      <% flash.each do |name, msg| -%>
-          <%= content_tag :div, msg, class: "alert alert-#{name}"  %>
-      <% end -%>
+
+<div class="container">
+  <div class="row row-offcanvas row-offcanvas-left">
+    <%= render 'layouts/sidebar' %>
+
+    <div class="col-xs-12 col-sm-9">
+      <h2>МАГАЗИН ХРИСТИАНСКОЙ КНИГИ FRIEDENSBOTE</h2>
+      <%= yield %>
     </div>
   </div>
 </div>
-<%= yield %>
 <%= render 'layouts/footer' %>
 </body>
 </html>
