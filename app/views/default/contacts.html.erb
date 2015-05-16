@@ -4,11 +4,8 @@
       <div class="node__content">
         <div class="field--body">
           <% @title="Контакты" %>
-          <p>Для информации или покупки свяжитесь с нами удобным Вам способом.<br>
-            &nbsp;<br>
-            Режим работы:<br>
-            ПН - ПТ - 10.00 - 18.00&nbsp;</p>
-          <p><strong><em>моб. тел. (050) 106 59 93,&nbsp;</em></strong><strong><em>(096) 808 62 65,&nbsp;</em></strong><strong><em>(093) 515 40 80</em></strong><br><strong><em>e-mail: <a href="mailto:pavelshepel@gmail.com">pavelshepel@gmail.com</a></em></strong><br>
+          <p><%= @contacts.content %></p>
+          <p><strong><em><%= @contacts.phone_numbers %></em></strong><br><strong><em>e-mail: <a href="mailto:<%= @contacts.email %>"><%= @contacts.email %></a></em></strong><br>
             &nbsp;</p>
           <p>&nbsp;</p>
         </div>
