@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'default#home'
+
   get 'contacts' => "default#contacts", as: :contacts
 
   get 'about' => "default#about", as: :about
