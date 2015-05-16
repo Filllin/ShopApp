@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+      <% @title="МАГАЗИН ХРИСТИАНСКОЙ КНИГИ FRIEDENSBOTE" %>
+      <div class="panel-body">
+        <div class="col-md-10">
+          <% @products.each do |product| %>
+              <% if product.main == true %>
+              <%= image_tag product.image %>
+              <tr>
+                <td><h5>Title: <%= link_to product.title, view_product_path(sub_category: product.sub_category,slug: product.slug) %></td></h5>
+                <td><h5>Description: <%= product.description %></td></h5>
+              </tr>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-md-10">
+      <div class="row">
+      <% @products.shuffle.each do |product| %>
+         <div class="col-md-4"><%= image_tag product.image, {height: 90, weight: 90} %>
+          <h5><%= link_to product.title, view_product_path(sub_category: product.sub_category,slug: product.slug) %></h5></div>
+      <% end %>
+        </div>
+    </div>
+  </div>
+</div>
