@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'contacts' => "default#contacts", as: :contacts
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
