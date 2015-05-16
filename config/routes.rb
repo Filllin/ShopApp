@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-
   get 'contacts' => "default#contacts", as: :contacts
 
   get 'about' => "default#about", as: :about
+
+  get 'oplata-i-dostavka' => "default#payment", as: :payment
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
