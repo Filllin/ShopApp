@@ -8,4 +8,10 @@ class DefaultController < ApplicationController
     @about = About.first
     @categories = Category.all
   end
+
+  def payment
+    @title = Payment.first.title
+    @payment = Payment.first
+    @categories = Category.all
+  end
 end
