@@ -13,6 +13,92 @@
 
 ActiveRecord::Schema.define(version: 20150517084315) do
 
+  create_table "abouts", force: :cascade do |t|
+    t.text     "content"
+    t.string   "email"
+    t.text     "google_maps_code"
+    t.text     "schedule"
+    t.text     "location"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "categories", ["slug"], name: "index_categories_on_slug"
+
+  create_table "contacts", force: :cascade do |t|
+    t.text     "content"
+    t.string   "email"
+    t.string   "phone_numbers"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "payments", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "reference"
+    t.integer  "ISBN"
+    t.string   "author"
+    t.string   "publisher"
+    t.integer  "number_of_pages"
+    t.string   "format"
+    t.integer  "weight"
+    t.integer  "height"
+    t.integer  "width"
+    t.integer  "thickness"
+    t.integer  "sub_category_id"
+    t.string   "slug"
+    t.string   "image"
+    t.boolean  "main"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "products", ["slug"], name: "index_products_on_slug"
+
+  create_table "sub_categories", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "category_id"
+    t.string   "slug"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "sub_categories", ["category_id"], name: "index_sub_categories_on_category_id"
+  add_index "sub_categories", ["slug"], name: "index_sub_categories_on_slug"
+
   create_table "users", force: :cascade do |t|
     t.boolean  "admin"
     t.string   "email",                  default: "", null: false
