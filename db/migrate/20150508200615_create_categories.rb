@@ -1,7 +1,8 @@
 class CreateCategories < ActiveRecord::Migration
   def change
     create_table :categories do |t|
-      t.string :book
+      t.string :title
+      t.string :slug, index: true
 
       t.timestamps null: false
     end
