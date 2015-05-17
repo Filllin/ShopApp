@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root 'default#home'
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
+  devise_for :users
+
   get 'contacts' => "default#contacts", as: :contacts
 
   get 'about' => "default#about", as: :about

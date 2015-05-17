@@ -55,3 +55,7 @@ gem 'quiet_assets'
 gem 'friendly_id'
 
 gem 'debugger-linecache'
+
+gem 'devise'
+
+gem 'rails_admin'
