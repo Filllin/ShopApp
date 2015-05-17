@@ -1,6 +1,6 @@
 class CreateProducts < ActiveRecord::Migration
   def change
-    create_table :books do |t|
+    create_table :products do |t|
       t.string :title
       t.string :description
       t.integer :reference
