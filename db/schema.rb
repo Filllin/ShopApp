@@ -15,12 +15,8 @@ ActiveRecord::Schema.define(version: 20150517084315) do
 
   create_table "abouts", force: :cascade do |t|
     t.text     "content"
-    t.string   "email"
-    t.text     "google_maps_code"
-    t.text     "schedule"
-    t.text     "location"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "carts", force: :cascade do |t|
