@@ -59,3 +59,7 @@ gem 'debugger-linecache'
 gem 'devise'
 
 gem 'rails_admin'
+
+gem 'will_paginate'
+
+gem 'will_paginate-bootstrap'
