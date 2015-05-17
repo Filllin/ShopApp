@@ -1,4 +1,4 @@
-class CreateBooks < ActiveRecord::Migration
+class CreateProducts < ActiveRecord::Migration
   def change
     create_table :books do |t|
       t.string :title
@@ -13,7 +13,10 @@ class CreateBooks < ActiveRecord::Migration
       t.integer :height
       t.integer :width
       t.integer :thickness
-      t.string :category
+      t.belongs_to :sub_category
+      t.string :slug, index: true
+      t.string :image
+      t.boolean :main
 
       t.timestamps null: false
     end
