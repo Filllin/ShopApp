@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'sub_category/:slug' => "default#sub_category_view", as: :view_sub_category
 
+  get ':sub_category/:slug' => "default#view_product", as: :view_product
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
