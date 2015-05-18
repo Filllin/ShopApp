@@ -21,16 +21,16 @@ class DefaultController < ApplicationController
     @categories = Category.all
   end
 
-  def category_view
-    if params[:slug].present?
-      @slug_category = Category.where(slug: params[:slug])
-      if params[:count].present?
-        @products = Product.where(sub_category: SubCategory.where(category: @slug_category)).order(sort_column + " " + sort_direction).paginate(:per_page => params[:count], :page => params[:page])
-      else
-        @products = Product.where(sub_category: SubCategory.where(category: @slug_category)).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
+  def view_product
+    @product = Product.where(slug: params[:slug])
+    @product.each do |product|
+       @title = product.title
+    end
+    if params[:count_of_products].present?
+    respond_to do |format|
+      format.html { redirect_to view_product_path, notice: "Товар #{@title} добавлен в корзину" }
       end
     end
-    @categories = Category.all
   end
 
   def sub_category_view
