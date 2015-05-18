@@ -1,0 +1,41 @@
+<div class="col-md-13">
+  <div class="panel panel-default">
+    <% @product.each do |product| %>
+        <div class="panel-body">
+          <div class="col-md-7">
+            <h4 id="notice"><%= notice %></h4>
+            <h3><%= @title %></h3>
+            <%= image_tag product.image %>
+            <tr>
+              <td><h5><%= product.description %></td></h5>
+            </tr>
+          </div>
+          <div class="col-md-5">
+            <h5>Цена: <%= product.price %> грн.</h5>
+            <%= form_tag({controller: "default", action: "view_product"}, method: "get") do %>
+                <%= label_tag("Количество") %>
+                <%= number_field(:count_of_products, in: 1.0..20.0) %>
+                <%= submit_tag("Отправить") %>
+            <% end %>
+            <h5>Если не хотите оформлять заказ самостоятельно, поручите это нашим менеджерам: +38 (096) 808-62-65.</h5>
+            <ul>
+              <li><h4>Артикул: <%= product.reference %></h4></li>
+              <li><h4>ISBN: <%= product.ISBN %></h4></li>
+              <li><h4>Автор: <%= link_to product.author.title, view_author_path(slug: product.author.slug) %></h4></li>
+              <li><h4>Категория: <%= link_to product.sub_category.title, view_sub_category_path(slug: product.sub_category.slug) %></h4></li>
+              <% if product.publisher.present? %>
+              <li><h4>Издательство: <%= link_to product.publisher.title, view_publisher_path(slug: product.publisher.slug) %></h4></li>
+              <% end %>
+              <li><h4>Язык книги: <%= product.language %></h4></li>
+              <li><h4>Количество страниц: <%= product.number_of_pages %></h4></li>
+              <li><h4>Формат: <%= product.format %></h4></li>
+              <li><h4>Вес: <%= product.weight %></h4></li>
+              <li><h4>Высота: <%= product.height %></h4></li>
+              <li><h4>Ширина: <%= product.width %></h4></li>
+              <li><h4>Толщина: <%= product.thickness %></h4></li>
+            </ul>
+          </div>
+          </div>
+    <% end %>
+  </div>
+</div>
