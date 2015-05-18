@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'default#home'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
+
   devise_for :users
 
   get 'contacts' => "default#contacts", as: :contacts
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'about' => "default#about", as: :about
 
   get 'oplata-i-dostavka' => "default#payment", as: :payment
+
+  get 'category/:slug' => "default#category_view", as: :view_category
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
