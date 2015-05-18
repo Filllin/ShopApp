@@ -1,4 +1,10 @@
 class DefaultController < ApplicationController
+  def home
+    @products = Product.all
+    @categories = Category.all
+    @count = 20
+  end
+
   def contacts
     @categories = Category.all
     @contacts = Contact.first
