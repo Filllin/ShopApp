@@ -14,4 +14,8 @@ class DefaultController < ApplicationController
     @payment = Payment.first
     @categories = Category.all
   end
+
+  def sort_column
+    Product.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
 end
