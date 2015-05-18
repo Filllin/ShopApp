@@ -12,11 +12,17 @@ Rails.application.routes.draw do
 
   get 'oplata-i-dostavka' => "default#payment", as: :payment
 
-  get 'category/:slug' => "default#category_view", as: :view_category
+  get 'category/:slug' => "category#view_category", as: :view_category
 
-  get 'sub_category/:slug' => "default#sub_category_view", as: :view_sub_category
+  get 'sub_category/:slug' => "category#view_sub_category", as: :view_sub_category
 
   get ':sub_category/:slug' => "default#view_product", as: :view_product
+
+  get 'author/:slug' => "default#view_author", as: :view_author
+
+  get 'izdatelstvo/:slug' => "default#view_publisher", as: :view_publisher
+
+  get 'cart' => "default#cart", as: :cart
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
