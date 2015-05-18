@@ -84,12 +84,25 @@ ActiveRecord::Schema.define(version: 20150518130846) do
     t.integer  "sub_category_id"
     t.string   "slug"
     t.string   "image"
+    t.string   "language"
+    t.integer  "price"
+    t.integer  "author_id"
+    t.integer  "publisher_id"
     t.boolean  "main"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
   add_index "products", ["slug"], name: "index_products_on_slug"
+
+  create_table "publishers", force: :cascade do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "publishers", ["slug"], name: "index_publishers_on_slug"
 
   create_table "sub_categories", force: :cascade do |t|
     t.string   "title"
