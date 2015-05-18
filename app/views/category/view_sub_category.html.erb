@@ -4,7 +4,7 @@
     <div class="panel-body">
       <div class="col-md-10">
         <% if @products.present? %>
-            <%= form_tag({controller: "default", action: "sub_category_view"}, method: "get") do %>
+            <%= form_tag({controller: "category", action: "view_sub_category"}, method: "get") do %>
                 <%= label_tag("Показать товаров") %>
                 <%= select_tag(:count, options_for_select([[10, 10], [20, 20], [50, 50], [100, 100],["-Все-", @products.count]])) %>
                 <%= submit_tag("Отправить") %>
