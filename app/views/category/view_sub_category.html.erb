@@ -10,7 +10,7 @@
                 <%= submit_tag("Отправить") %>
             <% end %>
             <% @products.each do |product| %>
-                <% @title = product.title %>
+                <% @title = product.sub_category.title %>
                 <div class="col-md-4"><%= image_tag product.image, {height: 90, weight: 90} %>
                   <h5><%= link_to product.title, view_product_path(sub_category: product.sub_category,slug: product.slug) %></h5></div>
             <% end %>
