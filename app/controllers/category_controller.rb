@@ -1,4 +1,6 @@
 class CategoryController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   def view_category
     if params[:slug].present?
       @slug_category = Category.where(slug: params[:slug])
