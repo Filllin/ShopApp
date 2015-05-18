@@ -1,5 +1,5 @@
-class CategoryController < ApplicationControlle
-  def category_view
+class CategoryController < ApplicationController
+  def view_category
     if params[:slug].present?
       @slug_category = Category.where(slug: params[:slug])
       if params[:count].present?
@@ -11,7 +11,7 @@ class CategoryController < ApplicationControlle
     @categories = Category.all
   end
 
-  def sub_category_view
+  def view_sub_category
     if params[:count].present?
       @products = Product.where(sub_category: SubCategory.where(slug: params[:slug])).order(sort_column + " " + sort_direction).paginate(:per_page => params[:count], :page => params[:page])
     else
