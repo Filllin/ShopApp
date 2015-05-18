@@ -2,4 +2,6 @@ class Product < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
   belongs_to :sub_category
+  belongs_to :publisher
+  belongs_to :author
 end
