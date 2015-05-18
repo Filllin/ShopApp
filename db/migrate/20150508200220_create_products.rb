@@ -5,8 +5,6 @@ class CreateProducts < ActiveRecord::Migration
       t.string :description
       t.integer :reference
       t.integer :ISBN
-      t.string :author
-      t.string :publisher
       t.integer :number_of_pages
       t.string :format
       t.integer :weight
@@ -16,6 +14,10 @@ class CreateProducts < ActiveRecord::Migration
       t.belongs_to :sub_category
       t.string :slug, index: true
       t.string :image
+      t.string :language
+      t.integer :price
+      t.belongs_to :author
+      t.belongs_to :publisher
       t.boolean :main
 
       t.timestamps null: false
