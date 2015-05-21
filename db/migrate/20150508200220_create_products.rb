@@ -19,6 +19,7 @@ class CreateProducts < ActiveRecord::Migration
       t.belongs_to :author
       t.belongs_to :publisher
       t.boolean :main
+      t.integer :quantity_products
 
       t.timestamps null: false
     end
