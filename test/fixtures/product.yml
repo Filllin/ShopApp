@@ -23,6 +23,7 @@ product1:
     image: 128
     slug: molitvennaya-zhizn-iisusa
     price: 100
+    quantity_products: 20
 product2:
     title: МОЛИТВЕННАЯ ЖИЗНЬ ИИСУСА
     description: |
@@ -47,6 +48,7 @@ product2:
     image: 1198
     slug: konflikt-carstv
     price: 100
+    quantity_products: 20
 product3:
     title: ГЕОРГИЙ ВИНС. ЕВАНГЕЛИЕ В УЗАХ
     description: |
@@ -63,3 +65,4 @@ product3:
     price: 100
     author: author1
     publisher: publisher1
+    quantity_products: 20
