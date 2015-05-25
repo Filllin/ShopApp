@@ -5,7 +5,7 @@ class CategoryController < ApplicationController
     if params[:slug].present?
       @slug_category = Category.where(slug: params[:slug])
       if params[:count].present?
-        @products = Product.find_by_sub_category(SubCategory.find_by_category(@slug_category)).order(sort_column + " " + sort_direction).paginate(:per_page => params[:count], :page => params[:page])
+        @products = Product.where(sub_category: SubCategory.where(category: @slug_category)).order(sort_column + " " + sort_direction).paginate(:per_page => params[:count], :page => params[:page])
       else
         @products = Product.where(sub_category: SubCategory.where(category: @slug_category)).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
       end
@@ -15,7 +15,7 @@ class CategoryController < ApplicationController
 
   def view_sub_category
     if params[:count].present?
-      @products = Product.find_by_sub_category(SubCategory.find_by_slug(params[:slug])).order(sort_column + " " + sort_direction).paginate(:per_page => params[:count], :page => params[:page])
+      @products = Product.where(sub_category: SubCategory.find_by_slug(params[:slug])).order(sort_column + " " + sort_direction).paginate(:per_page => params[:count], :page => params[:page])
     else
       @products = Product.where(sub_category: SubCategory.find_by_slug(params[:slug])).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
