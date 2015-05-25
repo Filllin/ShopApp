@@ -13,10 +13,8 @@
 <%= render 'layouts/header' %>
 <div class="container">
   <div class="row row-offcanvas row-offcanvas-left">
-    <% if current_user  %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <% end %>
-      <%= yield %>
+    <%= render 'layouts/logout' %>
+    <%= yield %>
   </div>
 </div>
 <%= render 'layouts/footer' %>
