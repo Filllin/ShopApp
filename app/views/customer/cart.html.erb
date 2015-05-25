@@ -1,0 +1,49 @@
+<div class="col-md-3"><%= render 'layouts/left_sidebar' %></div>
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-md-10">
+        <h4 id="notice"><%= notice %></h4>
+        <% if @customers_product.present? %>
+            <% @customers_product.each do |customer_product| %>
+              <div class="col-md-13">
+                <tr>
+                <div class="col-md-3">
+                  <td><h5><%= link_to customer_product.product.title, view_product_path(sub_category: customer_product.product.sub_category, slug: customer_product.product.slug) %></td></h5>
+                  </div>
+                <div class="col-md-1">
+                  <td><h5>Цена: <%= customer_product.product.price %> грн</h5></td>
+                </div>
+                <div class="col-md-4">
+                  <td><%= form_tag({controller: "customer", action: "update_quantity"}, method: "get") do %>
+                        <%= label_tag("Количество") %>
+                        <%= number_field_tag :quantity_of_products, customer_product.quantity, class: 'form-control' %>
+                        <%= hidden_field_tag :product_title, customer_product.product.title %>
+                        <%= submit_tag("Отправить", class: 'btn btn-default') %>
+                    <% end %>
+                  </td>
+                </div>
+                <div class="col-md-3">
+                  <%= form_tag({controller: "customer", action: "destroy"}, method: "get") do %>
+                      <%= hidden_field_tag :product_title, customer_product.product.title %>
+                      <%= hidden_field_tag :quantity_of_products, customer_product.quantity %>
+                      <%= submit_tag("Удалить", class: 'btn btn-default') %>
+                  <% end %>
+                </div>
+                <div class="col-md-2">
+                  <td><h5>Всего: <%= customer_product.quantity*customer_product.product.price %> грн</h5></td>
+                </div>
+                </tr>
+              </div>
+            <% end %>
+          <%= form_tag({controller: "customer", action: "new"}, method: "get") do %>
+              <%= submit_tag("Оформить заказ", class: 'btn btn-default') %>
+          <% end %>
+        <% else %>
+        <p>Ваша корзина пуста</p>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="col-md-3"><%= render 'layouts/right_sidebar' %></div>
