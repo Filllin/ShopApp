@@ -42,19 +42,20 @@ class CustomerController < ApplicationController
   end
 
   def create
-   @customer = Customer.new(customer_params)
-    # redirect_to order_a_products_path, notice: 'success'
-
+    customer = Customer.new(customer_params)
     respond_to do |format|
-      if @customer.save
-        format.html { redirect_to order_a_products_path, notice: 'Success' }
+      if customer.save
+        format.html { redirect_to root_path, notice: 'Ваш заказ успешно принят' }
       else
-        @categories = Category.all
-        @customers_product = CustomerProduct.where(user_session_id: session['session_id'])
-        format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path, notice: 'Ваш заказ успешно принят' }
       end
     end
+  end
+
+  def review
+    @customer = Customer.new(customer_params)
+    @categories = Category.all
+    @customers_product = CustomerProduct.where(user_session_id: session['session_id'])
   end
 
   private
