@@ -4,4 +4,6 @@ class Product < ActiveRecord::Base
   belongs_to :sub_category
   belongs_to :publisher
   belongs_to :author
+  has_many :customer_products
+  has_many :customers, through: :customer_products
 end
