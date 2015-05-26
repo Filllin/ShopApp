@@ -21,3 +21,22 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      customer:
+        name: "Поле имя"
+        surname: "Поле фамилия"
+        phone_number: "Поле телефонный номер"
+        country: "Поле страна"
+        first_address: "Поле первый адрес"
+        city: "Поле город"
+        postcode: "Поле посткод"
+#    errors:
+#        models:
+#          customer:
+#            attributes:
+#              name:
+#
+#              surname:
+#                blank: "не может быть пустым"
+#  surname: "Фамилия"
