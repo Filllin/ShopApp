@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518130846) do
+ActiveRecord::Schema.define(version: 20150518212122) do
 
   create_table "abouts", force: :cascade do |t|
     t.text     "content"
@@ -48,6 +48,42 @@ ActiveRecord::Schema.define(version: 20150518130846) do
     t.string   "phone_numbers"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "customer_products", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.integer  "user_session_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "customer_products", ["customer_id"], name: "index_customer_products_on_customer_id"
+  add_index "customer_products", ["product_id"], name: "index_customer_products_on_product_id"
+
+  create_table "customers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.integer  "phone_number"
+    t.string   "bonuses"
+    t.string   "country"
+    t.string   "company"
+    t.string   "first_address"
+    t.string   "second_address"
+    t.string   "city"
+    t.string   "region"
+    t.string   "postcode"
+    t.string   "email"
+    t.string   "session_id"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -89,8 +125,9 @@ ActiveRecord::Schema.define(version: 20150518130846) do
     t.integer  "author_id"
     t.integer  "publisher_id"
     t.boolean  "main"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "quantity_products"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "products", ["slug"], name: "index_products_on_slug"
