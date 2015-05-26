@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   get 'oplata-i-dostavka' => "default#payment", as: :payment
 
-  get 'cart' => "default#cart", as: :cart
+  get 'cart' => "customer#cart", as: :cart
+
+  get 'order/review' => "customer#review", as: :order_review
 
   get 'category/:slug' => "category#view_category", as: :view_category
 
@@ -22,7 +24,15 @@ Rails.application.routes.draw do
 
   get 'izdatelstvo/:slug' => "publisher#view_publisher", as: :view_publisher
 
-  get ':sub_category/:slug' => "default#view_product", as: :view_product
+  get 'customer_product_destroy' => "customer#destroy", as: :customer_product_destroy
+
+  get 'update_quantity' => "customer#update_quantity", as: :product_update_quantity
+
+  get 'order_a_products' => "customer#new", as: :order_a_products
+
+  post 'create_customer' => "customer#create", as: :create_customer
+
+  get ':sub_category/:slug' => "product#view_product", as: :view_product
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
