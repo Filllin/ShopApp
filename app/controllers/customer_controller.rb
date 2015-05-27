@@ -45,6 +45,7 @@ class CustomerController < ApplicationController
     customer = Customer.new(customer_params)
     respond_to do |format|
       if customer.save
+        CustomerProduct.find_by_user_session_id(session['session_id']).update(customer: customer,user_session_id: '')
         format.html { redirect_to root_path, notice: 'Ваш заказ успешно принят' }
       else
         format.html { redirect_to root_path, notice: 'Ваш заказ успешно принят' }
@@ -60,6 +61,6 @@ class CustomerController < ApplicationController
 
   private
     def customer_params
-      params.require(:customer).permit(:name, :surname, :phone_number, :bonuses, :country, :company, :first_address, :second_address, :city, :region, :postcode, :email, :session_id)
+      params.require(:customer).permit(:name, :surname, :phone_number, :bonuses, :country, :company, :first_address, :second_address, :city, :region, :postcode, :email)
     end
 end
