@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   post 'create_customer' => "customer#create", as: :create_customer
 
+  get 'search' => "default#search", as: :search
+
   get ':sub_category/:slug' => "product#view_product", as: :view_product
 
   # The priority is based upon order of creation: first created -> highest priority.
