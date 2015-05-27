@@ -1,4 +1,12 @@
 class DefaultController < ApplicationController
+  def search
+    @categories = Category.all
+    @search = params[:search].mb_chars.downcase.to_s
+    if params[:search].present?
+      @products = Product.search(@search)
+    end
+  end
+
   def home
     @products = Product.all
     @categories = Category.all
