@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 20150518212122) do
     t.string   "region"
     t.string   "postcode"
     t.string   "email"
-    t.string   "session_id"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",       default: 0, null: false
     t.datetime "current_sign_in_at"
