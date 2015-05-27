@@ -14,7 +14,6 @@ class DeviseCreateCustomers < ActiveRecord::Migration
       t.string :region
       t.string :postcode
       t.string :email
-      t.string :session_id
 
 
       ## Rememberable
