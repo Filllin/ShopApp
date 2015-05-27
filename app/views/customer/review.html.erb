@@ -50,7 +50,7 @@
                 <%= f.hidden_field :region, :value => @customer.region %>
                 <%= f.hidden_field :postcode, :value => @customer.postcode %>
                 <%= f.hidden_field :email, :value => @customer.email %>
-                <%= f.hidden_field :session_id, :value => @customer.session_id %>
+                <%= f.hidden_field :session_id, :value => session['session_id'] %>
                 <%= submit_tag("Продолжить оформление", class: 'btn btn-default') %>
             <% end %>
           </div>
