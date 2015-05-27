@@ -1,0 +1,6 @@
+<%= form_tag({controller: "default", action: "search"}, method: "get", class: 'navbar-form navbar-left', role: 'search') do  %>
+    <div class="form-group">
+        <%= text_field_tag :search, params[:search], placeholder: "Поиск продуктов", class: 'form-control' %>
+    </div>
+    <%= submit_tag "Поиск", class: 'btn btn-default'%>
+<% end %>
