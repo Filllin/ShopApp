@@ -4,6 +4,11 @@
         <div class="panel-body">
           <div class="col-md-7">
             <h4 id="notice"><%= notice %></h4>
+            <% if @product.quantity_products <= 0 %>
+               <% disabled = true %>
+            <% else %>
+                <% disabled = false %>
+            <% end %>
             <h3><%= @title %></h3>
             <%= image_tag @product.image %>
             <tr>
@@ -15,8 +20,8 @@
             <h5>Цена: <%= @product.price %> грн.</h5>
             <%= form_tag({controller: "product", action: "view_product"}, method: "get") do %>
                 <%= label_tag("Количество") %>
-                <%= number_field_tag :count_of_products, class: 'form-control' %>
-                <%= submit_tag("Отправить", class: 'btn btn-default') %>
+                <%= text_field_tag :count_of_products, '', class: 'form-control', :disabled => disabled %>
+                <%= submit_tag("Отправить", class: 'btn btn-default', :disabled => disabled) %>
             <% end %>
             <h5>Если не хотите оформлять заказ самостоятельно, поручите это нашим менеджерам: +38 (096) 808-62-65.</h5>
             <ul>
