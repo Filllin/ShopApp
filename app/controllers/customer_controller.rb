@@ -49,7 +49,7 @@ class CustomerController < ApplicationController
         CustomerProduct.find_by_user_session_id(session['session_id']).update(customer: customer,user_session_id: '')
         format.html { redirect_to root_path, notice: 'Ваш заказ успешно принят' }
       else
-        format.html { redirect_to root_path, notice: 'Ваш заказ успешно принят' }
+        format.html { redirect_to root_path }
       end
     end
   end
