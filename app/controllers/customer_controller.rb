@@ -45,6 +45,7 @@ class CustomerController < ApplicationController
     customer = Customer.new(customer_params)
     respond_to do |format|
       if customer.save
+        CustomerMailer.welcome_email(customer).deliver_now
         CustomerProduct.find_by_user_session_id(session['session_id']).update(customer: customer,user_session_id: '')
         format.html { redirect_to root_path, notice: 'Ваш заказ успешно принят' }
       else
