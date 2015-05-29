@@ -1,9 +1,9 @@
 class CustomerMailer < ActionMailer::Base
-  default from: 'friendbotton@gmail.com'
+  default from: 'friendsboten@gmail.com'
 
-  def welcome_email(user)
+  def welcome_email(user,customers_product)
     @user = user
-    @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    @customers_product = customers_product
+    mail(to: @user.email, subject: 'Заказ на FriendsBote')
   end
 end
