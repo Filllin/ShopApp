@@ -24,16 +24,14 @@ class CustomerController < ApplicationController
 
   def create
     customer = Customer.new(customer_params)
-    respond_to do |format|
       if customer.save
         CustomerProduct.where(user_session_id: session['session_id']).update_all(customer_id: customer, user_session_id: nil)
         SendMailer.customer_email(customer, CustomerProduct.where(customer: customer)).deliver_now
         SendMailer.admin_email(customer, CustomerProduct.where(customer: customer)).deliver_now
-        format.html { redirect_to root_path, notice: 'Ваш заказ успешно принят' }
+        redirect_to root_path, notice: 'Ваш заказ успешно принят'
       else
-        format.html { redirect_to root_path }
+        redirect_to root_path
       end
-    end
   end
 
   def review
