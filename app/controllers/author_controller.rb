@@ -2,15 +2,13 @@ class AuthorController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def view_author
-    if params[:count].present?
-      @products = Product.where(author: Author.where(slug: params[:slug])).order(sort_column + " " + sort_direction).paginate(:per_page => params[:count], :page => params[:page])
-      respond_to do |format|
-        format.html { redirect_to view_author_path, notice: "Вам будет показано #{params[:count]} товаров" }
-      end
-    else
-      @products = Product.where(author: Author.where(slug: params[:slug])).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
-    end
     @categories = Category.all
+    if params[:count].present?
+      @products = Author.count_products(params[:count], params[:slug], params[:page], sort_column, sort_direction)
+      flash[:notice] = "Вам будет показано #{params[:count]} товаров"
+    else
+      @products = Author.count_products(10, params[:slug], params[:page], sort_column, sort_direction)
+    end
   end
 
   def sort_column
