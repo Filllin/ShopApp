@@ -12,10 +12,11 @@ class CategoryController < ApplicationController
   end
 
   def view_sub_category
+    @categories = Category.all
     if params[:count].present?
-      @products = Product.where(sub_category: SubCategory.find_by_slug(params[:slug])).order(sort_column + " " + sort_direction).paginate(:per_page => params[:count], :page => params[:page])
+      @products = Product.count_products_by_sub_category(params[:slug], params[:count], params[:page], sort_column, sort_direction)
     else
-      @products = Product.where(sub_category: SubCategory.find_by_slug(params[:slug])).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
+      @products = Product.count_products_by_sub_category(params[:slug], 10, params[:page], sort_column, sort_direction)
     end
   end
 
