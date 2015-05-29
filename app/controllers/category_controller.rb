@@ -2,15 +2,13 @@ class CategoryController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def view_category
-    if params[:slug].present?
-      @slug_category = Category.where(slug: params[:slug])
-      if params[:count].present?
-        @products = Product.where(sub_category: SubCategory.where(category: @slug_category)).order(sort_column + " " + sort_direction).paginate(:per_page => params[:count], :page => params[:page])
-      else
-        @products = Product.where(sub_category: SubCategory.where(category: @slug_category)).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
-      end
-    end
     @categories = Category.all
+    slug_category = Category.where(slug: params[:slug])
+    if params[:count].present?
+      @products = Product.count_products_by_category(slug_category, params[:count], params[:page], sort_column, sort_direction)
+    else
+      @products = Product.count_products_by_category(slug_category, 10, params[:page], sort_column, sort_direction)
+    end
   end
 
   def view_sub_category
@@ -19,7 +17,6 @@ class CategoryController < ApplicationController
     else
       @products = Product.where(sub_category: SubCategory.find_by_slug(params[:slug])).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
-    @categories = Category.all
   end
 
   def sort_column
