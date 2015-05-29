@@ -3,7 +3,7 @@ class ProductController < ApplicationController
     @product = Product.find_by_slug(params[:slug])
     @title = @product.title
     if params[:count_of_products].present?
-      customer_product = CustomerProduct.where(product: @product).take
+      customer_product = CustomerProduct.find_by(user_session_id: session['session_id'], product: @product, customer: nil)
       if customer_product.present?
           @quantity = params[:count_of_products].to_i + customer_product.quantity
           customer_product.update(quantity: @quantity)
