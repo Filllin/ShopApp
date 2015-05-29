@@ -6,13 +6,13 @@
 <body>
 <h1>Здраствуйте, <%= @user.name %></h1>
 <p>===============================================</p>
-<h3>Ваш заказ успешно принят!</h3>
-<h3><b>Детали заказа:</b></h3>
+<h2>Ваш заказ успешно принят!</h2>
+<h2><b>Детали заказа:</b></h2>
 <% @customers_product.each do |customer_product| %>
-  <h4><%= customer_product.product.title %></h4><br/>
-  <h4>Цена: <%= customer_product.product.price %> грн></h4><br/>
-  <h4>Количество: <%= customer_product.quantity %></h4><br/>
-  <h4>Всего: <%= customer_product.quantity*customer_product.product.price %> грн</h4><br/>
+  <h3>Название: <%= customer_product.product.title %></h3>
+  <h3>Цена: <%= customer_product.product.price %> грн></h3>
+  <h3>Количество: <%= customer_product.quantity %></h3>
+  <h3>Всего: <%= customer_product.quantity * customer_product.product.price %> грн</h3>
 <% end %>
 </body>
 </html>
