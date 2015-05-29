@@ -24,4 +24,14 @@ class Product < ActiveRecord::Base
     product.update(quantity_products: quantity_products)
     Product.create_customer(product, count, session)
   end
+
+  def self.create_customer(product, count, session)
+    customer_product = CustomerProduct.where(user_session_id: session, product: product, customer: nil).take
+    if customer_product.present?
+      quantity = count.to_i + customer_product.quantity
+      customer_product.update(quantity: quantity)
+    else
+      CustomerProduct.create(user_session_id: session, product: product, quantity: count)
+    end
+  end
 end
