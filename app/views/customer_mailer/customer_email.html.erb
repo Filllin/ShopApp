@@ -10,9 +10,10 @@
 <h2><b>Детали заказа:</b></h2>
 <% @customers_product.each do |customer_product| %>
   <h3>Название: <%= customer_product.product.title %></h3>
-  <h3>Цена: <%= customer_product.product.price %> грн></h3>
+  <h3>Цена: <%= customer_product.product.price %> грн</h3>
   <h3>Количество: <%= customer_product.quantity %></h3>
   <h3>Всего: <%= customer_product.quantity * customer_product.product.price %> грн</h3>
 <% end %>
+  <h3>В ближайшее время менеджер нашего магазина с вами свяжеться</h3>
 </body>
 </html>
