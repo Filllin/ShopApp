@@ -10,6 +10,6 @@ class SendMailer < ActionMailer::Base
   def admin_email(user, customers_product)
     @user = user
     @customers_product = customers_product
-    mail(to: 'kozeyandrey@gmail.com', subject: 'Данные о заказе и заказчика с FriendsBote')
+    mail(to: 'dix.alex@gmail.com', subject: 'Данные о заказе и заказчика с FriendsBote')
   end
 end
