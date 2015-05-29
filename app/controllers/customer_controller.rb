@@ -11,19 +11,8 @@ class CustomerController < ApplicationController
 
   def update_quantity
     if params[:quantity_of_products].present? && params[:product_title].present?
-      product = Product.find_by_title(params[:product_title])
-      customer_product = CustomerProduct.where(user_session_id: session['session_id'], product: product).first
-      if params[:quantity_of_products].to_i < customer_product.quantity
-        quantity_products = product.quantity_products + (customer_product.quantity - params[:quantity_of_products].to_i)
-      else
-        quantity_products = product.quantity_products - (params[:quantity_of_products].to_i - customer_product.quantity)
-      end
-      product.update(quantity_products: quantity_products)
-      customer_product.update(quantity: params[:quantity_of_products])
-      respond_to do |format|
-        format.html { redirect_to cart_path, notice: "Количество товара #{params[:product_title]} было обновлено до #{params[:quantity_of_products]}" }
-        format.json { head :no_content }
-      end
+      CustomerProduct.update_quantity_product(params[:product_title], params[:quantity_of_products], session['session_id'])
+      redirect_to cart_path, notice: "Количество товара #{params[:product_title]} было обновлено до #{params[:quantity_of_products]}"
     end
   end
 
