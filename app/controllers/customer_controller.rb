@@ -20,7 +20,7 @@ class CustomerController < ApplicationController
   def update_quantity
     if params[:quantity_of_products].present? && params[:product_title].present?
       product = Product.find_by_title(params[:product_title])
-      customer_product = CustomerProduct.where(product: product).take
+      customer_product = CustomerProduct.where(user_session_id: session['session_id'], product: product).first
       if params[:quantity_of_products].to_i < customer_product.quantity
         quantity_products = product.quantity_products + (customer_product.quantity - params[:quantity_of_products].to_i)
       else
