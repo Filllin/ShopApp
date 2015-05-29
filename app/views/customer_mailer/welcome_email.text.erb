@@ -1,8 +1,13 @@
-Welcome to example.com, <%= @user.name %>
+Здраствуйте, <%= @user.name %>
 ===============================================
-
-You have successfully signed up to example.com,
-your username is: <%= @user.name %>.
+Ваш заказ успешно принят!
+Детали заказа:
+<% @customers_product.each do |customer_product| %>
+<%= customer_product.product.title %>
+Цена: <%= customer_product.product.price %> грн
+Количество: <%= customer_product.quantity %>
+Всего: <%= customer_product.quantity*customer_product.product.price %> грн
+<% end %>
 
 To login to the site, just follow this link: <%= @url %>.
 
