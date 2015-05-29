@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Здраствуйте, с магазина FriendsBote поступил заказ</h1>
+<p>===============================================</p>
+    <h2><b>Детали заказа:</b></h2>
+    <h3>Название: <%= @user.product.title %></h3>
+    <h3>Количество: <%= @user.quantity %></h3>
+<p>===============================================</p>
+    <h3>Имя: <%= @user.product.title %></h3>
+    <h3>Фамилия: <%= @user.quantity %></h3>
+    <h3>E-mail адрес: <%= @user.email %></h3>
+    <h3>Телефонный номер: <%= @user.phone_number %></h3>
+    <h3>Страна: <%= @user.country %></h3>
+    <h3>Компания: <%= @user.company %></h3>
+    <h3>Первый адрес: <%= @user.first_address %></h3>
+    <h3>Второй адрес: <%= @user.second_address %></h3>
+    <h3>Город: <%= @user.city %></h3>
+    <h3>Регион: <%= @user.region %></h3>
+    <h3>Посткод: <%= @user.postcode %></h3>
+</body>
+</html>
