@@ -5,16 +5,8 @@ class CustomerController < ApplicationController
   end
 
   def destroy
-    product = Product.find_by_title(params[:product_title])
-    customer_product = CustomerProduct.where(product: product).take
-    customer_product.destroy
-    quantity_products = product.quantity_products + params[:quantity_of_products].to_i
-    product.update(quantity_products: quantity_products)
-    @product_title = params[:product_title]
-    respond_to do |format|
-      format.html { redirect_to cart_path, notice: "Вы убрали из корзины #{product.title}" }
-      format.json { head :no_content }
-    end
+    CustomerProduct.destroy_product(params[:product_title], params[:quantity_of_products], session['session_id'])
+    redirect_to cart_path, notice: "Вы убрали из корзины #{params[:product_title]}"
   end
 
   def update_quantity
