@@ -18,4 +18,10 @@ class Product < ActiveRecord::Base
   def self.count_products_by_sub_category(slug, count, page, sort_column, sort_direction)
     return Product.where(sub_category: SubCategory.find_by_slug(slug)).order(sort_column + " " + sort_direction).paginate(:per_page => count, :page => page)
   end
+
+  def self.add_product_to_cart(product, count, session)
+    quantity_products = product.quantity_products - count.to_i
+    product.update(quantity_products: quantity_products)
+    Product.create_customer(product, count, session)
+  end
 end
