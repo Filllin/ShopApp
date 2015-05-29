@@ -47,6 +47,7 @@ class CustomerController < ApplicationController
       if customer.save
         CustomerProduct.where(user_session_id: session['session_id']).update_all(customer_id: customer, user_session_id: nil)
         CustomerMailer.customer_email(customer, CustomerProduct.where(customer: customer)).deliver_now
+        CustomerMailer.admin_email(customer).deliver_now
         format.html { redirect_to root_path, notice: 'Ваш заказ успешно принят' }
       else
         format.html { redirect_to root_path }
