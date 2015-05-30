@@ -36,6 +36,7 @@ class CustomerController < ApplicationController
         SendMailer.admin_email(customer, CustomerProduct.where(customer: customer)).deliver_now
         redirect_to root_path, notice: 'Ваш заказ успешно принят'
       else
+        puts customer.errors.messages
         redirect_to root_path
       end
   end
