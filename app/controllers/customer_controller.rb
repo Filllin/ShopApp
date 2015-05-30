@@ -42,12 +42,20 @@ class CustomerController < ApplicationController
 
   def review
     @customer = Customer.new(customer_params)
+    if @customer.invalid?
+      respond_to do |format|
+        @categories = Category.all
+        @customers_product = CustomerProduct.where(user_session_id: session['session_id'])
+        format.html { render :new }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
+        end
+    end
     @categories = Category.all
     @customers_product = CustomerProduct.where(user_session_id: session['session_id'])
   end
 
   private
     def customer_params
-      params.require(:customer).permit(:name, :surname, :phone_number, :bonuses, :country, :company, :first_address, :second_address, :city, :region, :postcode, :email)
+      params.require(:customer).permit(:name, :surname, :phone_number, :bonuses, :country, :company, :first_address, :second_address, :city, :region, :postcode, :email, :email_confirmation)
     end
 end
