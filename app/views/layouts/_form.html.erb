@@ -11,43 +11,43 @@
         </div>
     <% end %>
     <div class="field">
-    Бонусы: <%= f.text_field :bonuses, class: 'form-control' %>
+        Бонусы: <%= f.text_field :bonuses, class: 'form-control' %>
     </div>
     <div class="field">
-    Имя:<%= f.text_field :name, class: 'form-control' %>
+        Имя:<%= f.text_field :name, class: 'form-control' %>
     </div>
     <div class="field">
-    Фамилия: <%= f.text_field :surname, class: 'form-control' %>
+        Фамилия: <%= f.text_field :surname, class: 'form-control' %>
     </div>
     <div class="field">
-    E-mail адрес: <%= f.text_field :email, class: 'form-control' %>
+        E-mail адрес: <%= f.text_field :email, class: 'form-control' %>
     </div>
     <div class="field">
-      Подтвердить E-mail адрec: <%= f.text_field :email_confirmation, class: 'form-control' %>
+        Подтвердить E-mail адрec: <%= f.text_field :email_confirmation, class: 'form-control' %>
     </div>
     <div class="field">
-    Телефонный номер: <%= f.text_field :phone_number, class: 'form-control' %>
+        Телефонный номер: <%= f.text_field :phone_number, class: 'form-control' %>
     </div>
     <div class="field">
-    Страна: <%= f.text_field :country, class: 'form-control' %>
+        Страна: <%= f.text_field :country, class: 'form-control', disabled: true %>
     </div>
     <div class="field">
-    Компания:<%= f.text_field :company, class: 'form-control' %>
+        Компания:<%= f.text_field :company, class: 'form-control' %>
     </div>
     <div class="field">
-    Первый адрес: <%= f.text_field :first_address, class: 'form-control' %>
+        Первый адрес: <%= f.text_field :first_address, class: 'form-control' %>
     </div>
     <div class="field">
-    Второй адрес: <%= f.text_field :second_address, class: 'form-control' %>
+        Второй адрес: <%= f.text_field :second_address, class: 'form-control' %>
     </div>
     <div class="field">
-    Город: <%= f.text_field :city, class: 'form-control' %>
+        Штат: <%= f.text_field :state, class: 'form-control' %>
     </div>
     <div class="field">
-    Регион: <%= f.text_field :region, class: 'form-control' %>
+        Город: <%= f.text_field :city, class: 'form-control' %>
     </div>
     <div class="field">
-    Посткод: <%= f.text_field :postcode, class: 'form-control' %>
+        Посткод: <%= f.text_field :postcode, class: 'form-control' %>
     </div>
     <div class="actions">
     <%= f.submit "Create", class: 'btn btn-default' %>
