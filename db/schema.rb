@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20150518212122) do
   create_table "customers", force: :cascade do |t|
     t.string   "name"
     t.string   "surname"
-    t.integer  "phone_number"
+    t.string   "phone_number"
     t.string   "bonuses"
     t.string   "country",             default: "United States"
     t.string   "company"
