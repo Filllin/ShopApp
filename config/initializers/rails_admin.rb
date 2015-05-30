@@ -1,4 +1,5 @@
 RailsAdmin.config do |config|
+  # TODO fix entrance to the admin panel unregistered user
   config.authorize_with do
     redirect_to main_app.root_path unless warden.user.admin == true
   end
