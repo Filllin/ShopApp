@@ -11,7 +11,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration
       t.string :first_address
       t.string :second_address
       t.string :city
-      t.string :region
+      t.string :state, default:'United States'
       t.string :postcode
       t.string :email
 
