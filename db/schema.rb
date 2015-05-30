@@ -72,11 +72,11 @@ ActiveRecord::Schema.define(version: 20150518212122) do
     t.string   "first_address"
     t.string   "second_address"
     t.string   "city"
-    t.string   "region"
+    t.string   "state",               default: "United States"
     t.string   "postcode"
     t.string   "email"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",       default: 0, null: false
+    t.integer  "sign_in_count",       default: 0,               null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
