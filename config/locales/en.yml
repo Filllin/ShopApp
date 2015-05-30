@@ -24,13 +24,15 @@ en:
   activerecord:
     attributes:
       customer:
-        name: "Поле имя"
-        surname: "Поле фамилия"
-        phone_number: "Поле телефонный номер"
-        country: "Поле страна"
-        first_address: "Поле первый адрес"
-        city: "Поле город"
-        postcode: "Поле посткод"
+        name: "Поле 'Имя'"
+        surname: "Поле 'Фамилия'"
+        phone_number: "Поле 'Телефонный номер'"
+        country: "Поле 'Страна'"
+        first_address: "Поле 'Первый адрес'"
+        city: "Поле 'Город'"
+        postcode: "Поле 'Посткод'"
+        email: "Поле 'E-mail адрес'"
+        email_confirmation: "Поле 'Подтвердите E-mail адрес'"
 #    errors:
 #        models:
 #          customer:
