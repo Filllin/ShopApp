@@ -9,5 +9,6 @@ class Customer < ActiveRecord::Base
   validates :first_address, presence: { message: 'не может быть пустым' }
   validates :city, presence: { message: 'не может быть пустым' }
   validates :postcode, presence: { message: 'не может быть пустым' }
-  validates :email, presence: { message: 'не может быть пустым' }
+  validates :email, presence: { message: 'не может быть пустым' }, confirmation: { message: 'не соответствует полю "E-mail адрес"' }
+  validates :email_confirmation, presence: { message: 'не может быть пустым' }
 end
