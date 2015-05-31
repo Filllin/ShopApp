@@ -7,7 +7,7 @@
         <div class="col-md-10">
           <% @products.each do |product| %>
               <% if product.main == true %>
-              <%= image_tag asset_path(product.image) %>
+              <%= image_tag product.image_url.to_s %>
               <tr>
                 <td><h5><%= link_to product.title, view_product_path(sub_category: product.sub_category,slug: product.slug) %></td></h5>
                 <td><h5><%= product.description %></td></h5>
@@ -22,7 +22,7 @@
     <div class="col-md-10">
       <div class="row">
       <% @products.take(@count).shuffle.each do |product| %>
-         <div class="col-md-4"><%= image_tag asset_path(product.image), {height: 90, weight: 90} %>
+         <div class="col-md-4"><%= image_tag product.image_url.to_s, {height: 90, weight: 90} %>
           <h5><%= link_to product.title, view_product_path(sub_category: product.sub_category,slug: product.slug) %></h5></div>
       <% end %>
         </div>
