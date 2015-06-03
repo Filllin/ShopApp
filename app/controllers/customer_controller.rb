@@ -1,14 +1,18 @@
 class CustomerController < ApplicationController
+
+  # Return cart page
   def cart
     @categories = Category.all
     @customers_product = CustomerProduct.where(user_session_id: session['session_id'])
   end
 
+  # Destroy product by customer
   def destroy
     CustomerProduct.destroy_product(params[:product_title], params[:quantity_of_products], session['session_id'])
     redirect_to cart_path, notice: "Вы убрали из корзины #{params[:product_title]}"
   end
 
+  # Update quantity products by customer
   def update_quantity
     product = Product.find_by_title(params[:product_title])
     customer_product = CustomerProduct.where(user_session_id: session['session_id'], product: product, customer: nil).first
@@ -22,12 +26,14 @@ class CustomerController < ApplicationController
     end
   end
 
+  # Return new object customer
   def new
     @categories = Category.all
     @customers_product = CustomerProduct.where(user_session_id: session['session_id'])
     @customer = Customer.new
   end
 
+  # Create new object customer
   def create
     customer = Customer.new(customer_params)
       if customer.save
@@ -41,6 +47,7 @@ class CustomerController < ApplicationController
       end
   end
 
+  # Return review page with all information about product and customer
   def review
     @customer = Customer.new(customer_params)
     if @customer.invalid?
