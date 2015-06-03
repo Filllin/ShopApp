@@ -3,6 +3,7 @@ class Author < ActiveRecord::Base
   friendly_id :title, use: :slugged
   has_many :products
 
+  # Return products by author
   def self.count_products(count, slug, page, sort_column, sort_direction)
       return Product.where(author: Author.where(slug: slug)).order(sort_column + " " + sort_direction).paginate(:per_page => count, :page => page)
   end
