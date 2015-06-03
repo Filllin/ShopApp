@@ -1,4 +1,6 @@
 class ProductController < ApplicationController
+
+  # Return product by slug and add product to cart
   def view_product
     @product = Product.find_by_slug(params[:slug])
     title = @product.title
