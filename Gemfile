@@ -30,6 +30,24 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# For views
+gem 'bootstrap-sass', '~> 3.3.0'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+
+# For admin
+gem 'rails_admin'
+gem 'devise'
+
+# For a good URL
+gem 'friendly_id'
+
+# For "Let's debug"
+gem 'debugger-linecache'
+
+# For upload picture
+gem 'carrierwave'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -49,19 +67,3 @@ group :production do
   gem 'pg', '0.18.1'
   gem 'rails_12factor', '0.0.2'
 end
-
-gem 'bootstrap-sass', '~> 3.3.0'
-
-gem 'friendly_id'
-
-gem 'debugger-linecache'
-
-gem 'devise'
-
-gem 'rails_admin'
-
-gem 'will_paginate'
-
-gem 'will_paginate-bootstrap'
-
-gem 'carrierwave'
