@@ -1,6 +1,7 @@
 class CategoryController < ApplicationController
   helper_method :sort_column, :sort_direction
 
+  # Return products by category
   def view_category
     @categories = Category.all
     slug_category = Category.where(slug: params[:slug])
@@ -11,6 +12,7 @@ class CategoryController < ApplicationController
     end
   end
 
+  # Return products by sub_category
   def view_sub_category
     @categories = Category.all
     if params[:count].present?
@@ -18,13 +20,5 @@ class CategoryController < ApplicationController
     else
       @products = Product.count_products_by_sub_category(params[:slug], 10, params[:page], sort_column, sort_direction)
     end
-  end
-
-  def sort_column
-    Product.column_names.include?(params[:sort]) ? params[:sort] : "title"
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
