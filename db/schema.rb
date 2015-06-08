@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150608104339) do
+ActiveRecord::Schema.define(version: 20150608214720) do
 
   create_table "abouts", force: :cascade do |t|
     t.text     "content"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 20150608104339) do
   end
 
   add_index "authors", ["slug"], name: "index_authors_on_slug"
+
+  create_table "backgrounds", force: :cascade do |t|
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
