@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518212122) do
+ActiveRecord::Schema.define(version: 20150608104339) do
 
   create_table "abouts", force: :cascade do |t|
     t.text     "content"
@@ -50,10 +50,18 @@ ActiveRecord::Schema.define(version: 20150518212122) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "coupons", force: :cascade do |t|
+    t.decimal  "percent"
+    t.string   "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customer_products", force: :cascade do |t|
     t.integer  "customer_id"
     t.integer  "product_id"
     t.integer  "quantity"
+    t.integer  "total_price"
     t.integer  "user_session_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -66,7 +74,7 @@ ActiveRecord::Schema.define(version: 20150518212122) do
     t.string   "name"
     t.string   "surname"
     t.string   "phone_number"
-    t.string   "bonuses"
+    t.string   "coupon"
     t.string   "country",             default: "United States"
     t.string   "company"
     t.string   "first_address"
