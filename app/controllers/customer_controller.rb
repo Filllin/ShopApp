@@ -38,8 +38,9 @@ class CustomerController < ApplicationController
     customer = Customer.new(customer_params)
       if customer.save
         CustomerProduct.where(user_session_id: session['session_id']).update_all(customer_id: customer, user_session_id: nil)
-        SendMailer.customer_email(customer, CustomerProduct.where(customer: customer)).deliver_now
-        SendMailer.admin_email(customer, CustomerProduct.where(customer: customer)).deliver_now
+        coupon = Coupon.find_by_code(customer.coupon)
+        SendMailer.customer_email(customer, CustomerProduct.where(customer: customer), coupon).deliver_now
+        SendMailer.admin_email(customer, CustomerProduct.where(customer: customer), coupon).deliver_now
         redirect_to root_path, notice: 'Ваш заказ успешно принят'
       else
         puts customer.errors.messages
@@ -58,12 +59,17 @@ class CustomerController < ApplicationController
         format.json { render json: @customer.errors, status: :unprocessable_entity }
         end
     end
+    if @customer.coupon.present?
+      @coupon = Coupon.find_by_code(@customer.coupon)
+    end
     @categories = Category.all
     @customers_product = CustomerProduct.where(user_session_id: session['session_id'])
+    CustomerProduct.update_total_price(@customers_product, @coupon)
+    # @customers_product = CustomerProduct.where(user_session_id: session['session_id'])
   end
 
   private
     def customer_params
-      params.require(:customer).permit(:name, :surname, :phone_number, :bonuses, :country, :company, :first_address, :second_address, :city, :state, :postcode, :email, :email_confirmation)
+      params.require(:customer).permit(:name, :surname, :phone_number, :coupon, :country, :company, :first_address, :second_address, :city, :state, :postcode, :email, :email_confirmation)
     end
 end
