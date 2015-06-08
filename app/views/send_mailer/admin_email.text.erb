@@ -1,8 +1,11 @@
 Здраствуйте, с магазина FriendsBote поступил заказ
 ===============================================
+    Детали заказа:
+    Заказчику был предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %>
 <% @customers_product.each do |customer_product| %>
     Название: <%= customer_product.product.title %>
     Количество: <%= customer_product.quantity %>
+    Всего: <%= customer_product.total_price %>  грн
 <% end %>
 ===============================================
 Имя: <%= @user.name %>
