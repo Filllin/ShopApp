@@ -20,4 +20,12 @@ class CustomerProduct < ActiveRecord::Base
       product.update(quantity_products: quantity_products)
       customer_product.update(quantity: quantity_of_products)
     end
+
+    # Update total price
+    def self.update_total_price(customers_product, coupon)
+      customers_product.each do |customer_product|
+        total_price = customer_product.quantity * (customer_product.product.price - (customer_product.product.price * coupon.percent.ceil * 0.01))
+       customer_product.update(total_price: total_price)
+      end
+    end
 end
