@@ -4,6 +4,7 @@ class CreateCustomerProducts < ActiveRecord::Migration
       t.belongs_to :customer, index: true
       t.belongs_to :product, index: true
       t.integer :quantity
+      t.integer :total_price
       t.integer :user_session_id
 
       t.timestamps null: false
