@@ -5,7 +5,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration
       t.string :name
       t.string :surname
       t.string :phone_number
-      t.string :bonuses
+      t.string :coupon
       t.string :country, default:'United States'
       t.string :company
       t.string :first_address
