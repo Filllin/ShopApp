@@ -5,6 +5,9 @@
           <div class="col-md-10">
             <h4 id="notice"><%= notice %></h4>
             <% if @customers_product.present? %>
+                <% if @coupon.present? %>
+                    <h3>Вам предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %> </h3>
+                <% end %>
                 <h4><b>Содержимое корзины:</b></h4>
                 <% @customers_product.each do |customer_product| %>
                     <div class="col-md-13">
@@ -13,13 +16,18 @@
                           <td><h5><%= customer_product.product.title %></td></h5>
                         </div>
                         <div class="col-md-3">
-                          <td><h5>Цена: <%= customer_product.product.price %> грн</h5></td>
+                          <td><h5>Цена: <%= customer_product.product.price %> грн
+                            <% if @coupon.present? %>
+                                <%=  %>
+                            (<%= customer_product.product.price - (customer_product.product.price * @coupon.percent.ceil * 0.01)  %> грн)
+                            <% end %>
+                          </h5></td>
                         </div>
                         <div class="col-md-3">
                           <td><h5>Количество: <%= customer_product.quantity %></h5></td>
                         </div>
                         <div class="col-md-2">
-                          <td><h5>Всего: <%= customer_product.quantity*customer_product.product.price %> грн</h5></td>
+                          <td><h5>Всего: <%= customer_product.total_price %> грн</h5></td>
                         </div>
                       </tr>
                     </div>
@@ -41,7 +49,7 @@
                 <%= f.hidden_field :name, :value => @customer.name %>
                 <%= f.hidden_field :surname, :value => @customer.surname %>
                 <%= f.hidden_field :phone_number, :value => @customer.phone_number %>
-                <%= f.hidden_field :bonuses, :value => @customer.bonuses %>
+                <%= f.hidden_field :coupon, :value => @customer.coupon %>
                 <%= f.hidden_field :country, :value => @customer.country %>
                 <%= f.hidden_field :company, :value => @customer.company %>
                 <%= f.hidden_field :first_address, :value => @customer.first_address %>
@@ -51,6 +59,7 @@
                 <%= f.hidden_field :postcode, :value => @customer.postcode %>
                 <%= f.hidden_field :email, :value => @customer.email %>
                 <%= f.hidden_field :email_confirmation, :value => @customer.email %>
+                <%#= hidden_field :total_price, :value =>  %>
                 <%= submit_tag("Продолжить оформление", class: 'btn btn-default') %>
             <% end %>
           </div>
