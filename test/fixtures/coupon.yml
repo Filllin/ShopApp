@@ -1,0 +1,12 @@
+coupon1:
+    code: 12345
+    percent: 20%
+coupon2:
+    code: 1234@
+    percent: 10%
+coupon3:
+    code: 123#$
+    percent: 40%
+coupon4:
+    code: 12!@$
+    percent: 30%
