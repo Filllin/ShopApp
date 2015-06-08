@@ -1,5 +1,6 @@
 body {
-  background: #E6E9F3 url(background.png);
+  <% @background = Background.first.image_url.to_s %>
+  background: #E6E9F3 url(<%= @background %>);
   background-size: 70px;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
