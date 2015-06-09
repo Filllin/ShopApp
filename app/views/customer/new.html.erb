@@ -6,29 +6,29 @@
       <% if @customer_params.present? %>
           <%= @customer_params %>
       <% end %>
-          <% @customers_product.each do |customer_product| %>
-              <div class="col-md-10">
-                <tr>
-                  <div class="col-md-4">
-                    <td><h5><%= customer_product.product.title %></td></h5>
-                  </div>
-                  <div class="col-md-2">
-                    <td><h5>Цена: <%= customer_product.product.price %> грн</h5></td>
-                  </div>
-                    <td>
-                      <div class="col-md-4">
-                        <td><h5>Количество: <%= customer_product.quantity %></h5></td>
-                      </div>
-                    </td>
-                  <div class="col-md-1">
-                    <td><h5>Всего: <%= @entire_amount = customer_product.quantity*customer_product.product.price %> грн</h5></td>
-                  </div>
-                </tr>
+      <% @customers_product.each do |customer_product| %>
+          <div class="col-md-10">
+            <tr>
+              <div class="col-md-4">
+                <td><h5><%= customer_product.product.title %></td></h5>
               </div>
-          <% end %>
-            <div class="col-md-7">
-                <%= render 'layouts/form' %>
-            </div>
+              <div class="col-md-2">
+                <td><h5>Цена: <%= customer_product.product.price %> грн</h5></td>
+              </div>
+                <td>
+                  <div class="col-md-4">
+                    <td><h5>Количество: <%= customer_product.quantity %></h5></td>
+                  </div>
+                </td>
+              <div class="col-md-1">
+                <td><h5>Всего: <%= @entire_amount = customer_product.quantity*customer_product.product.price %> грн</h5></td>
+              </div>
+            </tr>
+          </div>
+      <% end %>
+      <div class="col-md-7">
+        <%= render 'layouts/form_create_customer' %>
+      </div>
     </div>
   </div>
 </div>
