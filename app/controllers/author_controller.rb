@@ -6,7 +6,7 @@ class AuthorController < ApplicationController
     @categories = Category.all
     if params[:count].present?
       @products = Author.count_products(params[:count], params[:slug], params[:page], sort_column, sort_direction)
-      flash[:notice] = "Вам будет показано #{params[:count]} товаров"
+      flash.now[:notice] = "Вам будет показано #{params[:count]} товаров"
     else
       @products = Author.count_products(10, params[:slug], params[:page], sort_column, sort_direction)
     end
