@@ -1,0 +1,42 @@
+ru:
+  activerecord:
+    models:
+      author:
+        one: Автор
+        other: Авторы
+      about:
+        one: О нас
+        other: О нас
+      cart:
+        one: Корзина
+        other: Корзины
+      category:
+        one: Категория
+        other: Категории
+      contact:
+        one: Контакт
+        other: Контакты
+      coupon:
+        one: Купон
+        other: Купоны
+      customer:
+        one: Заказчик
+        other: Заказчики
+      customer_product:
+        one: Заказ
+        other: Заказы
+      payment:
+        one: Оплата
+        other: Оплата
+      product:
+        one: Продукт
+        other: Продукты
+      publisher:
+        one: Издатель
+        other: Издатели
+      sub_category:
+        one: Субкатегория
+        other: Субкатегории
+      user:
+        one: Пользователь
+        other: Пользователи
