@@ -1,6 +1,6 @@
-class CreateCustomerProducts < ActiveRecord::Migration
+class CreateOrders < ActiveRecord::Migration
   def change
-    create_table :customer_products do |t|
+    create_table :orders do |t|
       t.belongs_to :customer, index: true
       t.belongs_to :product, index: true
       t.integer :quantity
