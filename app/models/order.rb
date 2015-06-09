@@ -1,32 +1,32 @@
-class CustomerProduct < ActiveRecord::Base
+class Order < ActiveRecord::Base
     belongs_to :product
     belongs_to :customer
     belongs_to :coupon
 
-    # Destroy object CustomerProduct by product and update quantity products
+    # Destroy object Order by product and update quantity products
     def self.destroy_product(product_title, quantity_of_products, session)
       product = Product.find_by_title(product_title)
-      CustomerProduct.where(user_session_id: session, product: product, customer: nil).take.destroy
+      Order.where(user_session_id: session, product: product, customer: nil).take.destroy
       quantity_products = product.quantity_products + quantity_of_products.to_i
       product.update(quantity_products: quantity_products)
     end
 
     # Update quantity products
-    def self.update_quantity_product(customer_product, product, quantity_of_products)
-      if quantity_of_products.to_i < customer_product.quantity
-        quantity_products = product.quantity_products + (customer_product.quantity - quantity_of_products.to_i)
+    def self.update_quantity_product(order, product, quantity_of_products)
+      if quantity_of_products.to_i < order.quantity
+        quantity_products = product.quantity_products + (order.quantity - quantity_of_products.to_i)
       else
-        quantity_products = product.quantity_products - (quantity_of_products.to_i - customer_product.quantity)
+        quantity_products = product.quantity_products - (quantity_of_products.to_i - order.quantity)
       end
       product.update(quantity_products: quantity_products)
-      customer_product.update(quantity: quantity_of_products)
+      order.update(quantity: quantity_of_products)
     end
 
     # Update total price
-    def self.update_total_price(customers_product, coupon)
-      customers_product.each do |customer_product|
-        total_price = customer_product.quantity * (customer_product.product.price - (customer_product.product.price * coupon.percent.ceil * 0.01))
-       customer_product.update(total_price: total_price)
+    def self.update_total_price(orders, coupon)
+      orders.each do |order|
+        total_price = order.quantity * (order.product.price - (order.product.price * coupon.percent.ceil * 0.01))
+       order.update(total_price: total_price)
       end
     end
 
