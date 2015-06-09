@@ -1,6 +1,7 @@
 class CustomerProduct < ActiveRecord::Base
     belongs_to :product
     belongs_to :customer
+    belongs_to :coupon
 
     # Destroy object CustomerProduct by product and update quantity products
     def self.destroy_product(product_title, quantity_of_products, session)
@@ -27,5 +28,21 @@ class CustomerProduct < ActiveRecord::Base
         total_price = customer_product.quantity * (customer_product.product.price - (customer_product.product.price * coupon.percent.ceil * 0.01))
        customer_product.update(total_price: total_price)
       end
+    end
+  
+    def self.find_exist_customer(name, surname, phone_number, country, company, first_address, second_address, city, state, postcode, email)
+     return Customer.where(
+          name: name,
+          surname: surname,
+          phone_number: phone_number,
+          country: country,
+          company: company,
+          first_address: first_address,
+          second_address: second_address,
+          city: city,
+          state: state,
+          postcode: postcode,
+          email: email
+      ).take
     end
 end
