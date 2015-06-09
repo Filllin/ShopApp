@@ -57,21 +57,6 @@ ActiveRecord::Schema.define(version: 20150608104339) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "customer_products", force: :cascade do |t|
-    t.integer  "customer_id"
-    t.integer  "product_id"
-    t.integer  "quantity"
-    t.integer  "total_price"
-    t.integer  "user_session_id"
-    t.integer  "coupon_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "customer_products", ["coupon_id"], name: "index_customer_products_on_coupon_id"
-  add_index "customer_products", ["customer_id"], name: "index_customer_products_on_customer_id"
-  add_index "customer_products", ["product_id"], name: "index_customer_products_on_product_id"
-
   create_table "customers", force: :cascade do |t|
     t.string   "name"
     t.string   "surname"
@@ -106,6 +91,21 @@ ActiveRecord::Schema.define(version: 20150608104339) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.integer  "total_price"
+    t.integer  "user_session_id"
+    t.integer  "coupon_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "orders", ["coupon_id"], name: "index_orders_on_coupon_id"
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
+  add_index "orders", ["product_id"], name: "index_orders_on_product_id"
 
   create_table "payments", force: :cascade do |t|
     t.string   "title"
