@@ -28,14 +28,14 @@ class Product < ActiveRecord::Base
     Product.create_customer(product, count, session)
   end
 
-  # Create object CustomerProduct
+  # Create object Order
   def self.create_customer(product, count, session)
-    customer_product = CustomerProduct.where(user_session_id: session, product: product, customer: nil).take
-    if customer_product.present?
-      quantity = count.to_i + customer_product.quantity
-      customer_product.update(quantity: quantity)
+    order = Order.where(user_session_id: session, product: product, customer: nil).take
+    if order.present?
+      quantity = count.to_i + order.quantity
+      order.update(quantity: quantity)
     else
-      CustomerProduct.create(user_session_id: session, product: product, quantity: count)
+      Order.create(user_session_id: session, product: product, quantity: count)
     end
   end
 end
