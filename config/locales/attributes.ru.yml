@@ -6,3 +6,23 @@ ru:
         created_at: Создан в
         updated_at: Обновлен в
         products: Продукты
+      product:
+        title: Название
+        description: Описание
+        reference: Артикул
+        number_of_pages: Количество страниц
+        format: Формат
+        weight: Вес
+        height: Высота
+        width: Широта
+        thickness: Толщина
+        sub_category: Категория
+        image: Картинка
+        language: Язык
+        price: Цена
+        author: Автор
+        publisher: Издатель
+        main: Основная
+        quantity_products: Количество продукта
+        created_at: Создан в
+        updated_at: Обновлен в
