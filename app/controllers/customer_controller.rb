@@ -33,19 +33,31 @@ class CustomerController < ApplicationController
     @customer = Customer.new
   end
 
-  # Create new object customer
+  # Update object CustomerProduct
   def create
-    customer = Customer.new(customer_params)
-      if customer.save
-        CustomerProduct.where(user_session_id: session['session_id']).update_all(customer_id: customer, user_session_id: nil)
-        coupon = Coupon.find_by_code(customer.coupon)
-        SendMailer.customer_email(customer, CustomerProduct.where(customer: customer), coupon).deliver_now
-        SendMailer.admin_email(customer, CustomerProduct.where(customer: customer), coupon).deliver_now
-        redirect_to root_path, notice: 'Ваш заказ успешно принят'
-      else
-        puts customer.errors.messages
-        redirect_to root_path
-      end
+    exist_customer = Customer.find_exist_customer(
+        customer_params[:name],
+        customer_params[:surname],
+        customer_params[:phone_number],
+        customer_params[:country],
+        customer_params[:company],
+        customer_params[:first_address],
+        customer_params[:second_address],
+        customer_params[:city],
+        customer_params[:state],
+        customer_params[:postcode],
+        customer_params[:email]
+    ).take
+    if exist_customer.present?
+      customer = exist_customer
+    else
+      customer = Customer.create(customer_params)
+    end
+      coupon = Coupon.find_by_code(params[:coupon])
+      CustomerProduct.where(user_session_id: session['session_id']).update_all(coupon_id: coupon, customer_id: customer, user_session_id: nil)
+      SendMailer.customer_email(customer, CustomerProduct.where(customer: customer), coupon).deliver_now
+      SendMailer.admin_email(customer, CustomerProduct.where(customer: customer), coupon).deliver_now
+      redirect_to root_path, notice: 'Ваш заказ успешно принят'
   end
 
   # Return review page with all information about product and customer
@@ -59,17 +71,16 @@ class CustomerController < ApplicationController
         format.json { render json: @customer.errors, status: :unprocessable_entity }
         end
     end
-    if @customer.coupon.present?
-      @coupon = Coupon.find_by_code(@customer.coupon)
+    @customers_product = CustomerProduct.where(user_session_id: session['session_id'])
+    if params[:coupon].present?
+      @coupon = Coupon.find_by_code(params[:coupon])
+      CustomerProduct.update_total_price(@customers_product, @coupon)
     end
     @categories = Category.all
-    @customers_product = CustomerProduct.where(user_session_id: session['session_id'])
-    CustomerProduct.update_total_price(@customers_product, @coupon)
-    # @customers_product = CustomerProduct.where(user_session_id: session['session_id'])
   end
 
   private
     def customer_params
-      params.require(:customer).permit(:name, :surname, :phone_number, :coupon, :country, :company, :first_address, :second_address, :city, :state, :postcode, :email, :email_confirmation)
+      params.require(:customer).permit(:name, :surname, :phone_number, :country, :company, :first_address, :second_address, :city, :state, :postcode, :email, :email_confirmation, :email_confirmation)
     end
 end
