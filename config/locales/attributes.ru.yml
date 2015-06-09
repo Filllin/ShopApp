@@ -31,3 +31,8 @@ ru:
         sub_categories: Подкатегории
         created_at: Создан в
         updated_at: Обновлен в
+      sub_category:
+        title: Название
+        category: Категория
+        created_at: Создан в
+        updated_at: Обновлен в
