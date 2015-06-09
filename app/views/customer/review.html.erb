@@ -18,7 +18,6 @@
                         <div class="col-md-3">
                           <td><h5>Цена: <%= customer_product.product.price %> грн
                             <% if @coupon.present? %>
-                                <%=  %>
                             (<%= customer_product.product.price - (customer_product.product.price * @coupon.percent.ceil * 0.01)  %> грн)
                             <% end %>
                           </h5></td>
@@ -49,7 +48,7 @@
                 <%= f.hidden_field :name, :value => @customer.name %>
                 <%= f.hidden_field :surname, :value => @customer.surname %>
                 <%= f.hidden_field :phone_number, :value => @customer.phone_number %>
-                <%= f.hidden_field :coupon, :value => @customer.coupon %>
+                <%= hidden_field_tag :coupon, @coupon.code %>
                 <%= f.hidden_field :country, :value => @customer.country %>
                 <%= f.hidden_field :company, :value => @customer.company %>
                 <%= f.hidden_field :first_address, :value => @customer.first_address %>
@@ -59,7 +58,6 @@
                 <%= f.hidden_field :postcode, :value => @customer.postcode %>
                 <%= f.hidden_field :email, :value => @customer.email %>
                 <%= f.hidden_field :email_confirmation, :value => @customer.email %>
-                <%#= hidden_field :total_price, :value =>  %>
                 <%= submit_tag("Продолжить оформление", class: 'btn btn-default') %>
             <% end %>
           </div>
