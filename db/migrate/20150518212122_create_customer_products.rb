@@ -6,6 +6,7 @@ class CreateCustomerProducts < ActiveRecord::Migration
       t.integer :quantity
       t.integer :total_price
       t.integer :user_session_id
+      t.belongs_to :coupon, index: true
 
       t.timestamps null: false
     end
