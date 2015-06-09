@@ -26,3 +26,8 @@ ru:
         quantity_products: Количество продукта
         created_at: Создан в
         updated_at: Обновлен в
+      category:
+        title: Название
+        sub_categories: Подкатегории
+        created_at: Создан в
+        updated_at: Обновлен в
