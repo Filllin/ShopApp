@@ -63,10 +63,12 @@ ActiveRecord::Schema.define(version: 20150608104339) do
     t.integer  "quantity"
     t.integer  "total_price"
     t.integer  "user_session_id"
+    t.integer  "coupon_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
+  add_index "customer_products", ["coupon_id"], name: "index_customer_products_on_coupon_id"
   add_index "customer_products", ["customer_id"], name: "index_customer_products_on_customer_id"
   add_index "customer_products", ["product_id"], name: "index_customer_products_on_product_id"
 
@@ -74,7 +76,6 @@ ActiveRecord::Schema.define(version: 20150608104339) do
     t.string   "name"
     t.string   "surname"
     t.string   "phone_number"
-    t.string   "coupon"
     t.string   "country",             default: "United States"
     t.string   "company"
     t.string   "first_address"
