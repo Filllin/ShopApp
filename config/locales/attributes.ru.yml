@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    attributes:
+      author:
+        title: Имя и фамилия
+        created_at: Создан в
+        updated_at: Обновлен в
+        products: Продукты
