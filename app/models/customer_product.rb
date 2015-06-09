@@ -29,7 +29,8 @@ class CustomerProduct < ActiveRecord::Base
        customer_product.update(total_price: total_price)
       end
     end
-  
+
+    # Find exist customer
     def self.find_exist_customer(name, surname, phone_number, country, company, first_address, second_address, city, state, postcode, email)
      return Customer.where(
           name: name,
