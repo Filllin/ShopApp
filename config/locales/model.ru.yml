@@ -22,7 +22,7 @@ ru:
       customer:
         one: Заказчик
         other: Заказчики
-      customer_product:
+      order:
         one: Заказ
         other: Заказы
       payment:

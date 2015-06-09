@@ -3,11 +3,11 @@
 Ваш заказ успешно принят!
 Вам был предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %>
 Детали заказа:
-<% @customers_product.each do |customer_product| %>
-    <%= customer_product.product.title %>
-    Название: <%= customer_product.product.title %>
-    Цена: <%= customer_product.product.price %> грн
-    Количество: <%= customer_product.quantity %>
-    Всего: <%= customer_product.total_price %> грн
+<% @orders.each do |order| %>
+    <%= order.product.title %>
+    Название: <%= order.product.title %>
+    Цена: <%= order.product.price %> грн
+    Количество: <%= order.quantity %>
+    Всего: <%= order.total_price %> грн
 <% end %>
 В ближайшее время менеджер нашего магазина с вами свяжеться

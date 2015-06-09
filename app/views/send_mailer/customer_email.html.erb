@@ -9,11 +9,11 @@
 <h2>Ваш заказ успешно принят!</h2>
 <h3>Вам был предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %> </h3>
 <h2><b>Детали заказа:</b></h2>
-<% @customers_product.each do |customer_product| %>
-  <h3>Название: <%= customer_product.product.title %></h3>
-  <h3>Цена: <%= customer_product.product.price %> грн</h3>
-  <h3>Количество: <%= customer_product.quantity %></h3>
-  <h3>Всего: <%= customer_product.total_price %> грн</h3>
+<% @orders.each do |order| %>
+  <h3>Название: <%= order.product.title %></h3>
+  <h3>Цена: <%= order.product.price %> грн</h3>
+  <h3>Количество: <%= order.quantity %></h3>
+  <h3>Всего: <%= order.total_price %> грн</h3>
 <% end %>
   <h3>В ближайшее время менеджер нашего магазина с вами свяжеться</h3>
 </body>

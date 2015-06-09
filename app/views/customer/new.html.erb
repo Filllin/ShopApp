@@ -6,22 +6,22 @@
       <% if @customer_params.present? %>
           <%= @customer_params %>
       <% end %>
-      <% @customers_product.each do |customer_product| %>
+      <% @orders.each do |order| %>
           <div class="col-md-10">
             <tr>
               <div class="col-md-4">
-                <td><h5><%= customer_product.product.title %></td></h5>
+                <td><h5><%= order.product.title %></td></h5>
               </div>
               <div class="col-md-2">
-                <td><h5>Цена: <%= customer_product.product.price %> грн</h5></td>
+                <td><h5>Цена: <%= order.product.price %> грн</h5></td>
               </div>
                 <td>
                   <div class="col-md-4">
-                    <td><h5>Количество: <%= customer_product.quantity %></h5></td>
+                    <td><h5>Количество: <%= order.quantity %></h5></td>
                   </div>
                 </td>
               <div class="col-md-1">
-                <td><h5>Всего: <%= @entire_amount = customer_product.quantity*customer_product.product.price %> грн</h5></td>
+                <td><h5>Всего: <%= @entire_amount = order.quantity*order.product.price %> грн</h5></td>
               </div>
             </tr>
           </div>
