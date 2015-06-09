@@ -4,29 +4,29 @@
         <div class="panel-body">
           <div class="col-md-10">
             <h4 id="notice"><%= notice %></h4>
-            <% if @customers_product.present? %>
+            <% if @orders.present? %>
                 <% if @coupon.present? %>
                     <h3>Вам предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %> </h3>
                 <% end %>
                 <h4><b>Содержимое корзины:</b></h4>
-                <% @customers_product.each do |customer_product| %>
+                <% @orders.each do |order| %>
                     <div class="col-md-13">
                       <tr>
                         <div class="col-md-4">
-                          <td><h5><%= customer_product.product.title %></td></h5>
+                          <td><h5><%= order.product.title %></td></h5>
                         </div>
                         <div class="col-md-3">
-                          <td><h5>Цена: <%= customer_product.product.price %> грн
+                          <td><h5>Цена: <%= order.product.price %> грн
                             <% if @coupon.present? %>
-                            (<%= customer_product.product.price - (customer_product.product.price * @coupon.percent.ceil * 0.01)  %> грн)
+                            (<%= order.product.price - (order.product.price * @coupon.percent.ceil * 0.01)  %> грн)
                             <% end %>
                           </h5></td>
                         </div>
                         <div class="col-md-3">
-                          <td><h5>Количество: <%= customer_product.quantity %></h5></td>
+                          <td><h5>Количество: <%= order.quantity %></h5></td>
                         </div>
                         <div class="col-md-2">
-                          <td><h5>Всего: <%= customer_product.total_price %> грн</h5></td>
+                          <td><h5>Всего: <%= order.total_price %> грн</h5></td>
                         </div>
                       </tr>
                     </div>
