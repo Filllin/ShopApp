@@ -1,6 +1,6 @@
 class Customer < ActiveRecord::Base
-  has_many :customer_products
-  has_many :products, through: :customer_products
+  has_many :orders
+  has_many :products, through: :orders
 
   validates :name, presence: { message: 'не может быть пустым' }
   validates :surname, presence: { message: 'не может быть пустым' }
