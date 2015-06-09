@@ -40,6 +40,9 @@
               <% if @product.publisher.present? %>
               <li><h4>Издательство: <%= link_to @product.publisher.title, view_publisher_path(slug: @product.publisher.slug) %></h4></li>
               <% end %>
+              <% if @product.quantity_products.present? %>
+                  <li><h4>Количество: <%= @product.quantity_products %></h4></li>
+              <% end %>
               <% if @product.language.present? %>
               <li><h4>Язык книги: <%= @product.language %></h4></li>
               <% end %>
