@@ -63,3 +63,45 @@ ru:
         last_sign_in_ip: Последний вход IP
         created_at: Создан в
         updated_at: Обновлен в
+      publisher:
+        title: Название издательства
+        created_at: Создан в
+        updated_at: Обновлен в
+        products: Продукты
+      customer:
+        name: Имя
+        surname: Фамилия
+        phone_number: Телефонный номер
+        country: Страна
+        company: Компания
+        first_address: Первый адрес
+        second_address: Второй адрес
+        city: Город
+        state: Штат
+        postcode: Посткод
+        email: E-mail адрес
+        reset_password_sent_at: Сброс пароля выслан на
+        remember_created_at: Был создан в
+        sign_in_count: Количество входов
+        current_sign_in_at: Текущий вход произошел в
+        last_sign_in_at: Последний вход произошел в
+        current_sign_in_ip: Текущий вход IP
+        last_sign_in_ip: Последний вход IP
+        created_at: Создан в
+        updated_at: Обновлен в
+        orders: Заказы
+        products: Продукты
+      order:
+        customer: Заказчик
+        product: Продукт
+        quantity: Количество
+        total_price: Общая цена
+        user_session_id: Id заказчика
+        coupon: Купон
+        created_at: Создан в
+        updated_at: Обновлен в
+      coupon:
+        percent: Процент
+        code: Код купона
+        created_at: Создан в
+        updated_at: Обновлен в
