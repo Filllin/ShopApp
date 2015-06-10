@@ -43,3 +43,7 @@ ru:
         phone_numbers: Телефонный номер
         created_at: Создан в
         updated_at: Обновлен в
+      about:
+        content: Контент
+        created_at: Создан в
+        updated_at: Обновлен в
