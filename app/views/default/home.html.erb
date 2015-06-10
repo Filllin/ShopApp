@@ -3,6 +3,7 @@
 <div class="panel panel-default">
       <% @title="МАГАЗИН ХРИСТИАНСКОЙ КНИГИ FRIEDENSBOTE" %>
       <div class="panel-body">
+        <% provide(:title, 'Главная') %>
         <h4 id="notice"><%= notice %></h4>
         <div class="col-md-10">
           <% @products.each do |product| %>
