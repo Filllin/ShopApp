@@ -2,6 +2,7 @@
 <div class="col-md-6">
   <div class="panel panel-default">
     <div class="panel-body">
+      <% provide(:title, 'Оформление заказа') %>
       <h4 id="notice"><%= notice %></h4>
       <% if @customer_params.present? %>
           <%= @customer_params %>
