@@ -37,3 +37,9 @@ ru:
         products: Продукты
         created_at: Создан в
         updated_at: Обновлен в
+      contact:
+        content: Контент
+        email: E-mail адрес
+        phone_numbers: Телефонный номер
+        created_at: Создан в
+        updated_at: Обновлен в
