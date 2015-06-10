@@ -6,6 +6,7 @@
         <article role="article" class="node node--page node--full node--page--full">
           <div class="node__content">
             <div class="field--body">
+              <% provide(:title, 'Поиск') %>
               <% if @products.present? %>
                   <% @products.each do |product| %>
                       <% @title = product.sub_category.category.title %>
