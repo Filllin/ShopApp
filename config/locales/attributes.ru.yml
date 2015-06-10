@@ -80,6 +80,7 @@ ru:
         state: Штат
         postcode: Посткод
         email: E-mail адрес
+        email_confirmation: Подтвердите E-mail адрес
         reset_password_sent_at: Сброс пароля выслан на
         remember_created_at: Был создан в
         sign_in_count: Количество входов
