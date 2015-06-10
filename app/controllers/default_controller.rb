@@ -30,7 +30,6 @@ class DefaultController < ApplicationController
 
   # Return payment page
   def payment
-    @title = Payment.first.title
     @payment = Payment.first
     @categories = Category.all
   end
