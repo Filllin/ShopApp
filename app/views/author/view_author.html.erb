@@ -5,6 +5,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="col-md-10">
+        <% provide(:title, @author.title) %>
         <% if @products.present? %>
             <%= form_tag({controller: "author", action: "view_author"}, method: "get") do %>
                 <%= label_tag("Показать товаров") %>
