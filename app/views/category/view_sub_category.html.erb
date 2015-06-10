@@ -3,6 +3,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="col-md-10">
+        <% provide(:title, @sub_category.title) %>
         <% if @products.present? %>
             <%= form_tag({controller: "category", action: "view_sub_category"}, method: "get") do %>
                 <%= label_tag("Показать товаров") %>
