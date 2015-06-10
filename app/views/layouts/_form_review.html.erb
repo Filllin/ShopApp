@@ -1,0 +1,16 @@
+<%= form_for(@customer, url: create_customer_path, :method=>"post") do |f| %>
+    <%= f.hidden_field :name, :value => @customer.name %>
+    <%= f.hidden_field :surname, :value => @customer.surname %>
+    <%= f.hidden_field :phone_number, :value => @customer.phone_number %>
+    <%= hidden_field_tag :coupon, @coupon.code %>
+    <%= f.hidden_field :country, :value => @customer.country %>
+    <%= f.hidden_field :company, :value => @customer.company %>
+    <%= f.hidden_field :first_address, :value => @customer.first_address %>
+    <%= f.hidden_field :second_address, :value => @customer.second_address %>
+    <%= f.hidden_field :city, :value => @customer.city %>
+    <%= f.hidden_field :state, :value => @customer.state %>
+    <%= f.hidden_field :postcode, :value => @customer.postcode %>
+    <%= f.hidden_field :email, :value => @customer.email %>
+    <%= f.hidden_field :email_confirmation, :value => @customer.email %>
+    <%= submit_tag("Продолжить оформление", class: 'btn btn-default') %>
+<% end %>
