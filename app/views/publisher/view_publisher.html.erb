@@ -5,6 +5,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="col-md-10">
+        <% provide(:title, @publisher.title) %>
         <% if @products.present? %>
             <%= form_tag({controller: "publisher", action: "view_publisher"}, method: "get") do %>
                 <%= label_tag("Показать товаров") %>
