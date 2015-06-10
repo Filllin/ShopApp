@@ -51,3 +51,15 @@ ru:
         content: Контент
         created_at: Создан в
         updated_at: Обновлен в
+      user:
+        admin: Права админа
+        email: E-mail адрес
+        reset_password_sent_at: Сброс пароля выслан на
+        remember_created_at: Был создан в
+        sign_in_count: Количество входов
+        current_sign_in_at: Текущий вход произошел в
+        last_sign_in_at: Последний вход произошел в
+        current_sign_in_ip: Текущий вход IP
+        last_sign_in_ip: Последний вход IP
+        created_at: Создан в
+        updated_at: Обновлен в
