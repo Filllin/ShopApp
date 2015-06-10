@@ -3,6 +3,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="col-md-10">
+        <% provide(:title, 'Корзина') %>
         <h4 id="notice"><%= notice %></h4>
         <% if @orders.present? %>
             <% @orders.each do |order| %>
