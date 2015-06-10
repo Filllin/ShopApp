@@ -47,3 +47,7 @@ ru:
         content: Контент
         created_at: Создан в
         updated_at: Обновлен в
+      payment:
+        content: Контент
+        created_at: Создан в
+        updated_at: Обновлен в
