@@ -5,7 +5,7 @@
     <div class="col-md-10">
       <div class="node__content">
         <div class="field--body">
-          <% @title="Контакты" %>
+          <% provide(:title, 'Контакты') %>
           <p><%= @contacts.content %></p>
           <p><strong><em><%= @contacts.phone_numbers %></em></strong><br><strong><em>e-mail: <a href="mailto:<%= @contacts.email %>"><%= @contacts.email %></a></em></strong><br>
             &nbsp;</p>
