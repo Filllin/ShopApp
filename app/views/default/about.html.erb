@@ -6,7 +6,7 @@
       <article role="article" class="node node--page node--full node--page--full">
         <div class="node__content">
           <div class="field--body">
-            <% @title="О МАГАЗИНЕ" %>
+            <% provide(:title, 'О магазине') %>
             <%= @about.content.html_safe %>
           </div>
         </div>
