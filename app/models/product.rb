@@ -17,8 +17,8 @@ class Product < ActiveRecord::Base
   end
 
   # Return products by sub_category
-  def self.count_products_by_sub_category(slug, count, page, sort_column, sort_direction)
-    return Product.where(sub_category: SubCategory.find_by_slug(slug)).order(sort_column + " " + sort_direction).paginate(:per_page => count, :page => page)
+  def self.count_products_by_sub_category(sub_category, count, page, sort_column, sort_direction)
+    return Product.where(sub_category: sub_category).order(sort_column + " " + sort_direction).paginate(:per_page => count, :page => page)
   end
 
   # Add object Product to Cart
