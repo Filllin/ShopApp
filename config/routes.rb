@@ -6,35 +6,35 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  match 'contacts' => "default#contacts", via: 'get', as: :contacts
+  get 'contacts' => "default#contacts", as: :contacts
 
-  match 'about' => "default#about", via: 'get', as: :about
+  get 'about' => "default#about", as: :about
 
-  match 'oplata-i-dostavka' => "default#payment", via: 'get', as: :payment
+  get 'oplata-i-dostavka' => "default#payment", as: :payment
 
-  match 'cart' => "customer#cart", via: 'get', as: :cart
+  get 'cart' => "customer#cart", as: :cart
 
-  match 'order/review' => "customer#review", via: 'get', as: :order_review
+  get 'order/review' => "customer#review", as: :order_review
 
-  match 'category/:slug' => "category#view_category", via: 'get', as: :view_category
+  get 'category/:slug' => "category#view_category", as: :view_category
 
-  match 'sub_category/:slug' => "category#view_sub_category", via: 'get', as: :view_sub_category
+  get 'sub_category/:slug' => "category#view_sub_category", as: :view_sub_category
 
-  match 'author/:slug' => "author#view_author", via: 'get', as: :view_author
+  get 'author/:slug' => "author#view_author", as: :view_author
 
-  match 'izdatelstvo/:slug' => "publisher#view_publisher", via: 'get', as: :view_publisher
+  get 'izdatelstvo/:slug' => "publisher#view_publisher", as: :view_publisher
 
-  match 'customer_product_destroy' => "customer#destroy", via: 'get', as: :customer_product_destroy
+  get 'customer_product_destroy' => "customer#destroy", as: :customer_product_destroy
 
-  match 'update_quantity' => "customer#update_quantity", via: 'get', as: :product_update_quantity
+  get 'update_quantity' => "customer#update_quantity", as: :product_update_quantity
 
-  match 'order_a_products' => "customer#new", via: 'get', as: :order_a_products
+  get 'order_a_products' => "customer#new", as: :order_a_products
 
-  match 'create_customer' => "customer#create", via: 'post', as: :create_customer
+  post 'create_customer' => "customer#create", as: :create_customer
 
-  match 'search' => "default#search", via: 'get', as: :search
+  get 'search' => "default#search", as: :search
 
-  match ':sub_category/:slug' => "product#view_product", via: 'get', as: :view_product
+  get ':sub_category/:slug' => "product#view_product", as: :view_product
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
