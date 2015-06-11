@@ -92,10 +92,11 @@ ActiveRecord::Schema.define(version: 20150608104339) do
     t.integer  "product_id"
     t.integer  "quantity"
     t.integer  "total_price"
+    t.string   "status",          default: "Received"
     t.integer  "user_session_id"
     t.integer  "coupon_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "orders", ["coupon_id"], name: "index_orders_on_coupon_id"
