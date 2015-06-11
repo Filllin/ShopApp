@@ -2,7 +2,9 @@
     <%= f.hidden_field :name, :value => @customer.name %>
     <%= f.hidden_field :surname, :value => @customer.surname %>
     <%= f.hidden_field :phone_number, :value => @customer.phone_number %>
-    <%= hidden_field_tag :coupon, @coupon.code %>
+    <% if @coupon.present? %>
+        <%= hidden_field_tag :coupon, @coupon.code %>
+    <% end %>
     <%= f.hidden_field :country, :value => @customer.country %>
     <%= f.hidden_field :company, :value => @customer.company %>
     <%= f.hidden_field :first_address, :value => @customer.first_address %>
