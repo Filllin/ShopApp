@@ -1,3 +1,4 @@
+require 'rails_admin_active_record_enum'
 RailsAdmin.config do |config|
   # TODO fix entrance to the admin panel unregistered user
   config.authorize_with do
