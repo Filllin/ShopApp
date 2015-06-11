@@ -1,9 +1,9 @@
 class PublisherController < ApplicationController
+  before_action :categories_variable
   helper_method :sort_column, :sort_direction
 
   # Return products by publisher
   def view_publisher
-    @categories = Category.all
     @publisher = Publisher.find_by_slug(params[:slug])
     if params[:count].present?
       @products = Publisher.count_products(params[:count], @publisher, params[:page], sort_column, sort_direction)
