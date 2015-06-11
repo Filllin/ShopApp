@@ -17,3 +17,5 @@ module ActiveRecord
     end
   end
 end
+
+ActiveRecord::Base.send(:extend, ActiveRecord::RailsAdminEnum)
