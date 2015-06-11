@@ -1,8 +1,8 @@
 class CustomerController < ApplicationController
+  before_action :categories_variable, only: [:cart, :new, :review]
 
   # Return cart page
   def cart
-    @categories = Category.all
     @orders = Order.where(user_session_id: session['session_id'])
   end
 
@@ -28,7 +28,6 @@ class CustomerController < ApplicationController
 
   # Return new object customer
   def new
-    @categories = Category.all
     @orders = Order.where(user_session_id: session['session_id'])
     @customer = Customer.new
   end
@@ -65,7 +64,6 @@ class CustomerController < ApplicationController
     @customer = Customer.new(customer_params)
     if @customer.invalid?
       respond_to do |format|
-        @categories = Category.all
         @orders = Order.where(user_session_id: session['session_id'])
         format.html { render :new }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
@@ -76,7 +74,6 @@ class CustomerController < ApplicationController
       @coupon = Coupon.find_by_code(params[:coupon])
       Order.update_total_price(@orders, @coupon)
     end
-    @categories = Category.all
   end
 
   private
