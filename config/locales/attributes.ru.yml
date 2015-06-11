@@ -101,6 +101,7 @@ ru:
         coupon: Купон
         created_at: Создан в
         updated_at: Обновлен в
+        status: Статус
       coupon:
         percent: Процент
         code: Код купона
