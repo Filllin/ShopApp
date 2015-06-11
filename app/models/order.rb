@@ -3,6 +3,25 @@ class Order < ActiveRecord::Base
     belongs_to :customer
     belongs_to :coupon
 
+    STATUS = {
+        "Received" => "Received",
+        "Waiting for payment" => "Waiting for payment",
+        "On hold" => "On-hold",
+        "Processing" => "Processing",
+        "Shipped" => "Shipped",
+        "Completed" => "Completed"
+    }
+
+    enum status: STATUS
+
+    after_update :send_email_about_order_status, if: lambda { |order| order[:status] == 'Waiting for payment' || order[:status] == 'On-hold' || order[:status] == 'Processing' || order[:status] == 'Shipped' || order[:status] == 'Completed'}
+
+    # Send email about order status
+    protected
+    def send_email_about_order_status
+      SendMailer.send_email_about_order_status(self.status, self.customer.email).deliver_now
+    end
+
     # Destroy object Order by product and update quantity products
     def self.destroy_product(product_title, quantity_of_products, session)
       product = Product.find_by_title(product_title)
