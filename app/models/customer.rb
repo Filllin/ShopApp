@@ -4,7 +4,7 @@ class Customer < ActiveRecord::Base
 
   validates :name, field: true
   validates :surname, field: true
-  validates :phone_number, field: true, phone_numer: true
+  validates :phone_number, field: true, phone_number: true
   validates :country, field: true
   validates :first_address, field: true
   validates :city, field: true
