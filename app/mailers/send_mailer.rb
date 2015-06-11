@@ -14,4 +14,10 @@ class SendMailer < ActionMailer::Base
     @coupon = coupon
     mail(to: 'dix.alex@gmail.com', subject: 'Данные о заказе и заказчика с FriendsBote')
   end
+
+  def send_email_about_order_status(status, email)
+    @status = status
+    mail(to: email, subject: "Order status: #{@status}")
+  end
+
 end
