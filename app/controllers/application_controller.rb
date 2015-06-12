@@ -18,7 +18,9 @@ class ApplicationController < ActionController::Base
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
   # Return error 404
-  def not_found
-    raise ActionController::RoutingError.new('Not Found')
+  def not_found(object)
+    if object.blank?
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 end
