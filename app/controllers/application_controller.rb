@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
+  # Return error 404
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
 end
