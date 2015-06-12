@@ -1,12 +1,10 @@
 <%= form_for @customer, url: order_review_path, :method=>"get", label_errors: true, inline_errors: true do |f| %>
     <% if @customer.errors.any? %>
         <div id="error_explanation">
-          <% if @customer.errors.count == 1 %>
-              <h2><%= pluralize(@customer.errors.count, '') %> ошибка была допущена</h2>
-          <% elsif (@customer.errors.count > 1) && (@customer.errors.count < 5) %>
-              <h2><%= pluralize(@customer.errors.count, '') %> ошибки было допущено</h2>
-          <% else %>
-              <h2><%= pluralize(@customer.errors.count, '') %> ошибок было допущено</h2>
+          <% case @customer.errors.count
+               when 1 %><h2><%= pluralize(@customer.errors.count, '') %> ошибка была допущена</h2>
+              <% when 2..5 %><h2><%= pluralize(@customer.errors.count, '') %> ошибки было допущено</h2>
+              <% else %><h2><%= pluralize(@customer.errors.count, '') %> ошибок было допущено</h2>
           <% end %>
           <ul>
             <% @customer.errors.full_messages.each do |message| %>
