@@ -13,12 +13,17 @@ class Product < ActiveRecord::Base
 
   # Return products by category
   def self.count_products_by_category(slug_category, count, page, sort_column, sort_direction)
-    return Product.where(sub_category: SubCategory.where(category: slug_category)).order(sort_column + " " + sort_direction).paginate(:per_page => count, :page => page)
+    return Product.where(sub_category: SubCategory
+                  .where(category: slug_category))
+                  .order(sort_column + " " + sort_direction)
+                  .paginate(:per_page => count, :page => page)
   end
 
   # Return products by sub_category
   def self.count_products_by_sub_category(sub_category, count, page, sort_column, sort_direction)
-    return Product.where(sub_category: sub_category).order(sort_column + " " + sort_direction).paginate(:per_page => count, :page => page)
+    return Product.where(sub_category: sub_category)
+                  .order(sort_column + " " + sort_direction)
+                  .paginate(:per_page => count, :page => page)
   end
 
   # Add object Product to Cart
@@ -30,7 +35,7 @@ class Product < ActiveRecord::Base
 
   # Create object Order
   def self.create_customer(product, count, session)
-    order = Order.where(user_session_id: session, product: product, customer: nil).take
+    order = Order.find_by(user_session_id: session, product: product, customer: nil)
     if order.present?
       quantity = count.to_i + order.quantity
       order.update(quantity: quantity)
