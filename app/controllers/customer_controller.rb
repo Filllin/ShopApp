@@ -15,7 +15,7 @@ class CustomerController < ApplicationController
   # Update quantity products by customer
   def update_quantity
     product = Product.find_by_title(params[:product_title])
-    order = Order.where(user_session_id: session['session_id'], product: product, customer: nil).first
+    order = Order.find_by(user_session_id: session['session_id'], product: product, customer: nil)
     if params[:quantity_of_products].present? && params[:product_title].present?
       if product.quantity_products + order.quantity  >= params[:quantity_of_products].to_i
         Order.update_quantity_product(order, product, params[:quantity_of_products])
@@ -35,18 +35,18 @@ class CustomerController < ApplicationController
   # Update object Order
   def create
     exist_customer = Order.find_exist_customer(
-        customer_params[:name],
-        customer_params[:surname],
-        customer_params[:phone_number],
-        customer_params[:country],
-        customer_params[:company],
-        customer_params[:first_address],
-        customer_params[:second_address],
-        customer_params[:city],
-        customer_params[:state],
-        customer_params[:postcode],
-        customer_params[:email]
-    )
+                      customer_params[:name],
+                      customer_params[:surname],
+                      customer_params[:phone_number],
+                      customer_params[:country],
+                      customer_params[:company],
+                      customer_params[:first_address],
+                      customer_params[:second_address],
+                      customer_params[:city],
+                      customer_params[:state],
+                      customer_params[:postcode],
+                      customer_params[:email]
+                     )
     if exist_customer.present?
       customer = exist_customer
     else
