@@ -12,7 +12,8 @@ class DefaultController < ApplicationController
   # Return home page
   def home
     @products = Product.all
-    if @products.blank? == false
+    puts @products.blank?
+    if @products.blank?
       not_found
     else
       @count = 20
