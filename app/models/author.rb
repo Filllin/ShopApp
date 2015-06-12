@@ -5,6 +5,8 @@ class Author < ActiveRecord::Base
 
   # Return products by author
   def self.count_products(count, author, page, sort_column, sort_direction)
-      return Product.where(author: author).order(sort_column + " " + sort_direction).paginate(:per_page => count, :page => page)
+      return Product.where(author: author)
+                    .order(sort_column + " " + sort_direction)
+                    .paginate(:per_page => count, :page => page)
   end
 end
