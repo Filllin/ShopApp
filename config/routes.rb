@@ -6,12 +6,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'contacts' => "default#contacts", as: :contacts
-
-  get 'about' => "default#about", as: :about
-
-  get 'oplata-i-dostavka' => "default#payment", as: :payment
-
   get 'cart' => "customer#cart", as: :cart
 
   get 'order/review' => "customer#review", as: :order_review
@@ -35,6 +29,9 @@ Rails.application.routes.draw do
   get 'search' => "default#search", as: :search
 
   get ':sub_category/:slug' => "product#view_product", as: :view_product
+
+  get ':slug' => "default#page", as: :page
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
