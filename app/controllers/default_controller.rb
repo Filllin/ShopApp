@@ -15,18 +15,8 @@ class DefaultController < ApplicationController
     @count = 20
   end
 
-  # Return contacts page
-  def contacts
-    @contacts = Contact.first
-  end
-
-  # Return about page
-  def about
-    @about = About.first
-  end
-
-  # Return payment page
-  def payment
-    @payment = Payment.first
+  # Return static page by slug
+  def page
+    @page = Page.find_by_slug(params[:slug])
   end
 end
