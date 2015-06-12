@@ -12,16 +12,13 @@ class DefaultController < ApplicationController
   # Return home page
   def home
     @products = Product.all
-    puts @products.blank?
-    if @products.blank?
-      not_found
-    else
-      @count = 20
-    end
+    not_found(@products)
+    @count = 20
   end
 
   # Return static page by slug
   def page
     @page = Page.find_by_slug(params[:slug])
+    not_found(@page)
   end
 end
