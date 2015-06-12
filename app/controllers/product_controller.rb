@@ -3,6 +3,7 @@ class ProductController < ApplicationController
   # Return product by slug and add product to cart
   def view_product
     @product = Product.find_by_slug(params[:slug])
+    not_found(@product)
     @title = @product.title
     if params[:count_of_products].present?
       if @product.quantity_products >= params[:count_of_products].to_i
