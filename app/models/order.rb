@@ -14,7 +14,13 @@ class Order < ActiveRecord::Base
 
     enum status: STATUS
 
-    after_update :send_email_about_order_status, if: lambda { |order| order[:status] == 'Waiting for payment' || order[:status] == 'On-hold' || order[:status] == 'Processing' || order[:status] == 'Shipped' || order[:status] == 'Completed'}
+    after_update :send_email_about_order_status, if: lambda { |order|
+                                                  order[:status] == 'Waiting for payment' ||
+                                                  order[:status] == 'On-hold' ||
+                                                  order[:status] == 'Processing' ||
+                                                  order[:status] == 'Shipped' ||
+                                                  order[:status] == 'Completed'
+                                               }
 
     # Send email about order status
     protected
@@ -25,7 +31,7 @@ class Order < ActiveRecord::Base
     # Destroy object Order by product and update quantity products
     def self.destroy_product(product_title, quantity_of_products, session)
       product = Product.find_by_title(product_title)
-      Order.where(user_session_id: session, product: product, customer: nil).take.destroy
+      Order.find_by(user_session_id: session, product: product, customer: nil).destroy
       quantity_products = product.quantity_products + quantity_of_products.to_i
       product.update(quantity_products: quantity_products)
     end
@@ -43,15 +49,27 @@ class Order < ActiveRecord::Base
 
     # Update total price
     def self.update_total_price(orders, coupon)
-      orders.each do |order|
+      orders.find_each do |order|
         total_price = order.quantity * (order.product.price - (order.product.price * coupon.percent.ceil * 0.01))
        order.update(total_price: total_price)
       end
     end
 
     # Find exist customer
-    def self.find_exist_customer(name, surname, phone_number, country, company, first_address, second_address, city, state, postcode, email)
-     return Customer.where(
+    def self.find_exist_customer(
+            name,
+            surname,
+            phone_number,
+            country,
+            company,
+            first_address,
+            second_address,
+            city,
+            state,
+            postcode,
+            email
+      )
+     return Customer.find_by(
           name: name,
           surname: surname,
           phone_number: phone_number,
@@ -63,6 +81,6 @@ class Order < ActiveRecord::Base
           state: state,
           postcode: postcode,
           email: email
-      ).take
+      )
     end
 end
