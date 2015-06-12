@@ -11,13 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150608104339) do
-
-  create_table "abouts", force: :cascade do |t|
-    t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20150611195739) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "title"
@@ -36,14 +30,6 @@ ActiveRecord::Schema.define(version: 20150608104339) do
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug"
-
-  create_table "contacts", force: :cascade do |t|
-    t.text     "content"
-    t.string   "email"
-    t.string   "phone_numbers"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
 
   create_table "coupons", force: :cascade do |t|
     t.decimal  "percent"
@@ -103,11 +89,15 @@ ActiveRecord::Schema.define(version: 20150608104339) do
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
   add_index "orders", ["product_id"], name: "index_orders_on_product_id"
 
-  create_table "payments", force: :cascade do |t|
+  create_table "pages", force: :cascade do |t|
+    t.string   "title"
     t.text     "content"
+    t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "pages", ["slug"], name: "index_pages_on_slug"
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
