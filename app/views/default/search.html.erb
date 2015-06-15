@@ -6,16 +6,31 @@
         <article role="article" class="node node--page node--full node--page--full">
           <div class="node__content">
             <div class="field--body">
-              <% provide(:title, 'Поиск') %>
-              <% if @products.present? %>
-                  <% @products.each do |product| %>
+                <%= form_tag({controller: "default", action: "search"}, method: "get") do %>
+                  <div class="form-group">
+                    <%= text_field_tag :search, params[:search], placeholder: 'Поиск продуктов', class: 'form-control' %>
+                  </div>
+                  <ul class="nav nav-stacked" id="sidebar">
+                        <% @categories.each do |category| %>
+                            <li class="active"><h3><%= category.title %></h3></li>
+                            <% category.sub_categories.each  do |sub_category| %>
+                                <li class="active">
+                                  <h5><%= check_box_tag "sub_category[]", sub_category.title, false %> <%= sub_category.title %></h5>
+                                </li>
+                            <% end %>
+                        <% end %>
+                    <%= submit_tag("Отправить", class: 'btn btn-default') %>
+                    </ul>
+                <% end %>
+                <% if @products.present? %>
+                    <% @products.find_each do |product| %>
                       <% @title = product.sub_category.category.title %>
                       <div class="col-md-4"><%= image_tag product.image, {height: 90, weight: 90} %>
-                        <h5><%= link_to product.title, view_product_path(sub_category: product.sub_category,slug: product.slug) %></h5></div>
-                  <% end %>
-              <% else %>
-                <p>По вашему запросу ничего не найдено</p>
-              <% end %>
+                      <h5><%= link_to product.title, view_product_path(sub_category: product.sub_category,slug: product.slug) %></h5></div>
+                    <% end %>
+                <% else %>
+                    <p>По вашему запросу ничего не найдено</p>
+                <% end %>
             </div>
           </div>
         </article>
