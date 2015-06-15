@@ -12,9 +12,9 @@
 <h2><b>Детали заказа:</b></h2>
 <% @orders.each do |order| %>
   <h3>Название: <%= order.product.title %></h3>
-  <h3>Цена: <%= order.product.price %> грн</h3>
+  <h3>Цена: <%= order.product.price %> $</h3>
   <h3>Количество: <%= order.quantity %></h3>
-  <h3>Всего: <%= order.total_price %> грн</h3>
+  <h3>Всего: <%= order.total_price %> $</h3>
 <% end %>
   <h3>В ближайшее время менеджер нашего магазина с вами свяжеться</h3>
 </body>
