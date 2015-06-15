@@ -18,7 +18,7 @@
           </div>
 
           <div class="col-md-5">
-            <h5>Цена: <%= @product.price %> грн.</h5>
+            <h5>Цена: <%= @product.price %> $</h5>
             <%= form_tag({controller: "product", action: "view_product"}, method: "get") do %>
                 <%= label_tag("Количество") %>
                 <%= text_field_tag :count_of_products, '', class: 'form-control', :disabled => disabled %>
