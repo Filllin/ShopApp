@@ -7,8 +7,8 @@
 <% @orders.each do |order| %>
     <%= order.product.title %>
     Название: <%= order.product.title %>
-    Цена: <%= order.product.price %> грн
+    Цена: <%= order.product.price %> $
     Количество: <%= order.quantity %>
-    Всего: <%= order.total_price %> грн
+    Всего: <%= order.total_price %> $
 <% end %>
 В ближайшее время менеджер нашего магазина с вами свяжеться
