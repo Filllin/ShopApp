@@ -3,9 +3,9 @@ class DefaultController < ApplicationController
 
   # Return search page
   def search
-    @search = params[:search].mb_chars.downcase.to_s
-    if params[:search].present?
-      @products = Product.search(@search)
+    if params[:search].present? || params[:sub_category].present?
+      search = params[:search].mb_chars.downcase.to_s
+      @products = Product.search(search, params[:sub_category])
     end
   end
 
