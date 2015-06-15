@@ -14,7 +14,7 @@
                 <td><h5><%= order.product.title %></td></h5>
               </div>
               <div class="col-md-2">
-                <td><h5>Цена: <%= order.product.price %> грн</h5></td>
+                <td><h5>Цена: <%= order.product.price %> $</h5></td>
               </div>
                 <td>
                   <div class="col-md-4">
@@ -22,7 +22,7 @@
                   </div>
                 </td>
               <div class="col-md-1">
-                <td><h5>Всего: <%= @entire_amount = order.quantity*order.product.price %> грн</h5></td>
+                <td><h5>Всего: <%= @entire_amount = order.quantity*order.product.price %> $</h5></td>
               </div>
             </tr>
           </div>
