@@ -17,9 +17,9 @@
                           <td><h5><%= order.product.title %></td></h5>
                         </div>
                         <div class="col-md-3">
-                          <td><h5>Цена: <%= order.product.price %> грн
+                          <td><h5>Цена: <%= order.product.price %> $
                             <% if @coupon.present? %>
-                            (<%= order.product.price - (order.product.price * @coupon.percent.ceil * 0.01)  %> грн)
+                            (<%= order.product.price - (order.product.price * @coupon.percent.ceil * 0.01)  %> $)
                             <% end %>
                           </h5></td>
                         </div>
@@ -27,7 +27,7 @@
                           <td><h5>Количество: <%= order.quantity %></h5></td>
                         </div>
                         <div class="col-md-2">
-                          <td><h5>Всего: <%= order.total_price %> грн</h5></td>
+                          <td><h5>Всего: <%= order.total_price %> $</h5></td>
                         </div>
                       </tr>
                     </div>
