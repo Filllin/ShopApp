@@ -8,10 +8,16 @@ class Product < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   # Return search result
-  def self.search(search)
-    where("(LOWER(title) LIKE :search OR LOWER(description) LIKE :search)", search: "%#{search}%")
+  def self.search(search, title_sub_category)
+    sub_categories = SubCategory.where(title: title_sub_category)
+    if search.present? && sub_categories.present?
+      where("LOWER(title) LIKE :search OR LOWER(description) LIKE :search", search: "%#{search}%").where(sub_category_id: sub_categories)
+    elsif search.present? && sub_categories.present? == false
+      where("LOWER(title) LIKE :search OR LOWER(description) LIKE :search", search: "%#{search}%")
+    else
+      where(sub_category_id: sub_categories)
+    end
   end
-
   # Return products by category
   def self.count_products_by_category(slug_category, count, page, sort_column, sort_direction)
     return Product.where(sub_category: SubCategory
