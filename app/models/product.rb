@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
   belongs_to :sub_category
   belongs_to :publisher
   belongs_to :author
+  monetize :price
   mount_uploader :image, ImageUploader
 
   # Return search result
