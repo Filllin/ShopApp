@@ -1,3 +1,8 @@
 == README
+[![Build Status](https://scrutinizer-ci.com/g/kozeyandrey/ShopApp/badges/build.png?b=develop)](https://scrutinizer-ci.com/g/kozeyandrey/ShopApp/build-status/develop)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/kozeyandrey/ShopApp/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/kozeyandrey/ShopApp/?branch=develop)
 
-Переделка магазина http://friedensbote.com.ua/ с CMS Drupal на Ruby on Rails
+
+https://scrutinizer-ci.com/g/kozeyandrey/ShopApp/badges/quality-score.png?b=develop
+
+Переделывание магазина http://friedensbote.com.ua/ с CMS Drupal на Ruby on Rails
