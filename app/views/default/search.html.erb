@@ -6,7 +6,8 @@
         <article role="article" class="node node--page node--full node--page--full">
           <div class="node__content">
             <div class="field--body">
-                <%= form_tag({controller: "default", action: "search"}, method: "get") do %>
+              <% provide(:title, 'Поиск') %>
+              <%= form_tag({controller: "default", action: "search"}, method: "get") do %>
                   <div class="form-group">
                     <%= text_field_tag :search, params[:search], placeholder: 'Поиск продуктов', class: 'form-control' %>
                   </div>
