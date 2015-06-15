@@ -15,7 +15,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :slug, index: true
       t.string :image
       t.string :language
-      t.integer :price
+      t.money :price
       t.belongs_to :author
       t.belongs_to :publisher
       t.boolean :main
