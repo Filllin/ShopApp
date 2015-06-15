@@ -11,7 +11,7 @@
 <% @orders.each do |order| %>
     <h3>Название: <%= order.product.title %></h3>
     <h3>Количество: <%= order.quantity %></h3>
-    <h3>Всего: <%= order.total_price %>  грн</h3>
+    <h3>Всего: <%= order.total_price %>  $</h3>
 <% end %>
 <p>===============================================</p>
     <h3>Имя: <%= @user.name %></h3>
