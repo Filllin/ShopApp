@@ -5,7 +5,7 @@
 <% @orders.each do |order| %>
     Название: <%= order.product.title %>
     Количество: <%= order.quantity %>
-    Всего: <%= order.total_price %>  грн
+    Всего: <%= order.total_price %>  $
 <% end %>
 ===============================================
 Имя: <%= @user.name %>
