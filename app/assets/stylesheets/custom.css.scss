@@ -33,6 +33,28 @@ body {
     color: #fff;
   }
 }
+.custom-title {
+  background: url('box_top.png') repeat-x;
+  color: #000000;
+  font: bold 14px Arial,Helvetica,serif;
+  text-transform: uppercase;
+  padding: 0 0 0 10px;
+  @include border-top-radius(10px);
+  margin: 0;
+  overflow: hidden;
+  height: 29px;
+  line-height: 30px;
+  border: 1px solid #ddd;
+  background-position-y: -1px;
+}
+.default-title {
+  font: normal 14px Arial,Helvetica,serif;
+  text-transform: capitalize;
+}
+.default-text {
+  font: 12px/1.5 Arial,Helvetica,serif;
+  color: #000;
+}
 .header-margin {
   margin-top: 15px;
   .navbar {
