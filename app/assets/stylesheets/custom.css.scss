@@ -1,1 +1,88 @@
 @import "bootstrap";
+
+body {
+  background: #E6E9F3 url('background.png');
+  background-size: 70px;
+  font: 14px/1.2 Arial, sans-serif;
+}
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0;
+    background-color: #c00;
+    color: #fff;
+  }
+}
+.custom-title {
+  background: url('box_top.png') repeat-x;
+  color: #000000;
+  font: bold 14px Arial,Helvetica,serif;
+  text-transform: uppercase;
+  padding: 0 0 0 10px;
+  @include border-top-radius(10px);
+  margin: 0;
+  overflow: hidden;
+  height: 29px;
+  line-height: 30px;
+  border: 1px solid #ddd;
+  background-position-y: -1px;
+}
+.default-title {
+  font: normal 14px Arial,Helvetica,serif;
+  text-transform: capitalize;
+}
+.default-text {
+  font: 12px/1.5 Arial,Helvetica,serif;
+  color: #000;
+}
+.header-margin {
+  margin-top: 15px;
+  .navbar {
+    min-height: inherit;
+  }
+  .navbar-custom {
+    margin: 10px 0;
+    background: url('header.png') repeat-x;
+    border-right: 2px solid #44789D;
+    border-left: 2px solid #44789D;
+    height: 42px;
+    .nav {
+      li {
+        a {
+          line-height: 15px;
+          color: #FFFEEE;
+          font: 600 14px Verdana,Geneva,sans-serif;
+          padding-top: 11px;
+          padding-bottom: 11px;
+          &:hover {
+            color: #333;
+            background-color: inherit;
+          }
+        }
+      }
+    }
+    .navbar-form {
+      margin-top: 3px;
+    }
+  }
+}

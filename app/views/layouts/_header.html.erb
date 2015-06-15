@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container header-margin">
   <div class="row row-offcanvas row-offcanvas-left">
     <div class="col-xs-12 col-sm-13">
-      <%= image_tag "logo.png"  %>
-      <nav class="navbar navbar-default">
+      <%= link_to image_tag('logo.png'), root_path  %>
+      <nav class="navbar navbar-custom">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -19,8 +19,13 @@
               <li><%= link_to "О магазине", page_path(slug: 'about') %></li>
               <li><%= link_to "Оплата и доставка", page_path(slug: 'payment') %></li>
               <li><%= link_to "Корзина", cart_path %></li>
-              <li><%= render 'layouts/search' %></li>
             </ul>
+            <%= form_tag search_path, method: 'get', class: 'navbar-form navbar-right', role: 'search', autocomplete: 'off' do %>
+              <div class="form-group">
+                <%= text_field_tag :search, params[:search], placeholder: 'Поиск продуктов', class: 'form-control' %>
+              </div>
+              <%= submit_tag 'Поиск', class: 'btn btn-default' %>
+            <% end %>
           </div>
         </div>
       </nav>
