@@ -13,7 +13,7 @@
                   <td><h5><%= link_to order.product.title, view_product_path(sub_category: order.product.sub_category, slug: order.product.slug) %></td></h5>
                   </div>
                 <div class="col-md-2">
-                  <td><h5>Цена: <%= order.product.price %> грн</h5></td>
+                  <td><h5>Цена: <%= order.product.price %> $</h5></td>
                 </div>
                 <div class="col-md-4">
                   <td><%= form_tag({controller: "customer", action: "update_quantity"}, method: "get") do %>
@@ -32,7 +32,7 @@
                   <% end %>
                 </div>
                 <div class="col-md-1">
-                  <td><h5>Всего: <%= order.quantity*order.product.price %> грн</h5></td>
+                  <td><h5>Всего: <%= order.quantity*order.product.price %> $</h5></td>
                 </div>
                 </tr>
               </div>
