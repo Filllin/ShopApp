@@ -1,72 +1,69 @@
-<div class="col-md-13">
+<div class="col-md-12">
   <div class="panel panel-default">
+    <% if @product.quantity_products <= 0 %>
+        <% disabled = true %>
+    <% else %>
+        <% disabled = false %>
+    <% end %>
+    <h1 class="custom-title"><%= @title %></h1>
+    <p id="notice" class="text-center"><%= notice %></p>
+      <div class="panel-body">
+        <div class="col-md-7 text-center">
+          <% provide(:title, @title) %>
+          <%= image_tag @product.image %>
+          <p class="text-left default-text default-margin"><%= @product.description %></p>
+        </div>
 
-        <div class="panel-body">
-          <div class="col-md-7">
-            <% provide(:title, @title) %>
-            <h4 id="notice"><%= notice %></h4>
-            <% if @product.quantity_products <= 0 %>
-               <% disabled = true %>
-            <% else %>
-                <% disabled = false %>
+        <div class="col-md-5">
+          <p>Цена: <%= @product.price %> $</p>
+          <%= form_tag({controller: "product", action: "view_product"}, method: "get", class: 'form-inline') do %>
+              <%= label_tag 'Количество:' %>
+              <%= text_field_tag :count_of_products, '', class: 'form-control', :disabled => disabled %>
+              <%= submit_tag 'Отправить', class: 'btn btn-default', :disabled => disabled %>
+          <% end %>
+          <p class="custom-margin">Если не хотите оформлять заказ самостоятельно, поручите это нашим менеджерам: +38 (096) 808-62-65.</p>
+          <ul class="list-unstyled">
+            <% if @product.reference.present? %>
+              <li class="primary-padding"><b>Артикул:</b> <%= @product.reference %></li>
             <% end %>
-            <h3><%= @title %></h3>
-            <%= image_tag @product.image %>
-            <tr>
-              <td><h5><%= @product.description %></td></h5>
-            </tr>
-          </div>
-
-          <div class="col-md-5">
-            <h5>Цена: <%= @product.price %> $</h5>
-            <%= form_tag({controller: "product", action: "view_product"}, method: "get") do %>
-                <%= label_tag("Количество") %>
-                <%= text_field_tag :count_of_products, '', class: 'form-control', :disabled => disabled %>
-                <%= submit_tag("Отправить", class: 'btn btn-default', :disabled => disabled) %>
+            <% if @product.ISBN.present? %>
+              <li class="primary-padding"><b>ISBN:</b> <%= @product.ISBN %></li>
             <% end %>
-            <h5>Если не хотите оформлять заказ самостоятельно, поручите это нашим менеджерам: +38 (096) 808-62-65.</h5>
-            <ul>
-              <% if @product.reference.present? %>
-              <li><h4>Артикул: <%= @product.reference %></h4></li>
-              <% end %>
-              <% if @product.ISBN.present? %>
-              <li><h4>ISBN: <%= @product.ISBN %></h4></li>
-              <% end %>
-              <% if @product.author.present? %>
-              <li><h4>Автор: <%= link_to @product.author.title, view_author_path(slug: @product.author.slug) %></h4></li>
-              <% end %>
-              <% if @product.sub_category.present? %>
-              <li><h4>Категория: <%= link_to @product.sub_category.title, view_sub_category_path(slug: @product.sub_category.slug) %></h4></li>
-              <% end %>
-              <% if @product.publisher.present? %>
-              <li><h4>Издательство: <%= link_to @product.publisher.title, view_publisher_path(slug: @product.publisher.slug) %></h4></li>
-              <% end %>
-              <% if @product.quantity_products.present? %>
-                  <li><h4>Количество: <%= @product.quantity_products %></h4></li>
-              <% end %>
-              <% if @product.language.present? %>
-              <li><h4>Язык книги: <%= @product.language %></h4></li>
-              <% end %>
-              <% if @product.number_of_pages.present? %>
-              <li><h4>Количество страниц: <%= @product.number_of_pages %></h4></li>
-              <% end %>
-              <% if @product.format.present? %>
-              <li><h4>Формат: <%= @product.format %></h4></li>
-              <% end %>
-              <% if @product.weight.present? %>
-              <li><h4>Вес: <%= @product.weight %></h4></li>
-              <% end %>
-              <% if @product.height.present? %>
-              <li><h4>Высота: <%= @product.height %></h4></li>
-              <% end %>
-              <% if @product.width.present? %>
-              <li><h4>Ширина: <%= @product.width %></h4></li>
-              <% end %>
-              <% if @product.thickness.present? %>
-              <li><h4>Толщина: <%= @product.thickness %></h4></li>
-              <% end %>
-            </ul>
-          </div>
-          </div>
+            <% if @product.author.present? %>
+              <li class="primary-padding"><b>Автор:</b> <%= link_to @product.author.title, view_author_path(slug: @product.author.slug) %></li>
+            <% end %>
+            <% if @product.sub_category.present? %>
+              <li class="primary-padding"><b>Категория:</b> <%= link_to @product.sub_category.title, view_sub_category_path(slug: @product.sub_category.slug) %></li>
+            <% end %>
+            <% if @product.publisher.present? %>
+              <li class="primary-padding"><b>Издательство:</b> <%= link_to @product.publisher.title, view_publisher_path(slug: @product.publisher.slug) %></li>
+            <% end %>
+            <% if @product.quantity_products.present? %>
+              <li class="primary-padding"><b>Количество:</b> <%= @product.quantity_products %></li>
+            <% end %>
+            <% if @product.language.present? %>
+              <li class="primary-padding"><b>Язык книги:</b> <%= @product.language %></li>
+            <% end %>
+            <% if @product.number_of_pages.present? %>
+              <li class="primary-padding"><b>Количество страниц:</b> <%= @product.number_of_pages %></li>
+            <% end %>
+            <% if @product.format.present? %>
+              <li class="primary-padding"><b>Формат:</b> <%= @product.format %></li>
+            <% end %>
+            <% if @product.weight.present? %>
+              <li class="primary-padding"><b>Вес:</b> <%= @product.weight %></li>
+            <% end %>
+            <% if @product.height.present? %>
+              <li class="primary-padding"><b>Высота:</b> <%= @product.height %></li>
+            <% end %>
+            <% if @product.width.present? %>
+              <li class="primary-padding"><b>Ширина:</b> <%= @product.width %></li>
+            <% end %>
+            <% if @product.thickness.present? %>
+              <li class="primary-padding"><b>Толщина:</b> <%= @product.thickness %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
   </div>
 </div>

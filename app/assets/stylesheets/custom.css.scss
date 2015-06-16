@@ -99,6 +99,21 @@ iframe {
   width: 250px;
   height: 300px;
 }
+.default-margin {
+  margin-top: 20px;
+}
+.custom-margin {
+  margin: {
+    top: 20px;
+    bottom: 20px;
+  }
+}
+.primary-padding {
+  padding: {
+    top: 5px;
+    bottom: 5px;
+  }
+}
 .header-margin {
   margin-top: 15px;
   .navbar {
