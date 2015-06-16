@@ -1,27 +1,25 @@
 <div class="col-md-13" id="rightCol">
-  <div class="well">
-      <div id="block-block-4" class="block block--block block--block-4">
-        <h2 class="block__title">Связаться с нами в Skype</h2>
-        <div class="block__content">
-          <p><img src="http://friedensbote.com.ua/sites/default/files/images/blocks/skype/skype.png" alt="Skype" width="100%"></p>
-          <ul class="skype-actions"><li><a href="skype:friedensbote.books?call">Позвонить</a></li>
-            <li><a href="skype:friedensbote.books?chat">Написать</a></li>
-          </ul>  </div>
-      </div>
+  <div class="panel panel-default">
+    <h4 class="custom-title">Связаться с нами в Skype</h4>
+      <p><%= image_tag('skype.png', alt: 'skype', class: 'default-width') %></p>
+      <ul class="skype-actions text-center list-inline list-unstyled">
+        <li><%= link_to 'Позвонить', 'skype:friedensbote.books?call', class: 'custom-link' %></li>
+        <li><%= link_to 'Написать', 'skype:friedensbote.books?chat', class: 'custom-link' %></li>
+      </ul>
   </div>
-      <div class="well">
-      <div id="block-block-6" class="block block--block block--block-6">
-        <h2 class="block__title">Найдите нас на Facebook</h2>
-        <div class="block__content">
-          <iframe frameborder="0" scrolling="no" src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Ffriedensbote&amp;width=250&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" style="border:none; overflow:hidden; width:250px; height:258px;"></iframe>  </div>
-      </div>
-      </div>
-      <div class="well">
-      <div id="block-block-1" class="block block--block block--block-1">
-        <h2 class="block__title">Случайный стих</h2>
-        <div class="block__content">
-          <p><a href="http://allbible.info" title="Библия онлайн. Подкрепись!" style="font-family:Georgia,'Times New Roman',Times,serif; font-style:italic; font-size:18px; color:#000;">Случайный стих из Библии</a></p>
-          <iframe id="randomVerseIframe" src="http://allbible.info/ajax/randomverse/" width="250" height="auto" title="Подкрепись! Библия онлайн." frameborder="0" scrolling="no"></iframe>  </div>
-      </div>
+  <div class="panel panel-default">
+    <h4 class="custom-title">Найдите нас на Facebook</h4>
+    <div class="text-center">
+      <iframe frameborder="0" scrolling="no" src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Ffriedensbote&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false"></iframe>
     </div>
+  </div>
+  <div class="panel panel-default">
+    <h4 class="custom-title">Случайный стих</h4>
+    <div class="text-center">
+      <p>
+        <%= link_to 'Случайный стих из Библии', 'http://allbible.info', title: 'Библия онлайн. Подкрепись!', class: 'custom-link primary-link' %>
+      </p>
+      <iframe id="randomVerseIframe" src="http://allbible.info/ajax/randomverse/" title="Подкрепись! Библия онлайн." frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
 </div>

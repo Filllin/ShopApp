@@ -79,6 +79,26 @@ body {
   width: 100%;
   max-width: 100%;
 }
+.custom-link {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.primary-link {
+  color:#000;
+  font: {
+    family: Georgia, 'Times New Roman', Times, serif;
+    style: italic;
+    size: 18px;
+  }
+}
+iframe {
+  border: none;
+  overflow: hidden;
+  width: 250px;
+  height: 300px;
+}
 .header-margin {
   margin-top: 15px;
   .navbar {
