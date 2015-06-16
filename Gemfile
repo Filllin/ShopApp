@@ -51,6 +51,9 @@ gem 'carrierwave'
 # For a work with money
 gem 'money-rails'
 
+# For a work with search
+gem 'ransack'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
