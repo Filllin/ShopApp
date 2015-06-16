@@ -7,42 +7,6 @@ class Product < ActiveRecord::Base
   monetize :price
   mount_uploader :image, ImageUploader
 
-  # Return search result
-  def self.search(search, title_sub_category)
-    sub_categories = SubCategory.where(title: title_sub_category)
-    author = object_registers(Author, search)
-    if author.blank?
-     return where(author_id: author)
-    else
-    products = object_register(Product, search)
-    puts products.blank?
-      if products.blank? == false && sub_categories.present?
-      return products.where(sub_category_id: sub_categories)
-      elsif products.blank? == false && sub_categories.present? == false
-      return products
-      else
-        where(sub_category_id: sub_categories)
-      end
-    end
-  end
-
-  # Check object on register
-  protected
-  def self.object_register(model, search)
-    object = {'downcase' => search.mb_chars.downcase.to_s,
-              'upcase' => search.mb_chars.upcase.to_s,
-              'capitalize_first_word' => search.mb_chars.capitalize.to_s,
-              'capitalize_every_word' => search.mb_chars.split.map(&:capitalize).join(' ')
-             }
-    object_arel_table = model.arel_table
-    object.each do |key, value|
-      total_object = model.where(object_arel_table[:title].matches(value))
-      if total_object.present?
-        return total_object
-      end
-    end
-  end
-
   # Return products by category
   def self.count_products_by_category(slug_category, count, page, sort_column, sort_direction)
     return Product.where(sub_category: SubCategory
