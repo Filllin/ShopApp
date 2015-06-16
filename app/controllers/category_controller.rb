@@ -1,5 +1,5 @@
 class CategoryController < ApplicationController
-  before_action :categories_variable
+  before_action :categories_variable, :search
   helper_method :sort_column, :sort_direction
 
   # Return products by category
