@@ -1,18 +1,21 @@
 <div class="col-md-13" id="leftCol">
-    <div class="well">
-     <h3>Каталог</h3>
-      <ul class="nav nav-stacked" id="sidebar">
-        <% @categories.each do |category| %>
-        <li class="active"><h4><%= link_to category.title, view_category_path(slug: category.slug) %></h4></li>
-            <% category.sub_categories.each  do |sub_category| %>
-                <li><h5><%= link_to sub_category.title, view_sub_category_path(slug: sub_category.slug) %></h5></li>
-            <% end %>
-        <% end %>
-      </ul>
-    </div>
-    <div class="well">
-      <div class="block__content">
-        <p><a style="width: 100%; display: block; text-align: center;" href="http://www.friedensbote.org" title="истинно говорю вам: так как вы сделали это одному из сих братьев Моих меньших, то сделали Мне"><img style="max-width: 100%;" src="http://www.verlag-friedensbote.de/images/b/160600-01-ru.jpg" alt="истинно говорю вам: так как вы сделали это одному из сих братьев Моих меньших, то сделали Мне"></a></p>
+  <div class="panel panel-default">
+    <h4 class="custom-title">Каталог</h4>
+    <ul class="nav nav-stacked nav-custom" id="sidebar">
+      <% @categories.each do |category| %>
+          <li class="active"><h5><%= link_to category.title, view_category_path(slug: category.slug), class: 'catalog-title' %></h5></li>
+          <% category.sub_categories.each  do |sub_category| %>
+              <li><h6 class="default-subtitle"><%= link_to sub_category.title, view_sub_category_path(slug: sub_category.slug), class: 'catalog-subtitle' %></h6></li>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+    <div class="panel panel-default">
+      <h4 class="custom-title">Миссия Friedensbote</h4>
+      <div class="center-block">
+        <a class="default-width" href="http://www.friedensbote.org" title="истинно говорю вам: так как вы сделали это одному из сих братьев Моих меньших, то сделали Мне">
+          <img class="center-block" src="http://www.verlag-friedensbote.de/images/b/160600-01-ru.jpg" alt="истинно говорю вам: так как вы сделали это одному из сих братьев Моих меньших, то сделали Мне">
+        </a>
       </div>
     </div>
 </div>
