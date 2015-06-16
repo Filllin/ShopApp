@@ -1,5 +1,5 @@
 class CustomerController < ApplicationController
-  before_action :categories_variable, only: [:cart, :new, :review]
+  before_action :categories_variable, :search, only: [:cart, :new, :review]
 
   # Return cart page
   def cart
