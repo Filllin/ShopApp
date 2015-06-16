@@ -29,5 +29,6 @@ class ApplicationController < ActionController::Base
   def search
     @search = Product.search(params[:q])
     @products = @search.result.includes(:author, :sub_category)
+    @sub_categories = SubCategory.all
   end
 end
