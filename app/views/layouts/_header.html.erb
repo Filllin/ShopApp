@@ -20,12 +20,7 @@
               <li><%= link_to "Оплата и доставка", page_path(slug: 'payment') %></li>
               <li><%= link_to "Корзина", cart_path %></li>
             </ul>
-            <%= search_form_for @search, method: 'get', class: 'navbar-form navbar-right', role: 'search', autocomplete: 'off', url: search_path do |f| %>
-                <div class="form-group">
-                  <%= f.text_field :title_or_description_or_author_title_or_sub_category_title_cont, placeholder: 'Поиск продуктов', class: 'form-control' %>
-                </div>
-                <%= f.submit 'Поиск', class: 'btn btn-default' %>
-            <% end %>
+            <%= render 'layouts/search' %>
           </div>
         </div>
       </nav>
