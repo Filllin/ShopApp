@@ -1,4 +1,5 @@
 class ProductController < ApplicationController
+  before_action :search
 
   # Return product by slug and add product to cart
   def view_product
