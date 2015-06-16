@@ -55,6 +55,30 @@ body {
   font: 12px/1.5 Arial,Helvetica,serif;
   color: #000;
 }
+.nav-custom {
+  padding-left: 10px;
+}
+.catalog-title {
+  color: #233C5E;
+  font: bold 12px Arial,Helvetica,serif;
+}
+.catalog-subtitle {
+  color: #233C5E;
+  font: normal 12px Arial,Helvetica,serif;
+  padding-left: 15px;
+}
+.default-subtitle {
+  margin: 5px auto;
+}
+.panel {
+  @include border-top-radius(10px);
+  @include border-bottom-radius(10px);
+  padding-bottom: 20px;
+}
+.default-width {
+  width: 100%;
+  max-width: 100%;
+}
 .header-margin {
   margin-top: 15px;
   .navbar {
