@@ -1,13 +1,5 @@
 class DefaultController < ApplicationController
-  before_action :categories_variable
-
-  # Return search page
-  def search
-    if params[:search].present? || params[:sub_category].present?
-      search = params[:search].mb_chars.downcase.to_s
-      @products = Product.search(search, params[:sub_category])
-    end
-  end
+  before_action :categories_variable, :search
 
   # Return home page
   def home
