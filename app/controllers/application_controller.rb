@@ -17,10 +17,17 @@ class ApplicationController < ActionController::Base
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
+  
   # Return error 404
   def not_found(object)
     if object.blank?
       raise ActionController::RoutingError.new('Not Found')
     end
+  end
+
+  # Return search form
+  def search
+    @search = Product.search(params[:q])
+    @products = @search.result.includes(:author, :sub_category)
   end
 end
