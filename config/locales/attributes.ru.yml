@@ -107,3 +107,8 @@ ru:
         code: Код купона
         created_at: Создан в
         updated_at: Обновлен в
+      page:
+        title: Название
+        content: Контент
+        created_at: Создан в
+        updated_at: Обновлен в
