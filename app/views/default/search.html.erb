@@ -9,7 +9,7 @@
               <% provide(:title, 'Поиск') %>
               <%= search_form_for @search, method: 'get', class: 'navbar-form navbar-right', role: 'search', autocomplete: 'off', url: search_path do |f| %>
                   <div class="form-group">
-                    <%= f.text_field :title_or_description_or_author_title_or_sub_category_title_cont, placeholder: 'Поиск продуктов', class: 'form-control' %>
+                    <%= f.text_field :title_or_author_title_or_sub_category_title_cont, placeholder: 'Поиск продуктов', class: 'form-control' %>
                      <br/>
                     <% @sub_categories.find_each do |sub_category| %>
                         <%= check_box_tag('q[sub_category_title_cont_any][]', sub_category.title) %>
