@@ -1,9 +1,12 @@
 RailsAdmin.config do |config|
-  # TODO fix entrance to the admin panel unregistered user
-  config.authorize_with do
-    redirect_to main_app.root_path unless warden.user.admin == true
+  ## == Devise ==
+  config.authenticate_with do
+    warden.authenticate! scope: :user
+    config.authorize_with do
+      redirect_to main_app.root_path unless warden.user.admin == true
+    end
   end
-  ### Popular gems integration
+  config.current_user_method(&:current_user)
 
   ## == Devise ==
   # config.authenticate_with do
