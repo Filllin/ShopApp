@@ -1,6 +1,6 @@
 <%= search_form_for @search, method: 'get', class: 'navbar-form navbar-right', role: 'search', autocomplete: 'off', url: search_path do |f| %>
     <div class="form-group">
-      <%= f.text_field :title_or_description_or_author_title_or_sub_category_title_cont, placeholder: 'Поиск продуктов', class: 'form-control' %>
+      <%= f.text_field :title_or_author_title_or_sub_category_title_cont, placeholder: 'Поиск продуктов', class: 'form-control' %>
     </div>
     <%= f.submit 'Поиск', class: 'btn btn-default' %>
 <% end %>
