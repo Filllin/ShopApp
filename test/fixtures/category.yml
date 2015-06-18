@@ -1,3 +1,11 @@
 category1:
      title: Книги
      slug: books
+category2:
+     title: Духовно-назидательные
+     slug: duhovno-nazidatelnye
+     parent_category: category1
+category3:
+     title: Детская литература
+     slug: detskaya-literatura
+     parent_category: category1
