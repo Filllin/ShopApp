@@ -34,9 +34,6 @@ ru:
       publisher:
         one: Издатель
         other: Издатели
-      sub_category:
-        one: Подкатегория
-        other: Подкатегории
       user:
         one: Пользователь
         other: Пользователи
