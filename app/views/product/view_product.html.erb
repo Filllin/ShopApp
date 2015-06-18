@@ -15,7 +15,7 @@
         </div>
 
         <div class="col-md-5">
-          <p>Цена: <%= @product.price %> $</p>
+          <p>Цена: <%= @product.price_cents %> $</p>
           <%= form_tag({controller: "product", action: "view_product"}, method: "get", class: 'form-inline') do %>
               <%= label_tag 'Количество:' %>
               <%= text_field_tag :count_of_products, '', class: 'form-control', :disabled => disabled %>
@@ -32,8 +32,8 @@
             <% if @product.author.present? %>
               <li class="primary-padding"><b>Автор:</b> <%= link_to @product.author.title, view_author_path(slug: @product.author.slug) %></li>
             <% end %>
-            <% if @product.sub_category.present? %>
-              <li class="primary-padding"><b>Категория:</b> <%= link_to @product.sub_category.title, view_sub_category_path(slug: @product.sub_category.slug) %></li>
+            <% if @product.category.present? %>
+              <li class="primary-padding"><b>Категория:</b> <%= link_to @product.category.title, view_category_path(slug: @product.category.slug) %></li>
             <% end %>
             <% if @product.publisher.present? %>
               <li class="primary-padding"><b>Издательство:</b> <%= link_to @product.publisher.title, view_publisher_path(slug: @product.publisher.slug) %></li>
