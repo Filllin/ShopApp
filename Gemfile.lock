@@ -52,6 +52,12 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    cells (4.0.0)
+      tilt (>= 1.4, < 3)
+      uber (~> 0.0.9)
+    cells-erb (0.0.4)
+      cells (~> 4.0.0.beta6)
+      erbse (>= 0.0.2)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -68,6 +74,7 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    erbse (0.0.2)
     erubis (2.7.0)
     execjs (2.5.2)
     font-awesome-rails (4.3.0.0)
@@ -211,6 +218,7 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    uber (0.0.13)
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -227,6 +235,8 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.0)
   byebug
   carrierwave
+  cells
+  cells-erb
   coffee-rails (~> 4.1.0)
   devise
   friendly_id
