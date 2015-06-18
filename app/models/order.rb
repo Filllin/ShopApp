@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
-    belongs_to :product
+    has_many :order_items
+    has_many :products, through: :order_items
     belongs_to :customer
     belongs_to :coupon
     monetize :price
@@ -70,7 +71,7 @@ class Order < ActiveRecord::Base
             postcode,
             email
       )
-     return Customer.find_by(
+      Customer.find_by(
           name: name,
           surname: surname,
           phone_number: phone_number,
