@@ -12,8 +12,6 @@ Rails.application.routes.draw do
 
   get 'category/:slug' => "category#view_category", as: :view_category
 
-  get 'sub_category/:slug' => "category#view_sub_category", as: :view_sub_category
-
   get 'author/:slug' => "author#view_author", as: :view_author
 
   get 'izdatelstvo/:slug' => "publisher#view_publisher", as: :view_publisher
@@ -28,7 +26,7 @@ Rails.application.routes.draw do
 
   get 'search' => "default#search", as: :search
 
-  get ':sub_category/:slug' => "product#view_product", as: :view_product
+  get ':category/:slug' => "product#view_product", as: :view_product
 
   get ':slug' => "default#page", as: :page
 
