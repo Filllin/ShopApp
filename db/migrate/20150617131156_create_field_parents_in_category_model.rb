@@ -1,5 +1,5 @@
 class CreateFieldParentsInCategoryModel < ActiveRecord::Migration
   def change
-      add_column :categories, :parent, :integer
+      add_reference :categories, :parent
   end
 end
