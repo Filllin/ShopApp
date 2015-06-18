@@ -1,5 +1,9 @@
 class DefaultController < ApplicationController
-  before_action :categories_variable, :search
+  # Return search page
+  def search
+    @search = Product.search(params[:q])
+    @products = @search.result.includes(:author, :category)
+  end
 
   # Return home page
   def home
