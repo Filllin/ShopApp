@@ -42,9 +42,6 @@ gem 'devise'
 # For a good URL
 gem 'friendly_id'
 
-# For "Let's debug"
-gem 'debugger-linecache'
-
 # For upload picture
 gem 'carrierwave'
 
@@ -65,6 +62,9 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # For "Let's debug"
+  gem 'pry'
 
   gem 'quiet_assets'
 end
