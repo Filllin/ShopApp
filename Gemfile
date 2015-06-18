@@ -30,7 +30,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # gem 'rake', '0.9.6'
+
 # For views
+gem 'cells'
+gem 'cells-erb'
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
