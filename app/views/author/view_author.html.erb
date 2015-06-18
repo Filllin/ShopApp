@@ -18,7 +18,7 @@
                 <% @title = product.title %>
                 <div class="col-md-4 default-margin">
                   <%= image_tag product.image, {height: 90, weight: 90} %>
-                  <h3 class="default-title"><%= link_to product.title, view_product_path(sub_category: product.sub_category, slug: product.slug) %></h3>
+                  <h3 class="default-title"><%= link_to product.title, view_product_path(category: product.category, slug: product.slug) %></h3>
                 </div>
             <% end %>
         <% else %>
