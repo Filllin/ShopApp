@@ -24,11 +24,4 @@ class ApplicationController < ActionController::Base
       raise ActionController::RoutingError.new('Not Found')
     end
   end
-
-  # Return search form
-  def search
-    @search = Product.search(params[:q])
-    @products = @search.result.includes(:author, :sub_category)
-    @sub_categories = SubCategory.all
-  end
 end
