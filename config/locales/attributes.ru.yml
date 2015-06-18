@@ -28,7 +28,8 @@ ru:
         updated_at: Обновлен в
       category:
         title: Название
-        sub_categories: Подкатегории
+        parent_category: Родительская категория
+        subcategories: Подкатегории
         created_at: Создан в
         updated_at: Обновлен в
       sub_category:
