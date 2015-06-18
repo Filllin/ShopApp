@@ -11,7 +11,7 @@ product1:
     ISBN: 978-3-86699-320-4
     author: author1
     publisher: publisher1
-    sub_category: sub_category1
+    category: category2
     number_of_pages: 140
     format: твердая обложка
     weight: 266г
@@ -22,7 +22,7 @@ product1:
     language: русский
     image: 128
     slug: molitvennaya-zhizn-iisusa
-    price: 100
+    price_cents: 100
     quantity_products: 20
 product2:
     title: МОЛИТВЕННАЯ ЖИЗНЬ ИИСУСА
@@ -37,7 +37,7 @@ product2:
     ISBN: 978-3-86699-320-4
     author: author2
     publisher: publisher1
-    sub_category: sub_category1
+    category: category2
     number_of_pages: 140
     format: твердая обложка
     weight: 266г
@@ -47,7 +47,7 @@ product2:
     language: русский
     image: 1198
     slug: konflikt-carstv
-    price: 100
+    price_cents: 100
     quantity_products: 20
 product3:
     title: ГЕОРГИЙ ВИНС. ЕВАНГЕЛИЕ В УЗАХ
@@ -58,11 +58,11 @@ product3:
         В книге Вольфгана Бюне подробно рассмотрены отдельные моменты из молитвенной жизни Христа, которые наиболее подробно описал Лука в Евангелии.
         Как известно, Господь Иисус в Евангелии от Луки описывается как “истинный Человек”. Его чувствования, Его обычные поступки, условия Его жизни, Его бедность, Его сострадание и любовь к людям особенно впечатляюще описаны врачом и другом людей Лукой.
         Духовная сила и эффективность в служении зависит не от наших талантов, но, прежде всего, от нашего общения с Господом и нашей молитвенной жизни.
-    sub_category: sub_category2
+    category: category3
     slug: georgiy-vins-evangelie-v-uzah
     language: русский
     image: 4380
-    price: 100
+    price_cents: 100
     author: author3
     publisher: publisher1
     quantity_products: 20
