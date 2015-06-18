@@ -7,9 +7,9 @@
       <p id="notice"><%= notice %></p>
       <div class="col-md-10">
         <% @products.each do |product| %>
-          <% if product.main == true %>
+          <% if product.main? %>
             <%= image_tag product.image_url.to_s %>
-            <h2 class="default-title"><%= link_to product.title, view_product_path(sub_category: product.sub_category,slug: product.slug) %></h2>
+            <h2 class="default-title"><%= link_to product.title, view_product_path(category: product.category,slug: product.slug) %></h2>
             <p class="text-left default-text"><%= product.description %></p>
           <% end %>
         <% end %>
@@ -23,7 +23,7 @@
           <% @products.take(@count).shuffle.each do |product| %>
             <div class="col-md-4">
               <%= image_tag product.image_url.to_s, {height: 90, weight: 90} %>
-              <h3 class="default-title"><%= link_to product.title, view_product_path(sub_category: product.sub_category,slug: product.slug) %></h3>
+              <h3 class="default-title"><%= link_to product.title, view_product_path(category: product.category,slug: product.slug) %></h3>
             </div>
           <% end %>
         </div>
