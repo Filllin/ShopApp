@@ -1,6 +1,7 @@
 class DefaultController < ApplicationController
   # Return search page
   def search
+    @categories = Category.all
     @search = Product.search(params[:q])
     @products = @search.result.includes(:author, :category)
   end
