@@ -1,8 +1,4 @@
-<div class="col-md-3">
-  <%= render 'layouts/left_sidebar' %>
-</div>
-<div class="col-md-6">
-  <div class="panel panel-default">
+<div class="panel panel-default">
     <h1 class="custom-title"><%= @author.title %></h1>
     <p id="notice"><%= notice %></p>
     <div class="panel-body">
@@ -26,9 +22,5 @@
         <% end %>
       </div>
     </div>
-  </div>
-  <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 </div>
-<div class="col-md-3">
-  <%= render 'layouts/right_sidebar' %>
-</div>
+<%= will_paginate @products, renderer: BootstrapPagination::Rails %>

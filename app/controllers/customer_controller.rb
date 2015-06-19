@@ -1,6 +1,4 @@
 class CustomerController < ApplicationController
-  before_action :categories_variable, :search, only: [:cart, :new, :review]
-
   # Return cart page
   def cart
     @orders = Order.where(user_session_id: session['session_id'])
