@@ -8,7 +8,7 @@
       <% if product.main? %>
         <%= image_tag product.image_url.to_s %>
         <h2 class="default-title"><%= link_to product.title, view_product_path(category: product.category,slug: product.slug) %></h2>
-        <p class="text-left default-text"><%= product.description %></p>
+        <p class="text-left default-text"><%= product.description.html_safe %></p>
       <% end %>
     <% end %>
   </div>
