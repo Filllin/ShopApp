@@ -1,4 +1,5 @@
-<h2>Sign up</h2>
+<% provide(:title, 'Регистрация') %>
+<h2>Регистрация</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -9,7 +10,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label 'Пароль' %>
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -17,7 +18,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label 'Повторите пароль' %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
 
