@@ -13,12 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150619074728) do
 
-  create_table "abouts", force: :cascade do |t|
-    t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "authors", force: :cascade do |t|
     t.string   "title"
     t.string   "slug"
@@ -37,14 +31,6 @@ ActiveRecord::Schema.define(version: 20150619074728) do
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug"
-
-  create_table "contacts", force: :cascade do |t|
-    t.text     "content"
-    t.string   "email"
-    t.string   "phone_numbers"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
 
   create_table "coupons", force: :cascade do |t|
     t.decimal  "percent"
@@ -100,11 +86,13 @@ ActiveRecord::Schema.define(version: 20150619074728) do
   add_index "order_items", ["product_id"], name: "index_order_items_on_product_id"
 
   create_table "orders", force: :cascade do |t|
-    t.string   "status",          default: "Received"
+    t.integer  "total_price_cents",    default: 0,          null: false
+    t.string   "total_price_currency", default: "USD",      null: false
+    t.string   "status",               default: "Received"
     t.integer  "user_session_id"
     t.integer  "coupon_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "orders", ["coupon_id"], name: "index_orders_on_coupon_id"
@@ -118,12 +106,6 @@ ActiveRecord::Schema.define(version: 20150619074728) do
   end
 
   add_index "pages", ["slug"], name: "index_pages_on_slug"
-
-  create_table "payments", force: :cascade do |t|
-    t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -139,12 +121,14 @@ ActiveRecord::Schema.define(version: 20150619074728) do
     t.string   "slug"
     t.string   "image"
     t.string   "language"
+    t.integer  "price_cents",       default: 0,     null: false
+    t.string   "price_currency",    default: "USD", null: false
     t.integer  "author_id"
     t.integer  "publisher_id"
     t.boolean  "main"
     t.integer  "quantity_products"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "category_id"
   end
 
@@ -159,17 +143,6 @@ ActiveRecord::Schema.define(version: 20150619074728) do
   end
 
   add_index "publishers", ["slug"], name: "index_publishers_on_slug"
-
-  create_table "sub_categories", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "category_id"
-    t.string   "slug"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "sub_categories", ["category_id"], name: "index_sub_categories_on_category_id"
-  add_index "sub_categories", ["slug"], name: "index_sub_categories_on_slug"
 
   create_table "users", force: :cascade do |t|
     t.boolean  "admin"
