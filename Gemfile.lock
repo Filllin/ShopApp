@@ -58,6 +58,13 @@ GEM
     cells-erb (0.0.4)
       cells (~> 4.0.0.beta6)
       erbse (>= 0.0.2)
+    ckeditor (4.1.2)
+      cocaine
+      orm_adapter (~> 0.5.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -237,6 +244,7 @@ DEPENDENCIES
   carrierwave
   cells
   cells-erb
+  ckeditor
   coffee-rails (~> 4.1.0)
   devise
   friendly_id
