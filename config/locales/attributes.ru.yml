@@ -16,10 +16,11 @@ ru:
         height: Высота
         width: Широта
         thickness: Толщина
-        sub_category: Категория
+        price_cents: Цена
+        price_currency: Валюта
+        category: Категория
         image: Картинка
         language: Язык
-        price: Цена
         author: Автор
         publisher: Издатель
         main: Основная
@@ -111,5 +112,11 @@ ru:
       page:
         title: Название
         content: Контент
+        created_at: Создан в
+        updated_at: Обновлен в
+      order_item:
+        order: Заказ
+        product: Продукт
+        quantity: Количество
         created_at: Создан в
         updated_at: Обновлен в
