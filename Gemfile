@@ -41,6 +41,7 @@ gem 'will_paginate-bootstrap'
 # For admin
 gem 'rails_admin'
 gem 'devise'
+gem 'ckeditor'
 
 # For a good URL
 gem 'friendly_id'
