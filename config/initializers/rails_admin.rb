@@ -7,7 +7,18 @@ RailsAdmin.config do |config|
     end
   end
   config.current_user_method(&:current_user)
-
+  config.model Page do
+    edit do
+      include_all_fields
+      field :content, :ck_editor
+    end
+  end
+  config.model Product do
+    edit do
+      include_all_fields
+      field :description, :ck_editor
+    end
+  end
   ## == Devise ==
   # config.authenticate_with do
   #   warden.authenticate! scope: :user
