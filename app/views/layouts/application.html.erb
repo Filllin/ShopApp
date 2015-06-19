@@ -10,12 +10,16 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-<%= render 'layouts/header' %>
+<%= cell(:layout, :show, layout: 'header') %>
 <div class="container">
   <div class="row row-offcanvas row-offcanvas-left">
-    <%= yield %>
+    <div class="col-md-3"><%= cell(:layout, :show, layout: 'left_sidebar') %></div>
+        <div class="col-md-6">
+            <%= yield %>
+        </div>
+    <div class="col-md-3"><%= cell(:layout, :show, layout: 'right_sidebar') %></div>
   </div>
 </div>
-<%= render 'layouts/footer' %>
+<%= cell(:layout, :show, layout: 'footer') %>
 </body>
 </html>

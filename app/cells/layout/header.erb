@@ -19,9 +19,11 @@
               <li><%= link_to "О магазине", page_path(slug: 'about') %></li>
               <li><%= link_to "Оплата и доставка", page_path(slug: 'payment') %></li>
               <li><%= link_to "Корзина", cart_path %></li>
-              <li><%= render 'layouts/logout' %></li>
+              <li>
+                <%= render 'logout' %>
+              </li>
             </ul>
-            <%= render 'layouts/search' %>
+            <%= render 'search' %>
           </div>
         </div>
       </nav>
