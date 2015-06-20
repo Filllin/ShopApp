@@ -28,7 +28,6 @@
                       <%= hidden_field_tag :quantity_of_products, order_item.quantity %>
                       <%= submit_tag("Удалить", class: 'btn btn-default') %>
                   <% end %>
-
                 </div>
                 <div class="col-md-1">
                   <td><h5>Всего: <%= order_item.quantity * order_item.product.price %> $</h5></td>
