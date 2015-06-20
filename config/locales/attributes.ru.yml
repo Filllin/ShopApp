@@ -121,3 +121,5 @@ ru:
         quantity: Количество
         created_at: Создан в
         updated_at: Обновлен в
+        total_price_cents: Цена
+        total_price_currency: Валюта
