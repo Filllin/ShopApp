@@ -36,9 +36,11 @@
                 </tr>
               </div>
               <% end %>
-          <%= form_tag({controller: "customer", action: "new"}, method: "get") do %>
-              <%= submit_tag("Оформить заказ", class: 'btn btn-default') %>
-          <% end %>
+              <% if notice.blank? || @order.present? %>
+              <%= form_tag({controller: "customer", action: "new"}, method: "get") do %>
+                  <%= submit_tag("Оформить заказ", class: 'btn btn-default') %>
+              <% end %>
+              <% end %>
         <% else %>
         <p>Ваша корзина пуста</p>
         <% end %>
