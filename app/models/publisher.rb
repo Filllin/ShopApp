@@ -6,7 +6,7 @@ class Publisher < ActiveRecord::Base
   # Return products by publisher
   def count_products(count, page, sort_column, sort_direction)
     self.products.where(publisher: self)
-           .order(sort_column + " " + sort_direction)
-           .paginate(:per_page => count, :page => page)
+                 .order(sort_column + " " + sort_direction)
+                 .paginate(:per_page => count, :page => page)
   end
 end
