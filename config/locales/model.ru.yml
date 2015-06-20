@@ -40,3 +40,6 @@ ru:
       page:
         one: Страница
         other: Страницы
+      order_item:
+        one: Позиция заказа
+        other: Позиция заказов
