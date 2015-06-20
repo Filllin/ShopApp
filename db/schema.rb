@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619074728) do
+ActiveRecord::Schema.define(version: 20150619181607) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "title"
@@ -93,9 +93,11 @@ ActiveRecord::Schema.define(version: 20150619074728) do
     t.integer  "coupon_id"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.integer  "customer_id"
   end
 
   add_index "orders", ["coupon_id"], name: "index_orders_on_coupon_id"
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
 
   create_table "pages", force: :cascade do |t|
     t.string   "title"
