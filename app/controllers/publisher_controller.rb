@@ -5,11 +5,12 @@ class PublisherController < ApplicationController
   def view_publisher
     @publisher = Publisher.find_by_slug(params[:slug])
     not_found(@publisher)
-    if params[:count].present?
-      @products = Publisher.count_products(params[:count], @publisher, params[:page], sort_column, sort_direction)
+    count = params[:count]
+    if count.present?
       flash.now[:notice] = "Вам будет показано #{params[:count]} товаров"
     else
-      @products = Publisher.count_products(10, @publisher, params[:page], sort_column, sort_direction)
+      count = 10
     end
+    @products = @publisher.count_products(count, params[:page], sort_column, sort_direction)
   end
 end
