@@ -4,9 +4,9 @@ class Author < ActiveRecord::Base
   has_many :products
 
   # Return products by author
-  def self.count_products(count, author, page, sort_column, sort_direction)
-      return Product.where(author: author)
-                    .order(sort_column + " " + sort_direction)
-                    .paginate(:per_page => count, :page => page)
+  def count_products(count, page, sort_column, sort_direction)
+    self.products.where(author: self)
+                 .order(sort_column + " " + sort_direction)
+                 .paginate(:per_page => count, :page => page)
   end
 end
