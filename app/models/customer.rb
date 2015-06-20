@@ -10,4 +10,9 @@ class Customer < ActiveRecord::Base
   validates :postcode, field: true
   validates :email, field: true, confirmation: { message: 'не соответствует полю "E-mail адрес"' }, email: true
   validates :email_confirmation, field: true, email: true
+
+  def send_email(order, coupon)
+    SendMailer.customer_email(self, order, coupon).deliver_now
+    SendMailer.admin_email(self, order, coupon).deliver_now
+  end
 end
