@@ -3,38 +3,39 @@
       <div class="col-md-10">
         <% provide(:title, 'Корзина') %>
         <h4 id="notice"><%= notice %></h4>
-        <% if @orders.present? %>
-            <% @orders.each do |order| %>
+        <% if @order.present? %>
               <div class="col-md-13">
                 <tr>
                 <div class="col-md-4">
-                  <td><h5><%= link_to order.product.title, view_product_path(sub_category: order.product.sub_category, slug: order.product.slug) %></td></h5>
+                  <% @order.order_items.find_each do |order_item| %>
+                  <td><h5><%= link_to order_item.product.title, view_product_path(category: order_item.product.category, slug: order_item.product.slug) %></td></h5>
                   </div>
                 <div class="col-md-2">
-                  <td><h5>Цена: <%= order.product.price %> $</h5></td>
+                  <td><h5>Цена: <%= order_item.product.price_cents %> $</h5></td>
                 </div>
                 <div class="col-md-4">
                   <td><%= form_tag({controller: "customer", action: "update_quantity"}, method: "get") do %>
                         <%= label_tag("Количество") %>
-                        <%= number_field_tag :quantity_of_products, order.quantity, class: 'form-control' %>
-                        <%= hidden_field_tag :product_title, order.product.title %>
+                        <%= number_field_tag :quantity_of_products, order_item.quantity, class: 'form-control' %>
+                        <%= hidden_field_tag :product_title, order_item.product.title %>
                         <%= submit_tag("Отправить", class: 'btn btn-default') %>
                     <% end %>
                   </td>
                 </div>
                 <div class="col-md-2">
                   <%= form_tag({controller: "customer", action: "destroy"}, method: "get") do %>
-                      <%= hidden_field_tag :product_title, order.product.title %>
-                      <%= hidden_field_tag :quantity_of_products, order.quantity %>
+                      <%= hidden_field_tag :product_title, order_item.product.title %>
+                      <%= hidden_field_tag :quantity_of_products, order_item.quantity %>
                       <%= submit_tag("Удалить", class: 'btn btn-default') %>
                   <% end %>
+
                 </div>
                 <div class="col-md-1">
-                  <td><h5>Всего: <%= order.quantity*order.product.price %> $</h5></td>
+                  <td><h5>Всего: <%= order_item.quantity * order_item.product.price %> $</h5></td>
                 </div>
                 </tr>
               </div>
-            <% end %>
+              <% end %>
           <%= form_tag({controller: "customer", action: "new"}, method: "get") do %>
               <%= submit_tag("Оформить заказ", class: 'btn btn-default') %>
           <% end %>
