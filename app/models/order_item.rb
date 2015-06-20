@@ -1,6 +1,7 @@
 class OrderItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :product
+  monetize :total_price_cents
 
   # Destroy object Order by product and update quantity products
   def destroy_product(quantity_of_products)
