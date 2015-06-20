@@ -3,33 +3,31 @@
       <div class="col-md-10">
         <% provide(:title, 'Просмотр заказа') %>
         <h4 id="notice"><%= notice %></h4>
-        <% if @orders.present? %>
+        <% if @order.present? %>
             <% if @coupon.present? %>
                 <h3>Вам предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %> </h3>
             <% end %>
             <h4><b>Содержимое корзины:</b></h4>
-            <% @orders.each do |order| %>
-                <div class="col-md-13">
+            <% @order.order_items.each do |order_item| %>
+                <div class="col-md-20">
                   <tr>
-                    <div class="col-md-4">
-                      <td><h5><%= order.product.title %></td></h5>
+                    <div class="col-md-6">
+                      <td><h5><%= order_item.product.title %></td></h5>
                     </div>
-                    <div class="col-md-3">
-                      <td><h5>Цена: <%= order.product.price %> $
+                    <div class="col-md-6">
+                      <td><h5>Цена: <%= order_item.product.price_cents %>$
                         <% if @coupon.present? %>
-                        (<%= order.product.price - (order.product.price * @coupon.percent.ceil * 0.01)  %> $)
+                        (<%= order_item.product.price_cents - (order_item.product.price_cents * @coupon.percent.ceil * 0.01)  %>$)
                         <% end %>
                       </h5></td>
                     </div>
-                    <div class="col-md-3">
-                      <td><h5>Количество: <%= order.quantity %></h5></td>
-                    </div>
-                    <div class="col-md-2">
-                      <td><h5>Всего: <%= order.total_price %> $</h5></td>
+                    <div class="col-md-6">
+                      <td><h5>Количество: <%= order_item.quantity %></h5></td>
                     </div>
                   </tr>
                 </div>
             <% end %>
+            <h4>Всего:<%= @order.total_price_cents %>$</h4>
             <div class="col-md-6">
               <h4><b>Информация об учётной записи:</b></h4>
               <td><h5>Email: <%= @customer.email %></h5></td>
