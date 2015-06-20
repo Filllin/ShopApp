@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619181607) do
+ActiveRecord::Schema.define(version: 20150620112825) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "title"
@@ -86,13 +86,13 @@ ActiveRecord::Schema.define(version: 20150619181607) do
   add_index "order_items", ["product_id"], name: "index_order_items_on_product_id"
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "total_price_cents",    default: 0,          null: false
-    t.string   "total_price_currency", default: "USD",      null: false
-    t.string   "status",               default: "Received"
+    t.integer  "total_price_cents",    default: 0,      null: false
+    t.string   "total_price_currency", default: "USD",  null: false
+    t.string   "status",               default: "Cart"
     t.integer  "user_session_id"
     t.integer  "coupon_id"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "customer_id"
   end
 
