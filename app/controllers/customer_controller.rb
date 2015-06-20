@@ -14,10 +14,10 @@ class CustomerController < ApplicationController
   # Update quantity products by customer
   def update_quantity
     product = Product.find_by_title(params[:product_title])
-    order_item = OrderItem.find_by_product(product)
+    order_item = OrderItem.find_by(product: product)
     if params[:quantity_of_products].present? && product.present?
       if product.quantity_products + order_item.quantity  >= params[:quantity_of_products].to_i
-        order_item.update_quantity_product(params[:quantity_of_products])
+        order_item.update_quantity_product(params[:quantity_of_products], true)
         redirect_to cart_path, notice: "Количество товара #{params[:product_title]} было обновлено до #{params[:quantity_of_products]}"
       else
         redirect_to cart_path, notice: "Простите, вы не можите купить этот товар количеством в #{params[:quantity_of_products].to_i} так как их всего #{product.quantity_products}"
@@ -28,7 +28,11 @@ class CustomerController < ApplicationController
   # Return new object customer
   def new
     @order = Order.find_by_user_session_id(session['session_id'])
-    @customer = Customer.new
+    if @order.present?
+      @customer = Customer.new
+    else
+      redirect_to main_app.root_path
+    end
   end
 
   # Update object Order
@@ -40,10 +44,9 @@ class CustomerController < ApplicationController
       customer = Customer.create(customer_params)
     end
       coupon = Coupon.find_by_code(params[:coupon])
-      Order.find_by_user_session_id(session['session_id'])
-           .update(customer: customer, coupon: coupon, user_session_id: nil)
-      SendMailer.customer_email(customer, Order.where(customer: customer), coupon).deliver_now
-      SendMailer.admin_email(customer, Order.where(customer: customer), coupon).deliver_now
+      order = Order.find_by_user_session_id(session['session_id'])
+      order.update(status: 'Received', customer: customer, coupon: coupon, user_session_id: nil)
+      customer.send_email(order, coupon)
       redirect_to root_path, notice: 'Ваш заказ успешно принят'
   end
 
@@ -55,14 +58,10 @@ class CustomerController < ApplicationController
       respond_to do |format|
         format.html { render :new }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
-        end
+      end
     end
-    Coupon.all.find_each do |coupon|
-     if params[:coupon] == coupon.code
-       @present_coupon = true
-     end
-    end
-    if params[:coupon].present? && @present_coupon == true
+    present_coupon = Coupon.check_coupon(params[:coupon])
+    if params[:coupon].present? && present_coupon == true
       @coupon = Coupon.find_by_code(params[:coupon])
       @order.update_total_price_cents(@coupon)
     else
