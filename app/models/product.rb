@@ -7,13 +7,6 @@ class Product < ActiveRecord::Base
   monetize :price_cents
   mount_uploader :image, ImageUploader
 
-  # Return products by category
-  def self.count_products_by_category(category, count, page, sort_column, sort_direction)
-    self.where(category: category)
-        .order(sort_column + " " + sort_direction)
-        .paginate(:per_page => count, :page => page)
-  end
-
   # Add object Product to Cart
   def add_product_to_cart(count, session)
     quantity_products = self.quantity_products - count.to_i
