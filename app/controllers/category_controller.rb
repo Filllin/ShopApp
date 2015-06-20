@@ -10,10 +10,10 @@ class CategoryController < ApplicationController
     else
       count = 10
     end
-    if @category.subcategories.present?
-      @products = Product.count_products_by_category(@category.subcategories, count, params[:page], sort_column, sort_direction)
-    else
-      @products = Product.count_products_by_category(@category, count, params[:page], sort_column, sort_direction)
+    main_category = @category.subcategories
+    if main_category.blank?
+      main_category = @category
     end
+    @products = Product.count_products_by_category(main_category, count, params[:page], sort_column, sort_direction)
   end
 end
