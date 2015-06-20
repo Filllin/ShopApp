@@ -98,7 +98,8 @@ ru:
         customer: Заказчик
         product: Продукт
         quantity: Количество
-        total_price: Общая цена
+        total_price_cents: Общая цена
+        total_price_currency: Валюта
         user_session_id: Id заказчика
         coupon: Купон
         created_at: Создан в
