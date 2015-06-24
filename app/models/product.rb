@@ -4,31 +4,18 @@ class Product < ActiveRecord::Base
   belongs_to :category
   belongs_to :publisher
   belongs_to :author
-  monetize :price
+  monetize :price_cents
   mount_uploader :image, ImageUploader
 
-  # Return products by category
-  def self.count_products_by_category(slug_category, count, page, sort_column, sort_direction)
-    return Product.where(category: slug_category)
-                  .order(sort_column + " " + sort_direction)
-                  .paginate(:per_page => count, :page => page)
-  end
-
   # Add object Product to Cart
-  def self.add_product_to_cart(product, count, session)
-    quantity_products = product.quantity_products - count.to_i
-    product.update(quantity_products: quantity_products)
-    Product.create_customer(product, count, session)
-  end
-
-  # Create object Order
-  def self.create_customer(product, count, session)
-    order = Order.find_by(user_session_id: session, product: product, customer: nil)
-    if order.present?
-      quantity = count.to_i + order.quantity
-      order.update(quantity: quantity)
-    else
-      Order.create(user_session_id: session, product: product, quantity: count)
+  def add_product_to_cart(count, session)
+    order = Order.find_by_user_session_id(session) || Order.create(user_session_id: session)
+    order_item = OrderItem.find_by(product: self, order: order)
+    order_item_quantity = true
+    if order_item.blank?
+      order_item = OrderItem.create(order: order, product: self, quantity: count)
+      order_item_quantity = false
     end
+    order_item.update_quantity_product(count, order_item_quantity)
   end
 end

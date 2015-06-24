@@ -4,11 +4,12 @@
 Вам был предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %>
 Статус вашего заказа: "Принят"
 Детали заказа:
-<% @orders.each do |order| %>
-    <%= order.product.title %>
-    Название: <%= order.product.title %>
-    Цена: <%= order.product.price %> $
-    Количество: <%= order.quantity %>
-    Всего: <%= order.total_price %> $
+<% @order.order_items.find_each do |order_item| %>
+    <%= order_item.product.title %>
+    Название: <%= order_item.product.title %>
+    Цена: <%= order_item.product.price_cents %>
+    Количество: <%= order_item.quantity %>`
+    Всего: <%= order_item.total_price_cents %>$
 <% end %>
+Всего: <%= @order.total_price_cents %>$
 В ближайшее время менеджер нашего магазина с вами свяжеться

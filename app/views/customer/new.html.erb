@@ -5,22 +5,22 @@
       <% if @customer_params.present? %>
           <%= @customer_params %>
       <% end %>
-      <% @orders.each do |order| %>
+      <% @order.order_items.each do |order_item| %>
           <div class="col-md-10">
             <tr>
               <div class="col-md-4">
-                <td><h5><%= order.product.title %></td></h5>
+                <td><h5><%= order_item.product.title %></td></h5>
               </div>
               <div class="col-md-2">
-                <td><h5>Цена: <%= order.product.price %> $</h5></td>
+                <td><h5>Цена: <%= order_item.product.price_cents %> $</h5></td>
               </div>
                 <td>
                   <div class="col-md-4">
-                    <td><h5>Количество: <%= order.quantity %></h5></td>
+                    <td><h5>Количество: <%= order_item.quantity %></h5></td>
                   </div>
                 </td>
               <div class="col-md-1">
-                <td><h5>Всего: <%= @entire_amount = order.quantity*order.product.price %> $</h5></td>
+                <td><h5>Всего: <%= @entire_amount = order_item.quantity * order_item.product.price_cents %> $</h5></td>
               </div>
             </tr>
           </div>

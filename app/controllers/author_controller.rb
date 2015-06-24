@@ -5,11 +5,12 @@ class AuthorController < ApplicationController
   def view_author
     @author = Author.find_by_slug(params[:slug])
     not_found(@author)
-    if params[:count].present?
-      @products = Author.count_products(params[:count], @author, params[:page], sort_column, sort_direction)
+    count = params[:count]
+    if count.present?
       flash.now[:notice] = "Вам будет показано #{params[:count]} товаров"
     else
-      @products = Author.count_products(10, @author, params[:page], sort_column, sort_direction)
+      count = 1
     end
+    @products = @author.count_products(count, params[:page], sort_column, sort_direction)
   end
 end
