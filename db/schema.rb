@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619074728) do
+ActiveRecord::Schema.define(version: 20150620114542) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "title"
@@ -77,25 +77,29 @@ ActiveRecord::Schema.define(version: 20150619074728) do
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "quantity"
+    t.integer  "total_price_cents",    default: 0,     null: false
+    t.string   "total_price_currency", default: "USD", null: false
   end
 
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
   add_index "order_items", ["product_id"], name: "index_order_items_on_product_id"
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "total_price_cents",    default: 0,          null: false
-    t.string   "total_price_currency", default: "USD",      null: false
-    t.string   "status",               default: "Received"
+    t.integer  "total_price_cents",    default: 0,      null: false
+    t.string   "total_price_currency", default: "USD",  null: false
+    t.string   "status",               default: "Cart"
     t.integer  "user_session_id"
     t.integer  "coupon_id"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "customer_id"
   end
 
   add_index "orders", ["coupon_id"], name: "index_orders_on_coupon_id"
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
 
   create_table "pages", force: :cascade do |t|
     t.string   "title"
