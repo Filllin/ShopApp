@@ -1,22 +1,28 @@
 <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="col-md-10">
-        <% provide(:title, @category.title) %>
-        <% if @products.present? %>
-            <%= form_tag({controller: "category", action: "view_category"}, method: "get") do %>
-                <%= label_tag("Показать товаров") %>
-                <%= select_tag(:count, options_for_select([[10, 10], [20, 20], [50, 50], [100, 100],["-Все-", @products.count]])) %>
-                <%= submit_tag("Отправить") %>
-            <% end %>
-            <% @products.each do |product| %>
-                <% @title = product.category.title %>
-                <div class="col-md-4"><%= image_tag product.image, {height: 90, weight: 90} %>
-                  <h5><%= link_to product.title, view_product_path(category: product.category, slug: product.slug) %></h5></div>
-            <% end %>
-        <% else %>
-            <p>Товаров на складе нет</p>
-        <% end %>
-      </div>
+  <h1 class="custom-title"><%= @category.title %></h1>
+  <p id="notice"><%= notice %></p>
+  <div class="panel-body">
+    <div class="col-md-10">
+      <% provide(:title, @category.title) %>
+      <% if @products.present? %>
+          <%= form_tag({controller: 'category', action: 'view_category'}, method: "get") do %>
+              <%= label_tag 'Показать товаров' %>
+              <%= select_tag(:count, options_for_select([[10, 10], [20, 20], [50, 50], [100, 100],["-Все-", @products.count]])) %>
+              <%= submit_tag 'Применить' %>
+          <% end %>
+          <% @products.each do |product| %>
+              <% @title = product.category.title %>
+              <div class="col-md-4 default-margin">
+                <%= image_tag product.image, {height: 90, weight: 90} %>
+                <h3 class="default-title">
+                  <%= link_to product.title, view_product_path(category: product.category, slug: product.slug) %>
+                </h3>
+              </div>
+          <% end %>
+      <% else %>
+          <p>Товаров на складе нет</p>
+      <% end %>
     </div>
+  </div>
 </div>
 <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
