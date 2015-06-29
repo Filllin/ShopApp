@@ -6,7 +6,7 @@
           <% if category.parent_category_id.blank? %>
               <li class="active"><h4><%= link_to category.title, view_category_path(slug: category.slug), class: 'catalog-title' %></h4></li>
               <% category.subcategories.each do |sub_category| %>
-                  <li><%= link_to sub_category.title, view_category_path(slug: sub_category.slug), class: 'catalog-title' %></li>
+                  <li><%= link_to sub_category.title, view_category_path(slug: sub_category.slug), class: 'catalog-subtitle' %></li>
               <% end %>
           <% end %>
       <% end %>

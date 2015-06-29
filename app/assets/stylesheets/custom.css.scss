@@ -49,7 +49,6 @@ body {
 }
 .default-title {
   font: normal 14px Arial,Helvetica,serif;
- /* text-transform: capitalize;*/
 }
 .default-text {
   font: 12px/1.5 Arial,Helvetica,serif;
@@ -57,6 +56,14 @@ body {
 }
 .nav-custom {
   padding-left: 10px;
+  li {
+    a {
+      padding: 3px 15px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 .catalog-title {
   color: #233C5E;
@@ -65,7 +72,6 @@ body {
 .catalog-subtitle {
   color: #233C5E;
   font: normal 12px Arial,Helvetica,serif;
-  padding-left: 15px;
 }
 .default-subtitle {
   margin: 5px auto;
