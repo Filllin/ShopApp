@@ -114,10 +114,34 @@ iframe {
     bottom: 20px;
   }
 }
+.primary-margin {
+  margin: {
+    top: 5px;
+    bottom: 5px;
+  }
+}
+.zero-margin {
+  margin: {
+    top: 0;
+    bottom: 0;
+  }
+}
 .primary-padding {
   padding: {
     top: 5px;
     bottom: 5px;
+  }
+}
+.zero-padding {
+  padding: {
+    left: 0;
+    right: 0;
+  }
+}
+.side-padding {
+  padding: {
+    left: 5px;
+    right: 5px;
   }
 }
 .header-margin {

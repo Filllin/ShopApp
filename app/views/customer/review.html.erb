@@ -1,47 +1,46 @@
 <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="col-md-10">
-        <% provide(:title, 'Просмотр заказа') %>
-        <h4 id="notice"><%= notice %></h4>
-        <% if @order.present? %>
-            <% if @coupon.present? %>
-                <h3>Вам предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %> </h3>
-            <% end %>
-            <h4><b>Содержимое корзины:</b></h4>
-            <% @order.order_items.each do |order_item| %>
-                <div class="col-md-20">
-                  <tr>
-                    <div class="col-md-6">
-                      <td><h5><%= order_item.product.title %></td></h5>
-                    </div>
-                    <div class="col-md-6">
-                      <td><h5>Цена: <%= order_item.product.price_cents %>$
-                        <% if @coupon.present? %>
-                        (<%= order_item.product.price_cents - (order_item.product.price_cents * @coupon.percent.ceil * 0.01)  %>$)
-                        <% end %>
-                      </h5></td>
-                    </div>
-                    <div class="col-md-6">
-                      <td><h5>Количество: <%= order_item.quantity %></h5></td>
-                    </div>
-                  </tr>
-                </div>
-            <% end %>
-            <h4>Всего:<%= @order.total_price_cents %>$</h4>
-            <div class="col-md-6">
-              <h4><b>Информация об учётной записи:</b></h4>
-              <td><h5>Email: <%= @customer.email %></h5></td>
-            </div>
-            <div class="col-md-6">
-              <h4><b>Платежная информация:</b></h4>
-              <td><h5>Адрес1: <%= @customer.first_address %></h5></td>
-              <td><h5>Город: <%= @customer.city %></h5></td>
-              <td><h5>Почтовый индекс: <%= @customer.postcode %></h5></td>
-              <td><h5>Страна: <%= @customer.country %></h5></td>
-              <td><h5>Телефон: <%= @customer.phone_number %></h5></td>
-            </div>
-        <% end %>
-        <%= render 'layouts/form_review' %>
+  <h1 class="custom-title">Просмотр заказа</h1>
+  <div class="panel-body">
+    <% provide(:title, 'Просмотр заказа') %>
+    <p id="notice"><%= notice %></p>
+    <% if @order.present? %>
+      <% if @coupon.present? %>
+        <p>Вам предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %></p>
+      <% end %>
+      <p><b>Содержимое корзины:</b></p>
+      <% @order.order_items.each do |order_item| %>
+        <div class="col-md-12">
+          <div class="col-md-4">
+            <h3 class="default-title primary-margin"><%= order_item.product.title %></h3>
+          </div>
+          <div class="col-md-4">
+            <p>Цена: <%= order_item.product.price_cents %>$
+              <% if @coupon.present? %>
+              (<%= order_item.product.price_cents - (order_item.product.price_cents * @coupon.percent.ceil * 0.01)  %>$)
+              <% end %>
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p>Количество: <%= order_item.quantity %></p>
+          </div>
+        </div>
+      <% end %>
+      <div class="col-md-12">
+        Всего:<%= @order.total_price_cents %>$
       </div>
+      <div class="col-md-6">
+        <h4>Информация об учётной записи:</h4>
+        <p>Email: <%= @customer.email %></p>
+      </div>
+      <div class="col-md-6">
+        <h4>Платежная информация:</h4>
+        <p>Адрес1: <%= @customer.first_address %></p>
+        <p>Город: <%= @customer.city %></p>
+        <p>Почтовый индекс: <%= @customer.postcode %></p>
+        <p>Страна: <%= @customer.country %></p>
+        <p>Телефон: <%= @customer.phone_number %></p>
+      </div>
+    <% end %>
+    <%= render 'layouts/form_review' %>
   </div>
 </div>

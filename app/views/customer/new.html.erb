@@ -1,32 +1,32 @@
 <div class="panel panel-default">
-    <div class="panel-body">
-      <% provide(:title, 'Оформление заказа') %>
-      <h4 id="notice"><%= notice %></h4>
-      <% if @customer_params.present? %>
-          <%= @customer_params %>
-      <% end %>
-      <% @order.order_items.each do |order_item| %>
-          <div class="col-md-10">
-            <tr>
-              <div class="col-md-4">
-                <td><h5><%= order_item.product.title %></td></h5>
-              </div>
-              <div class="col-md-2">
-                <td><h5>Цена: <%= order_item.product.price_cents %> $</h5></td>
-              </div>
-                <td>
-                  <div class="col-md-4">
-                    <td><h5>Количество: <%= order_item.quantity %></h5></td>
-                  </div>
-                </td>
-              <div class="col-md-1">
-                <td><h5>Всего: <%= @entire_amount = order_item.quantity * order_item.product.price_cents %> $</h5></td>
-              </div>
-            </tr>
-          </div>
-      <% end %>
-      <div class="col-md-7">
-        <%= render 'layouts/form_create_customer' %>
+  <h1 class="custom-title">Оформление заказа</h1>
+  <div class="panel-body">
+    <% provide(:title, 'Оформление заказа') %>
+    <p id="notice"><%= notice %></p>
+    <% if @customer_params.present? %>
+      <%= @customer_params %>
+    <% end %>
+    <% @order.order_items.each do |order_item| %>
+      <div class="col-md-12 zero-padding text-center">
+        <div class="col-md-4 side-padding">
+          <h3 class="default-title primary-margin"><%= order_item.product.title %></h3>
+        </div>
+        <div class="col-md-2 side-padding">
+          <p>Цена: </p>
+          <p><%= order_item.product.price_cents %> $</p>
+        </div>
+        <div class="col-md-4 side-padding">
+          <p>Количество: </p>
+          <p><%= order_item.quantity %></p>
+        </div>
+        <div class="col-md-2 side-padding">
+          <p>Всего: </p>
+          <p><%= @entire_amount = order_item.quantity * order_item.product.price_cents %> $</p>
+        </div>
       </div>
+    <% end %>
+    <div class="col-md-7 default-margin">
+      <%= render 'layouts/form_create_customer' %>
     </div>
+  </div>
 </div>
