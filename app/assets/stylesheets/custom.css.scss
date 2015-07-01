@@ -57,8 +57,10 @@ body {
 .nav-custom {
   padding-left: 10px;
   li {
-    a {
+    .catalog-subtitle {
       padding: 3px 15px;
+      color: #233C5E;
+      font: normal 12px Arial,Helvetica,serif;
       &:hover {
         text-decoration: underline;
       }
@@ -68,10 +70,6 @@ body {
 .catalog-title {
   color: #233C5E;
   font: bold 12px Arial,Helvetica,serif;
-}
-.catalog-subtitle {
-  color: #233C5E;
-  font: normal 12px Arial,Helvetica,serif;
 }
 .default-subtitle {
   margin: 5px auto;
