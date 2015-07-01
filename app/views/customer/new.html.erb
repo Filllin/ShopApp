@@ -6,25 +6,26 @@
     <% if @customer_params.present? %>
       <%= @customer_params %>
     <% end %>
-    <% @order.order_items.each do |order_item| %>
-      <div class="col-md-12 zero-padding text-center">
-        <div class="col-md-4 side-padding">
-          <h3 class="default-title primary-margin"><%= order_item.product.title %></h3>
-        </div>
-        <div class="col-md-2 side-padding">
-          <p>Цена: </p>
-          <p><%= order_item.product.price_cents %> $</p>
-        </div>
-        <div class="col-md-4 side-padding">
-          <p>Количество: </p>
-          <p><%= order_item.quantity %></p>
-        </div>
-        <div class="col-md-2 side-padding">
-          <p>Всего: </p>
-          <p><%= @entire_amount = order_item.quantity * order_item.product.price_cents %> $</p>
-        </div>
-      </div>
-    <% end %>
+    <table class="table">
+      <thead>
+        <tr class="active">
+          <th>Название:</th>
+          <th>Цена:</th>
+          <th>Количество:</th>
+          <th>Всего:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |order_item| %>
+        <tr>
+          <td><b><%= order_item.product.title %></b></td>
+          <td><%= order_item.product.price_cents %> $</td>
+          <td><%= order_item.quantity %></td>
+          <td><%= @entire_amount = order_item.quantity * order_item.product.price_cents %> $</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
     <div class="col-md-7 default-margin">
       <%= render 'layouts/form_create_customer' %>
     </div>
