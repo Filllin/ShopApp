@@ -39,7 +39,6 @@
               <% end %>
             </tbody>
           </table>
-      <div class="col-md-12 default-margin">
       <% if notice.blank? || @order.present? %>
           <%= form_tag({controller: 'customer', action: 'new'}, method: "get") do %>
               <%= submit_tag 'Оформить заказ', class: 'btn btn-default' %>
@@ -48,6 +47,5 @@
       <% else %>
           <p>Ваша корзина пуста</p>
       <% end %>
-      </div>
   </div>
 </div>
