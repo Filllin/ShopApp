@@ -3,14 +3,16 @@
   <div class="panel-body">
       <% provide(:title, 'Корзина') %>
       <p id="notice"><%= notice %></p>
+      <% if @order.present? %>
         <% array = Array.new
            a = 0
-           @order.order_items.to_a.map do |i|
-           array[a] = i.quantity * i.product.price_cents
-           a =+1
-         end
-      %>
-      <% if @order.present? %>
+           if @order.order_items.present?
+             @order.order_items.to_a.map do |i|
+               array[a] = i.quantity * i.product.price_cents
+               a =+1
+             end
+           end
+        %>
           <table class="table">
             <thead>
               <tr class="active">
