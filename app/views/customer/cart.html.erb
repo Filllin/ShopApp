@@ -3,6 +3,13 @@
   <div class="panel-body">
       <% provide(:title, 'Корзина') %>
       <p id="notice"><%= notice %></p>
+        <% array = Array.new
+           a = 0
+           @order.order_items.to_a.map do |i|
+           array[a] = i.quantity * i.product.price_cents
+           a =+1
+         end
+      %>
       <% if @order.present? %>
           <table class="table">
             <thead>
@@ -39,7 +46,8 @@
               <% end %>
             </tbody>
           </table>
-      <% if notice.blank? || @order.present? %>
+        <h4>Всего:<%= array.sum %>$</h4>
+        <% if notice.blank? || @order.present? %>
           <%= form_tag({controller: 'customer', action: 'new'}, method: "get") do %>
               <%= submit_tag 'Оформить заказ', class: 'btn btn-default' %>
           <% end %>
