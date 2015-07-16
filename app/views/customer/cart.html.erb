@@ -55,7 +55,7 @@
             </tbody>
           </table>
         <div class="col-md-12 text-right change-padding">
-          <b>Итого:</b> <%= @order.total_price_cents %>$
+          <b>Итого:</b> <%= array.sum %>$
         </div>
         <% if notice.blank? || @order.present? %>
           <%= form_tag({controller: 'customer', action: 'new'}, method: "get") do %>
