@@ -18,16 +18,18 @@
       <div class="panel-body">
         <div class="col-md-7 text-center">
           <% provide(:title, @title) %>
-          <%= image_tag @product.image %>
+          <%= image_tag @product.image, class: 'custom-width' %>
           <p class="text-left default-text default-margin"><%= @product.description %></p>
         </div>
 
         <div class="col-md-5">
-          <p>Цена: <%= @product.price_cents %> $</p>
-          <%= form_tag({controller: "product", action: "view_product"}, method: "get", class: 'form-inline') do %>
-              <%= label_tag 'Количество:' %>
-              <%= text_field_tag :count_of_products, '', class: 'form-control', :disabled => disabled %>
-              <%= submit_tag 'Отправить', class: 'btn btn-default', :disabled => disabled %>
+          <p><b>Цена:</b> <%= @product.price_cents %> $</p>
+          <%= form_tag({controller: 'product', action: 'view_product'}, method: "get") do %>
+              <div class="form-group">
+                <%= label_tag(:count_of_products, 'Количество:', class: 'sr-only') %>
+                <%= text_field_tag :count_of_products, '', class: 'form-control', placeholder: 'Количество:' %>
+              </div>
+              <%= button_tag 'Применить', class: 'btn btn-default' %>
           <% end %>
           <p class="custom-margin">Если не хотите оформлять заказ самостоятельно, поручите это нашим менеджерам: +38 (096) 808-62-65.</p>
           <ul class="list-unstyled">
