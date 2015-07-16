@@ -13,9 +13,9 @@
         <% array = Array.new
            a = 0
            if @order.order_items.present?
-             @order.order_items.to_a.map do |i|
+             @order.order_items.to_a.each do |i|
                array[a] = i.quantity * i.product.price_cents
-               a =+1
+               a += 1
              end
            end
         %>
@@ -40,7 +40,8 @@
                     <%= form_tag({controller: 'customer', action: 'update_quantity'}, method: "get") do %>
                         <%= number_field_tag :quantity_of_products, order_item.quantity, class: 'form-control' %>
                         <%= hidden_field_tag :product_title, order_item.product.title %>
-                    <% end %>
+                        <%= submit_tag 'Отправить', class: 'btn btn-default' %>
+                  <% end %>
                   </td>
                   <td>
                     <%= form_tag({controller: 'customer', action: 'destroy'}, method: "get") do %>
