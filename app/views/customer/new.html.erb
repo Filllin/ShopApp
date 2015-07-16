@@ -2,7 +2,13 @@
   <h1 class="custom-title">Оформление заказа</h1>
   <div class="panel-body">
     <% provide(:title, 'Оформление заказа') %>
-    <p id="notice"><%= notice %></p>
+    <% if notice %>
+      <div class="panel panel-success panel-bottom">
+        <div class="panel-heading panel-footer">
+          <div id="notice"><%= notice %></div>
+        </div>
+      </div>
+    <% end %>
     <% if @customer_params.present? %>
       <%= @customer_params %>
     <% end %>

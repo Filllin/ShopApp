@@ -1,6 +1,12 @@
 <div class="panel panel-default">
     <h1 class="custom-title"><%= @author.title %></h1>
-    <p id="notice"><%= notice %></p>
+  <% if notice %>
+      <div class="panel panel-success panel-bottom">
+        <div class="panel-heading panel-footer">
+          <div id="notice"><%= notice %></div>
+        </div>
+      </div>
+  <% end %>
     <div class="panel-body">
       <div class="col-md-10">
         <% provide(:title, @author.title) %>

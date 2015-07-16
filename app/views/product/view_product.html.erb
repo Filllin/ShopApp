@@ -6,7 +6,15 @@
         <% disabled = false %>
     <% end %>
     <h1 class="custom-title"><%= @title %></h1>
-    <p id="notice" class="text-center"><%= notice %></p>
+    <% if notice %>
+      <div class="col-md-12 default-margin">
+        <div class="panel panel-success panel-bottom">
+          <div class="panel-heading panel-footer">
+            <div id="notice"><%= notice %></div>
+          </div>
+        </div>
+      </div>
+    <% end %>
       <div class="panel-body">
         <div class="col-md-7 text-center">
           <% provide(:title, @title) %>

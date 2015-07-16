@@ -2,7 +2,13 @@
   <h1 class="custom-title">Просмотр заказа</h1>
   <div class="panel-body">
     <% provide(:title, 'Просмотр заказа') %>
-    <p id="notice"><%= notice %></p>
+    <% if notice %>
+      <div class="panel panel-success panel-bottom">
+        <div class="panel-heading panel-footer">
+          <div id="notice"><%= notice %></div>
+        </div>
+      </div>
+    <% end %>
     <% if @order.present? %>
       <% if @coupon.present? %>
         <p>Вам предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %></p>

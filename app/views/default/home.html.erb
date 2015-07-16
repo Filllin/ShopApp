@@ -2,7 +2,13 @@
 <h1 class="custom-title">Магазин христианской книги Friedensbote</h1>
 <div class="panel-body text-center">
   <% provide(:title, 'Главная') %>
-  <p id="notice"><%= notice %></p>
+  <% if notice %>
+      <div class="panel panel-success panel-bottom">
+        <div class="panel-heading panel-footer">
+          <div id="notice"><%= notice %></div>
+        </div>
+      </div>
+  <% end %>
   <div class="col-md-10">
     <% @products.each do |product| %>
       <% if product.main? %>

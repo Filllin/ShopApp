@@ -2,7 +2,13 @@
   <h1 class="custom-title">Корзина</h1>
   <div class="panel-body">
       <% provide(:title, 'Корзина') %>
-      <p id="notice"><%= notice %></p>
+      <% if notice %>
+        <div class="panel panel-success panel-bottom">
+          <div class="panel-heading panel-footer">
+            <div id="notice"><%= notice %></div>
+          </div>
+        </div>
+      <% end %>
       <% if @order.present? %>
         <% array = Array.new
            a = 0
@@ -55,7 +61,7 @@
           <%= form_tag({controller: 'customer', action: 'new'}, method: "get") do %>
               <%= submit_tag 'Оформить заказ', class: 'btn btn-default' %>
           <% end %>
-      <% end %>
+        <% end %>
       <% else %>
           <p>Ваша корзина пуста</p>
       <% end %>
