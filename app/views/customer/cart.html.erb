@@ -48,7 +48,9 @@
               <% end %>
             </tbody>
           </table>
-        <h4>Всего:<%= array.sum %>$</h4>
+        <div class="col-md-12 text-right change-padding">
+          <b>Итого:</b> <%= @order.total_price_cents %>$
+        </div>
         <% if notice.blank? || @order.present? %>
           <%= form_tag({controller: 'customer', action: 'new'}, method: "get") do %>
               <%= submit_tag 'Оформить заказ', class: 'btn btn-default' %>

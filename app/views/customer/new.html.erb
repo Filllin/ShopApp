@@ -20,12 +20,15 @@
         <tr>
           <td><b><%= order_item.product.title %></b></td>
           <td><%= order_item.product.price_cents %> $</td>
-          <td><%= order_item.quantity %></td>
+          <td class="text-center"><%= order_item.quantity %></td>
           <td><%= @entire_amount = order_item.quantity * order_item.product.price_cents %> $</td>
         </tr>
         <% end %>
       </tbody>
     </table>
+    <div class="col-md-12 text-right change-padding">
+      <b>Итого:</b> <%= @order.total_price_cents %>$
+    </div>
     <div class="col-md-7 default-margin">
       <%= render 'layouts/form_create_customer' %>
     </div>

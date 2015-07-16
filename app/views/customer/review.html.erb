@@ -7,7 +7,7 @@
       <% if @coupon.present? %>
         <p>Вам предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %></p>
       <% end %>
-      <div class="panel panel-default">
+      <div class="panel panel-default panel-bottom">
         <div class="panel-heading">
           <h4>Содержимое корзины:</h4>
         </div>
@@ -38,35 +38,35 @@
           </tbody>
           <% end %>
         </table>
-        <div class="col-md-12 text-right custom-margin">
-          Итого: <%= @order.total_price_cents %>$
+        <div class="panel-footer text-right change-padding">
+          <b>Итого:</b> <%= @order.total_price_cents %>$
         </div>
-        <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="text-center">Информация об учётной записи:</h4>
-            </div>
-            <div class="panel-body">
-              <p><b>Email:</b> <%= @customer.email %></p>
-            </div>
+      </div>
+      <div class="col-md-6 side-padding">
+        <div class="panel panel-default panel-bottom">
+          <div class="panel-heading">
+            <h4 class="text-center">Информация об учётной записи:</h4>
+          </div>
+          <div class="panel-body">
+            <p><b>Email:</b> <%= @customer.email %></p>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="text-center">Платежная информация:</h4>
-            </div>
-            <ul class="list-group">
-              <li class="list-group-item"><b>Адрес1:</b> <%= @customer.first_address %></li>
-              <li class="list-group-item"><b>Город:</b> <%= @customer.city %></li>
-              <li class="list-group-item"><b>Почтовый индекс:</b> <%= @customer.postcode %></li>
-              <li class="list-group-item"><b>Страна:</b> <%= @customer.country %></li>
-              <li class="list-group-item"><b>Телефон:</b> <%= @customer.phone_number %></li>
-            </ul>
+      </div>
+      <div class="col-md-6 side-padding">
+        <div class="panel panel-default panel-bottom">
+          <div class="panel-heading">
+            <h4 class="text-center">Платежная информация:</h4>
           </div>
+          <ul class="list-group">
+            <li class="list-group-item"><b>Адрес1:</b> <%= @customer.first_address %></li>
+            <li class="list-group-item"><b>Город:</b> <%= @customer.city %></li>
+            <li class="list-group-item"><b>Почтовый индекс:</b> <%= @customer.postcode %></li>
+            <li class="list-group-item"><b>Страна:</b> <%= @customer.country %></li>
+            <li class="list-group-item"><b>Телефон:</b> <%= @customer.phone_number %></li>
+          </ul>
         </div>
+      </div>
     <% end %>
-    </div>
     <div class="col-md-12"><%= render 'layouts/form_review' %></div>
   </div>
 </div>
