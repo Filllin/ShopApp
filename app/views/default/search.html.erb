@@ -1,32 +1,35 @@
 <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="col-md-10">
-        <article role="article" class="node node--page node--full node--page--full">
-          <div class="node__content">
-            <div class="field--body">
-              <% provide(:title, 'Поиск') %>
-              <%= search_form_for @search, method: 'get', class: 'navbar-form navbar-right', role: 'search', autocomplete: 'off', url: search_path do |f| %>
-                  <div class="form-group">
-                    <%= f.text_field :title_or_author_title_or_category_title_cont, placeholder: 'Поиск продуктов', class: 'form-control' %>
-                    <br/>
-                    <% @categories.find_each do |category| %>
-                        <%= check_box_tag('q[category_title_cont_any][]', category.title) %>
-                        <%= category.title %>
-                    <% end %>
-                  </div>
-                  <%= f.submit 'Поиск', class: 'btn btn-default' %>
-              <% end %>
-              <% if @products.present? %>
-                  <% @products.each do |product| %>
-                      <% @title = product.category.title %>
-                      <div class="col-md-4"><%= image_tag product.image, {height: 90, weight: 90} %>
-                        <h5><%= link_to product.title, view_product_path(category: product.category, slug: product.slug) %></h5></div>
-                  <% end %>
-                    <p>По вашему запросу ничего не найдено</p>
-                <% end %>
+  <h1 class="custom-title">Поиск</h1>
+  <div class="panel-body">
+    <% provide(:title, 'Поиск') %>
+    <div class="col-md-12">
+      <%= search_form_for @search, method: 'get', class: 'navbar-form navbar-right', role: 'search', autocomplete: 'off', url: search_path do |f| %>
+        <div class="form-group">
+          <%= f.text_field :title_or_author_title_or_category_title_cont, placeholder: 'Поиск продуктов', class: 'form-control' %>
+          <%= f.submit 'Поиск', class: 'btn btn-default' %>
+        </div>
+        <div class="form-group default-margin">
+          <% @categories.find_each do |category| %>
+            <%= check_box_tag('q[category_title_cont_any][]', category.title) %>
+            <%= category.title %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="col-md-12 default-margin">
+        <% if @products.present? %>
+          <% @products.each do |product| %>
+            <% @title = product.category.title %>
+            <div class="col-md-4"><%= image_tag product.image, {height: 90, weight: 90} %>
+              <h2 class="default-title"><%= link_to product.title, view_product_path(category: product.category, slug: product.slug) %></h2></div>
+          <% end %>
+        <% else %>
+          <div class="panel panel-danger panel-bottom">
+            <div class="panel-heading panel-footer">
+              По вашему запросу ничего не найдено
             </div>
           </div>
-        </article>
+        <% end %>
       </div>
     </div>
+  </div>
 </div>
