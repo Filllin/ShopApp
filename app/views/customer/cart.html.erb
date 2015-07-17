@@ -40,7 +40,6 @@
                     <%= form_tag({controller: 'customer', action: 'update_quantity'}, method: "get") do %>
                         <%= number_field_tag :quantity_of_products, order_item.quantity, class: 'form-control' %>
                         <%= hidden_field_tag :product_title, order_item.product.title %>
-                        <%= submit_tag 'Отправить', class: 'btn btn-default' %>
                   <% end %>
                   </td>
                   <td>
