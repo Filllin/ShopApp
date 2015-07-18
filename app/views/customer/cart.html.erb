@@ -10,15 +10,6 @@
         </div>
       <% end %>
       <% if @order.present? %>
-        <% array = Array.new
-           a = 0
-           if @order.order_items.present?
-             @order.order_items.to_a.each do |i|
-               array[a] = i.quantity * i.product.price_cents
-               a += 1
-             end
-           end
-        %>
           <table class="table">
             <thead>
               <tr class="active">
@@ -55,7 +46,7 @@
             </tbody>
           </table>
         <div class="col-md-12 text-right change-padding">
-          <b>Итого:</b> <%= array.sum %>$
+          <b>Итого:</b> <%= @order.total_price_cents %>$
         </div>
         <% if notice.blank? || @order.present? %>
           <%= form_tag({controller: 'customer', action: 'new'}, method: "get") do %>
