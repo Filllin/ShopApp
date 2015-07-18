@@ -25,7 +25,6 @@ class Order < ActiveRecord::Base
                     order[:status] == 'Completed'
                  }
 
-
     # Update total price
     def update_total_price_cents(coupon)
       array = Array.new
