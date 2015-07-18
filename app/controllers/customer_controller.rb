@@ -19,6 +19,7 @@ class CustomerController < ApplicationController
     if params[:quantity_of_products].present? && product.present?
       if product.quantity_products + order_item.quantity  >= params[:quantity_of_products].to_i
         order_item.update_quantity_product(params[:quantity_of_products], true)
+        order_item.order.update_total_price_cents(nil)
         redirect_to cart_path, notice: "Количество товара #{params[:product_title]} было обновлено до #{params[:quantity_of_products]}"
       else
         redirect_to cart_path, notice: "Простите, вы не можите купить этот товар количеством в #{params[:quantity_of_products].to_i} так как их всего #{product.quantity_products}"
