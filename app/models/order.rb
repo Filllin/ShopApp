@@ -30,13 +30,13 @@ class Order < ActiveRecord::Base
     def update_total_price_cents(coupon)
       array = Array.new
       a = 0
-      self.order_items.to_a.map do |i|
+      self.order_items.each do |i|
         if coupon.present?
           array[a] = i.quantity * (i.product.price_cents - (i.product.price_cents * coupon.percent.ceil * 0.01))
         else
           array[a] = i.quantity * i.product.price_cents
         end
-        a =+1
+        a += 1
       end
       self.update(total_price_cents: array.sum)
     end
