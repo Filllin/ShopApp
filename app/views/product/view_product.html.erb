@@ -19,7 +19,7 @@
         <div class="col-md-7 text-center">
           <% provide(:title, @title) %>
           <%= image_tag @product.image, class: 'custom-width' %>
-          <p class="text-left default-text default-margin"><%= @product.description %></p>
+          <p class="text-left default-text default-margin"><%= @product.description.html_safe %></p>
         </div>
 
         <div class="col-md-5">
