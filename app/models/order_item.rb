@@ -16,7 +16,7 @@ class OrderItem < ActiveRecord::Base
   # Update quantity products
   def update_quantity_product(quantity_of_products, order_item_quantity)
     if order_item_quantity.present?
-      quantity_products = self.product.quantity_products + quantity - quantity_of_products.to_i
+      quantity_products = self.product.quantity_products + self.quantity - quantity_of_products.to_i
     else
       quantity_products = self.product.quantity_products - quantity_of_products.to_i
     end
