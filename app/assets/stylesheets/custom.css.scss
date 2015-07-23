@@ -167,6 +167,9 @@ iframe {
 }
 .header-margin {
   margin-top: $margin*3;
+  img[alt="logo"] {
+    width: 100%;
+  }
   .navbar {
     min-height: inherit;
   }
@@ -176,23 +179,83 @@ iframe {
     border-right: 2px solid #44789D;
     border-left: 2px solid #44789D;
     height: 42px;
-    .nav {
-      li {
-        a {
-          line-height: 15px;
-          color: #FFFEEE;
-          font: 600 14px Verdana,Geneva,sans-serif;
-          padding-top: 11px;
-          padding-bottom: 11px;
-          &:hover {
-            color: #333;
-            background-color: inherit;
+    .container-fluid {
+      .navbar-header {
+        .navbar-toggle {
+          background-color: #FFFEEE;
+          margin-top: 2px;
+          span {
+            &.icon-bar {
+              background-color: #ddd;
+            }
           }
         }
       }
+      .navbar-collapse {
+        position: relative;
+        z-index: 1;
+        .nav {
+          li {
+            a {
+              line-height: 15px;
+              color: #FFFEEE;
+              font: 600 14px Verdana,Geneva,sans-serif;
+              padding-top: 11px;
+              padding-bottom: 11px;
+              &:hover {
+                color: #333;
+                background-color: inherit;
+              }
+            }
+          }
+        }
+        .navbar-form {
+          margin-top: 3px;
+        }
+      }
     }
-    .navbar-form {
-      margin-top: 3px;
-    }
+  }
+}
+@media (max-width: 992px) {
+  .navbar-header {
+    float: none;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    background-color: #44789D;
+  }
+  .navbar-collapse.collapse {
+    display: none!important;
+  }
+  .navbar-nav {
+    float: none!important;
+    margin: 7.5px -15px;
+  }
+  .navbar-nav>li {
+    float: none;
+  }
+  .navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .navbar-text {
+    float: none;
+    margin: 15px 0;
+  }
+  /* since 3.1.0 */
+  .navbar-collapse.collapse.in {
+    display: block!important;
+  }
+  .collapsing {
+    overflow: hidden!important;
+  }
+}
+@media (min-width: 993px) {
+  .navbar-collapse {
+    background-color: inherit;
   }
 }
