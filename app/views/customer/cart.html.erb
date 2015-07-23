@@ -16,7 +16,7 @@
                 <th>Название:</th>
                 <th>Цена:</th>
                 <th>Количество:</th>
-                <th>Пересчитать:</th>
+                <th class="hidden-xs">Пересчитать:</th>
                 <th>Удалить:</th>
                 <th>Всего:</th>
               </tr>
@@ -33,7 +33,7 @@
                         <%= number_field_tag :quantity_of_products, order_item.quantity, class: 'form-control' %>
                         <%= hidden_field_tag :product_title, order_item.product.title %>
                   </td>
-                  <td>
+                  <td class="hidden-xs">
                         <%= submit_tag 'Пересчитать', class: 'btn btn-default' %>
                     <% end %></td>
                   <td>

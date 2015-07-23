@@ -4,7 +4,7 @@ $margin: 5px;
 $padding: 5px;
 $radius: 10px;
 body {
-  background: #E6E9F3 url('background.png');
+  background: #E6E9F3;
   background-size: 70px;
   font: 14px/1.2 Arial, sans-serif;
 }
@@ -213,6 +213,14 @@ iframe {
           margin-top: 3px;
         }
       }
+    }
+  }
+}
+@media (min-width: 769px) {
+  .central-block {
+    padding: {
+      left: 0;
+      right: 0;
     }
   }
 }

@@ -8,7 +8,7 @@
       </div>
   <% end %>
   <div class="panel-body">
-    <div class="col-md-10">
+    <div class="col-xs-12">
       <% provide(:title, @publisher.title) %>
       <% if @products.present? %>
           <%= form_tag({controller: 'publisher', action: 'view_publisher'}, method: "get") do %>
@@ -18,7 +18,7 @@
           <% end %>
           <% @products.each do |product| %>
               <% @title = product.title %>
-              <div class="col-md-4 default-margin">
+              <div class="col-xs-4 default-margin">
                 <%= image_tag product.image, {height: 90, weight: 90} %>
                 <h3 class="default-title">
                   <%= link_to product.title, view_product_path(category: product.category, slug: product.slug) %>
