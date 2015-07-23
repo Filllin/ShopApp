@@ -1,7 +1,9 @@
 Здраствуйте, <%= @user.name %>
 ===============================================
 Ваш заказ успешно принят!
-Вам был предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %>
+<% if @coupon.present? %>
+    Вам был предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %>
+<% end %>
 Статус вашего заказа: "Принят"
 Детали заказа:
 <% @order.order_items.find_each do |order_item| %>
