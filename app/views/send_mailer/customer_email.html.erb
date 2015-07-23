@@ -7,7 +7,9 @@
 <h1>Здраствуйте, <%= @user.name %></h1>
 <p>===============================================</p>
 <h2>Ваш заказ успешно принят!</h2>
-<h3>Вам был предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %> </h3>
+<% if @coupon.present? %>
+    <h3>Вам был предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %> </h3>
+<% end %>
 <h3>Статус вашего заказа: "Принят"</h3>
 <h2><b>Детали заказа:</b></h2>
 <% @order.order_items.find_each do |order_item| %>
