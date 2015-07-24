@@ -167,9 +167,6 @@ iframe {
 }
 .header-margin {
   margin-top: $margin*3;
-  img[alt="logo"] {
-    width: 100%;
-  }
   .navbar {
     min-height: inherit;
   }
@@ -216,7 +213,19 @@ iframe {
     }
   }
 }
+@media (min-width: 460px) {
+  .header-margin {
+    img[alt="logo"] {
+      width: 100%;
+    }
+  }
+}
 @media (min-width: 769px) {
+  .header-margin {
+    img[alt="logo"] {
+      width: auto;
+    }
+  }
   .central-block {
     padding: {
       left: 0;
