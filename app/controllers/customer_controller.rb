@@ -8,7 +8,10 @@ class CustomerController < ApplicationController
   def destroy
     OrderItem.find_by(product: Product.find_by_title(params[:product_title]))
              .destroy_product(params[:quantity_of_products])
-    Order.find_by_user_session_id(session['session_id']).update_total_price_cents(nil)
+    order = Order.find_by_user_session_id(session['session_id'])
+    if order.present?
+    order.update_total_price_cents(nil)
+    end
     redirect_to cart_path, notice: "Вы убрали из корзины #{params[:product_title]}"
   end
 
