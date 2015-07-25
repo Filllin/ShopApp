@@ -37,7 +37,7 @@ body {
   }
 }
 .custom-title {
-  background: url('box_top.png') repeat-x;
+  background: image-url('box_top.png') repeat-x;
   color: #000000;
   font: bold 14px Arial,Helvetica,serif;
   text-transform: uppercase;
@@ -167,15 +167,12 @@ iframe {
 }
 .header-margin {
   margin-top: $margin*3;
-  img[alt="logo"] {
-    width: 100%;
-  }
   .navbar {
     min-height: inherit;
   }
   .navbar-custom {
     margin: $margin*2 0;
-    background: url('header.png') repeat-x;
+    background: image-url('header.png') repeat-x;
     border-right: 2px solid #44789D;
     border-left: 2px solid #44789D;
     height: 42px;
@@ -216,7 +213,19 @@ iframe {
     }
   }
 }
+@media (min-width: 460px) {
+  .header-margin {
+    img[alt="logo"] {
+      width: 100%;
+    }
+  }
+}
 @media (min-width: 769px) {
+  .header-margin {
+    img[alt="logo"] {
+      width: auto;
+    }
+  }
   .central-block {
     padding: {
       left: 0;
