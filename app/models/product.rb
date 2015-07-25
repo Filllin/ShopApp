@@ -14,9 +14,9 @@ class Product < ActiveRecord::Base
     order_item_quantity = true
     if order_item.blank?
       order_item = OrderItem.create(order: order, product: self, quantity: count)
-      order.update_total_price_cents(nil)
       order_item_quantity = false
     end
     order_item.update_quantity_product(count, order_item_quantity)
+    order.update_total_price_cents(nil)
   end
 end
