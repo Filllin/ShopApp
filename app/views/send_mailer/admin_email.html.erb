@@ -10,7 +10,7 @@
     <% if @coupon.present? %>
     <h3>Заказчику был предоставлен купон на <%= number_to_percentage(@coupon.percent, precision: 0) %> </h3>
     <% end %>
-<% @order.order_item.find_each do |order_item| %>
+<% @order.order_items.find_each do |order_item| %>
     <h3>Название: <%= order_item.product.title %></h3>
     <h3>Количество: <%= order_item.quantity %></h3>
     <h3>Всего: <%= order_item.total_price_cents %>$</h3>
