@@ -13,7 +13,6 @@
 <% @order.order_items.find_each do |order_item| %>
     <h3>Название: <%= order_item.product.title %></h3>
     <h3>Количество: <%= order_item.quantity %></h3>
-    <h3>Всего: <%= order_item.total_price_cents %>$</h3>
 <% end %>
 <h3>Всего: <%= @order.total_price_cents %>$</h3>
 <p>===============================================</p>
