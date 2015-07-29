@@ -7,7 +7,6 @@
 <% @order.order_items.find_each do |order_item| %>
     Название: <%= order_item.product.title %>
     Количество: <%= order_item.quantity %>
-    Всего: <%= order_item.total_price_cents %>$
 <% end %>
 Всего: <%= @order.total_price_cents %>$
 ===============================================
